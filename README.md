@@ -113,9 +113,9 @@ Age: 105
 * Optional feature, to "repair" Personnummer with invalid checksums automatically.
 * **Helper class** with useful methods to support searching, calculation of checksums (separate stand-alone methods), date handling etc...
 
-**Version 0.2.0**
+**Version 0.4.0**
 
-Current stable branch is "version0_2_0"
+Current stable branch is (not ready)
 
 **Configuration**
 
