@@ -95,7 +95,7 @@ Age: 105
    <dependency>
       <groupId>se.osbe.id</groupId>
       <artifactId>personnummer</artifactId>
-      <version>0.2.0</version>
+      <version>0.4.0</version>
    </dependency>
    ...
 </dependencies>
