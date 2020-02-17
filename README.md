@@ -4,11 +4,9 @@
 
 * API to extract information from Swedish personnummer.
 
-*project initiated by Oskar Bergstrom on bitbucket 2015-09-27.*
+*project originally initiated by Oskar Bergstrom as a project on bitbucket 2015-09-27.*
 
 *This project is licensed under the terms of the [GPL v3](https://www.gnu.org/licenses/gpl-3.0.txt)*
-
-![gplv3-88x31.png(https://bitbucket.org/repo/GGrkzz/images/641803162-gplv3-88x31.png)
 
 
 
@@ -16,27 +14,22 @@
 Same personnummer can be written in four different ways (lengths), still representing same person. 
 
 ```
-#!java
 Personnummer pnr = Personnummer.parse("4604300014");
 ```
 or...
 ```
-#!java
 Personnummer pnr = Personnummer.parse("460430-0014");
 ```
 or...
 ```
-#!java
 Personnummer pnr = Personnummer.parse("194604300014");
 ```
 or...
 ```
-#!java
 Personnummer pnr = Personnummer.parse("19460430-0014");
 ```
 then extract information...
 ```
-#!java
 System.out.println(pnr.toString10()); // same as toString()
 System.out.println(pnr.toString11()); // ten digits, with '-' (or '+')
 System.out.println(pnr.toString12()); // twelve digits, with era 
@@ -55,7 +48,6 @@ and the output becomes...
 
 
 ```
-#!text
 4604300014
 460430-0014
 194604300014
@@ -74,7 +66,6 @@ The API also supports the use of '+' sign, to indicate +100 years of age when Pe
 
 
 ```
-#!java
 
 	Personnummer pnr = Personnummer.parse("101201+0342"); // using + to indicate >100 years old.
 		
@@ -85,13 +76,12 @@ The API also supports the use of '+' sign, to indicate +100 years of age when Pe
 output...
 
 ```
-#!text
 19101201-0342
 Age: 105
 ```
 
 
-##Set up
+## Set up
 * Clone the project from bitbucket with Git or simply download it manually from the Bitbucket.org.
 * Import the project as an "existing maven project" in your favourite IDE (e.g. Eclipse).
 * Build using Maven from your IDE or from your command prompt (under the project root folder): **mvn clean install**
@@ -100,13 +90,12 @@ Age: 105
 * To add the API in your project as a Maven dependency in you pom.xml, your pom.xml should look like this...
 
 ```
-#!xml
 <dependencies>
    ...
    <dependency>
       <groupId>se.osbe.id</groupId>
       <artifactId>personnummer</artifactId>
-      <version>0.2.0</version>
+      <version>0.4.0</version>
    </dependency>
    ...
 </dependencies>
@@ -124,9 +113,9 @@ Age: 105
 * Optional feature, to "repair" Personnummer with invalid checksums automatically.
 * **Helper class** with useful methods to support searching, calculation of checksums (separate stand-alone methods), date handling etc...
 
-**Version 0.2.0**
+**Version 0.4.0**
 
-Current stable branch is "version0_2_0"
+Current stable branch is (not ready)
 
 **Configuration**
 
@@ -136,10 +125,10 @@ Import the project as an existing maven projekt into your IDE, compile with Mave
 
 This project uses Jodatime ver 2.7 from Apache to handle all dates (see pom.xml file in the project root folder). It is automatically installed by maven at build time. Jodatime ensures that the API can be used in both old and newer versions of Java. Joda-Time was the "de facto" standard date and time library for Java prior to Java SE 8. It may be so that this Joda time dependency will become deprecated in future versions of Personnummer. For more information, go to http://www.joda.org/joda-time/
 
-**How to run tests**
+** How to run tests **
 Unit tests are based on JUnit.
 
-**more facts**
+** more facts **
 
 * Checksum algorithm is based upon the Luhn-algorithm a.k.a modulus-10-algorithm.
 
