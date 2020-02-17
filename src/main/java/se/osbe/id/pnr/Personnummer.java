@@ -13,9 +13,13 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static java.lang.Integer.parseInt;
+import static java.util.Optional.ofNullable;
+
 public class Personnummer implements Comparable<Personnummer>, SweId {
     private static final String PERSONNUMMER_PATTERN = IDType.PERSONNUMMER.getPattern();
     private static final int LAST4DIGITS = 4;
+    private static final int MIN_CENTURY = 18;
 
     private LocalDate _pnrDate;
     private int[] _lastDigits = new int[LAST4DIGITS];
@@ -52,7 +56,7 @@ public class Personnummer implements Comparable<Personnummer>, SweId {
         boolean even = true;
         int sum = 0;
         for (char c : pnrNumbersWithoutChecksum) {
-            int partSum = (Integer.parseInt(Character.toString(c)) * ((even) ? 2 : 1));
+            int partSum = (parseInt(Character.toString(c)) * ((even) ? 2 : 1));
             sum += ((partSum > 9) ? (1 + (partSum % 10)) : partSum);
             even = !even;
         }
@@ -62,7 +66,7 @@ public class Personnummer implements Comparable<Personnummer>, SweId {
     private static LocalDate resolveBirthDate(String era, int yearInt, int monthInt, int dayInt, boolean plus) {
         int yearCandidate;
         if (era != null) {
-            yearCandidate = ((Integer.parseInt(era) * 100) + yearInt);
+            yearCandidate = ((parseInt(era) * 100) + yearInt);
             return new LocalDate(yearCandidate, monthInt, dayInt);
         }
         LocalDate now = LocalDate.now();
@@ -150,15 +154,15 @@ public class Personnummer implements Comparable<Personnummer>, SweId {
             }
             if (isForgiving) {
                 checksum = String.valueOf(calculatedChecksum);
-            } else if (checksum == null || (Integer.parseInt(checksum) != calculatedChecksum)) {
+            } else if (checksum == null || (parseInt(checksum) != calculatedChecksum)) {
                 return Optional.empty();
             }
             if (!isForgiving && "0000".equals(last3 + checksum)) {
                 return Optional.empty();
             }
-            int yearInt = Integer.parseInt(year);
-            int monthInt = Integer.parseInt(month);
-            int dayInt = Integer.parseInt(day);
+            int yearInt = parseInt(year);
+            int monthInt = parseInt(month);
+            int dayInt = parseInt(day);
             if (monthInt >= 20) {
                 return Optional.empty(); // Not a Personnummer
             }
@@ -167,6 +171,9 @@ public class Personnummer implements Comparable<Personnummer>, SweId {
                 pnrDate = resolveBirthDate(era, yearInt, monthInt, dayInt, plus);
             } catch (IllegalFieldValueException e) {
                 return Optional.empty(); // Occurs when trying to parse February 29 and its no leap year!
+            }
+            if (!isForgiving && (pnrDate.centuryOfEra().get() < MIN_CENTURY || pnrDate.isAfter(LocalDate.now()))) {
+                return Optional.empty(); // Personnummer is in future, not valid
             }
             return Optional.of(new Personnummer(pnrDate, (last3 + checksum), isForgiving));
         }
@@ -315,27 +322,27 @@ public class Personnummer implements Comparable<Personnummer>, SweId {
     @Override
     public String toString() {
         // Default is same as toString11
-        toString11 = Optional.ofNullable(toString11).orElseGet(() -> toString(false, true));
+        toString11 = ofNullable(toString11).orElseGet(() -> toString(false, true));
         return toString11;
     }
 
     public String toString10() {
-        toString10 = Optional.ofNullable(toString10).orElseGet(() -> toString(false, false));
+        toString10 = ofNullable(toString10).orElseGet(() -> toString(false, false));
         return toString10;
     }
 
     public String toString11() {
-        toString11 = Optional.ofNullable(toString11).orElseGet(() -> toString(false, true));
+        toString11 = ofNullable(toString11).orElseGet(() -> toString(false, true));
         return toString11;
     }
 
     public String toString12() {
-        toString12 = Optional.ofNullable(toString12).orElseGet(() -> toString(true, false));
+        toString12 = ofNullable(toString12).orElseGet(() -> toString(true, false));
         return toString12;
     }
 
     public String toString13() {
-        toString13 = Optional.ofNullable(toString13).orElseGet(() -> toString(true, true));
+        toString13 = ofNullable(toString13).orElseGet(() -> toString(true, true));
         return toString13;
     }
 

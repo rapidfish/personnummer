@@ -2,16 +2,16 @@ package se.osbe.id.enums;
 
 public enum IDType {
     PERSONNUMMER(
-            "personnummer",
-            "^(?<era>18|19|20)?(?<year>\\d{2})(?<month>\\d{2})(?<day>\\d{2})(?<sign>[\\-+])?(?<last3>\\d{3})(?<checksum>\\d{1})?$"),
+            "Personnummer",
+            "^(?<era>\\d{2})?(?<year>\\d{2})(?<month>\\d{2})(?<day>\\d{2})(?<sign>[\\-+])?(?<last3>\\d{3})(?<checksum>\\d{1})?$"),
 
     ORGANISATIONSNUMMER(
-            "organisationsnummer",
-            "^(?<era>18|19|20)?(?<year>\\d{2})(?<month>\\d{2})(?<day>\\d{2})(?<sign>[\\-+])?(?<last3>\\d{3})(?<checksum>\\d{1})?$"),
+            "Organisationsnummer",
+            "^(?<era>16)?(?<year>\\d{2})(?<month>\\d{2})(?<day>\\d{2})(?<sign>[\\-+])?(?<last3>\\d{3})(?<checksum>\\d{1})?$"),
 
     SAMORDNINGSNUMMER(
-            "samordningsnummer",
-            "^(?<era>18|19|20)?(?<year>\\d{2})(?<month>\\d{2})(?<day>\\d{2})(?<sign>[\\-+])?(?<last3>\\d{3})(?<checksum>\\d{1})?$"),
+            "Samordningsnummer",
+            "^(?<era>\\d{2})?(?<year>\\d{2})(?<month>\\d{2})(?<day>\\d{2})(?<sign>[\\-+])?(?<last3>\\d{3})(?<checksum>\\d{1})?$"),
 
 //	ENSKILD(
 //			"enskild näringsidkare",

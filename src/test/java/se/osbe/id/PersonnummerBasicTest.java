@@ -11,7 +11,7 @@ import se.osbe.id.helper.PersonnummerBuilder;
 import se.osbe.id.helper.PersonnummerHelper;
 import se.osbe.id.pnr.Personnummer;
 
-import java.util.LinkedList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,55 +21,52 @@ public class PersonnummerBasicTest {
     private List<String> _pnrNOKList;
     final int FORMER_ERA = (LocalDate.now().getCenturyOfEra() - 1);
 
-    public PersonnummerBasicTest() {
-        _pnrOKList = new LinkedList<String>();
-    }
-
     @Before
     public void before() {
         // OK
-        _pnrOKList = new LinkedList<String>();
-        _pnrOKList.add("1212121212");
-        _pnrOKList.add("121212-1212");
-        _pnrOKList.add("121212+1212");
-        _pnrOKList.add("191212121212");
-        _pnrOKList.add("19121212-1212");
-        _pnrOKList.add("4604300014");
-        _pnrOKList.add("460430-0014");
-        _pnrOKList.add("460430+0014");
-        _pnrOKList.add("194604300014");
-        _pnrOKList.add("19460430-0014");
-        _pnrOKList.add("18180112-0302");
-        _pnrOKList.add("040229-0308"); // Leap year
+        _pnrOKList = Arrays.asList(
+                "1212121212",
+                "121212-1212",
+                "121212+1212",
+                "191212121212",
+                "19121212-1212",
+                "4604300014",
+                "460430-0014",
+                "460430+0014",
+                "194604300014",
+                "19460430-0014",
+                "18180112-0302",
+                "040229-0308"
+        );
 
         // NOK
-        _pnrNOKList = new LinkedList<String>();
-        _pnrNOKList.add("1801170000"); // last4 digits all zero
-        _pnrNOKList.add("180117-0000"); // last4 digits all zero
-        _pnrNOKList.add("180117+0000"); // last4 digits all zero
-        _pnrNOKList.add("18180117-0000"); // last4 digits all zero
-        _pnrNOKList.add("191801170000"); // last4 digits all zero
-        _pnrNOKList.add("19180117-0000"); // last4 digits all zero
-        _pnrNOKList.add("201801170000"); // last4 digits all zero
-        _pnrNOKList.add("20180117-0000"); // last4 digits all zero
-
-        _pnrNOKList.add("abc"); // no digits at all
-        _pnrNOKList.add("123"); // too short
-        _pnrNOKList.add("x1212121212"); // char
-        _pnrNOKList.add("161212121212"); // Org. nr (not Pnr)
-        _pnrNOKList.add("171212121212"); // Era is wrong
-        _pnrNOKList.add("211212121212"); // Future
-        _pnrNOKList.add("050229-0307"); // Not a Leap year
-        _pnrNOKList.add("1212121213"); // Wrong checksum
-        _pnrNOKList.add("121212-1213"); // Wrong checksum
-        _pnrNOKList.add("121212+1213"); // Wrong checksum
-        _pnrNOKList.add("191212121213"); // Wrong checksum
-        _pnrNOKList.add("19121212-1213"); // Wrong checksum
-        _pnrNOKList.add("201212121213"); // Wrong checksum
-        _pnrNOKList.add("20121212-1213"); // Wrong checksum
-        _pnrNOKList.add("21991212-1218"); // In the future
-        _pnrNOKList.add("219912121218"); // In the future
-        _pnrNOKList.add("21991212-1219"); // In the future, wrong checksum
+        _pnrNOKList = Arrays.asList(
+                "1801170000", // 1800, last4 digits all zero
+                "180117-0000", // 1800, last4 digits all zero
+                "180117+0000", // 1800, last4 digits all zero
+                "18180117-0000", // 1800, last4 digits all zero
+                "191801170000", // 1900, last4 digits all zero
+                "19180117-0000", // 1900, last4 digits all zero
+                "201801170000", // 2000, last4 digits all zero
+                "20180117-0000", // 2000, last4 digits all zero
+                "abc", // no digits at all
+                "123", // too short
+                "x1212121212", // char before valid digits
+                "161212121212", // 16 as era is used to indicate 'Organisationsnummer' (not Pnr)
+                "171212121212", // 17 as era is not valid
+                "211212121212", // 21 as era is in the future
+                "050229-0307", // As 2005 is not a leap year, the date 29/2 is invalid
+                "1212121213", // The checksum '3' is invalid
+                "121212-1213", // Wrong checksum
+                "121212+1213", // Wrong checksum
+                "191212121213", // Wrong checksum
+                "19121212-1213", // Wrong checksum
+                "201212121213", // Wrong checksum
+                "20121212-1213", // Wrong checksum
+                "21991212-1218", // In the future
+                "219912121218", // In the future
+                "21991212-1219" // In the future, wrong checksum
+        ); // last4 digits all zero
     }
 
     /*
@@ -80,11 +77,11 @@ public class PersonnummerBasicTest {
     public void testSsnParseOK() {
         // OK test
         for (String okPnr : _pnrOKList) {
-            Personnummer pnr = Personnummer.parse(okPnr).get();
-            Assert.assertNotNull("Ssn " + okPnr + " is null after parse ", pnr);
+            Optional<Personnummer> pnrOpt = Personnummer.parse(okPnr);
+            Assert.assertTrue("Personnummer '" + okPnr + "' should be correct, but its not!", pnrOpt.isPresent());
             int len = okPnr.length();
             Assert.assertEquals("Calculated checksum is wrong compared to original", okPnr.substring(len - 1),
-                    ("" + pnr.getChecksum()));
+                    ("" + pnrOpt.get().getChecksum()));
         }
     }
 
@@ -158,8 +155,20 @@ public class PersonnummerBasicTest {
     @Test
     public void testPnrParseNOK() {
         _pnrNOKList.stream()
-                .forEach(p -> Assert.assertFalse("False candidates for Pnr should return null when trying to parse",
+                .forEach(p -> Assert.assertFalse("False candidates for Pnr '" + p.toString() + "' should not be valid, but was!",
                         Personnummer.parse(p).isPresent()));
+    }
+
+    @Test
+    public void testFutureDateOK() {
+        Optional<Personnummer> pOpt = Personnummer.parse("217010150451", true);
+        Assert.assertTrue("Date of birth can not be in the future", pOpt.isPresent());
+    }
+
+    @Test
+    public void testFutureDateNOK() {
+        Optional<Personnummer> pOpt = Personnummer.parse("217010150451");
+        Assert.assertFalse("Date of birth can not be in the future", pOpt.isPresent());
     }
 
     /*
