@@ -28,10 +28,13 @@ or...
 ```
 Optional<Personnummer> pnrOpt = Personnummer.parse("19460430-0014");
 ```
+
 validate ...
+```
 if(!pnrOpt.isPresent()) {
 	throw new RuntimeException("Not a valid Personnummer");
 }
+```
 
 extracting information...
 Personnummer pnr = pnrOpt.get();
