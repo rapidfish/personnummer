@@ -26,7 +26,7 @@ Optional<Personnummer> pnrOpt = Personnummer.parse("194604300014");
 ```
 or...
 ```
-Optional<Personnummer> pnrOpt = Personnummer.parse("19460430-0014");
+Optional<Personnummer> pnrOpt = Personnummer.parse("19460430-0014"); // parse produces an empty Optional if not a valid id.
 ```
 
 validate ...
@@ -39,7 +39,7 @@ if(!pnrOpt.isPresent()) {
 extracting information...
 
 ```
-Personnummer pnr = pnrOpt.get(); // Optional is empty if not a valid id when invoking parse method. 
+Personnummer pnr = pnrOpt.get(); // get Personnummer from Optional.
 ```
 
 ```
