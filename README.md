@@ -37,7 +37,10 @@ if(!pnrOpt.isPresent()) {
 ```
 
 extracting information...
-Personnummer pnr = pnrOpt.get();
+
+```
+Personnummer pnr = pnrOpt.get(); // Optional is empty if not a valid id when invoking parse method. 
+```
 
 ```
 System.out.println(pnr.toString10()); // 4604300014
