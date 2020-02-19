@@ -14,70 +14,54 @@
 Same personnummer can be written in four different ways (lengths), still representing same person. 
 
 ```
-Personnummer pnr = Personnummer.parse("4604300014");
+Optional<Personnummer> pnrOpt = Personnummer.parse("4604300014");
 ```
 or...
 ```
-Personnummer pnr = Personnummer.parse("460430-0014");
+Optional<Personnummer> pnrOpt = Personnummer.parse("460430-0014");
 ```
 or...
 ```
-Personnummer pnr = Personnummer.parse("194604300014");
+Optional<Personnummer> pnrOpt = Personnummer.parse("194604300014");
 ```
 or...
 ```
-Personnummer pnr = Personnummer.parse("19460430-0014");
+Optional<Personnummer> pnrOpt = Personnummer.parse("19460430-0014");
 ```
-then extract information...
+validate ...
+if(!pnrOpt.isPresent()) {
+	throw new RuntimeException("Not a valid Personnummer");
+}
+
+extracting information...
+Personnummer pnr = pnrOpt.get();
+
 ```
-System.out.println(pnr.toString10()); // same as toString()
-System.out.println(pnr.toString11()); // ten digits, with '-' (or '+')
-System.out.println(pnr.toString12()); // twelve digits, with era 
-System.out.println(pnr.toString13()); // twelve digits, with era and '-' sign
-System.out.println("Gender: " + pnr.getGender("Woman", "Man"));
-System.out.println("Age right now: " + pnr.getAgeNow() + " years old");
-System.out.println("Birth date: " + pnr.getBirthDate());
-System.out.println("Born on a: " + DateTimeFormat.forPattern("EEEE").print(pnr.getBirthDate()));
-System.out.println("Days from birth: " + pnr.getDaysFromBirth());
-System.out.println("Personnummer checksum: " + pnr.getChecksum());
-System.out.println("Zodiac sign: " + IDHelper.getZodiacSign(pnr).getLatinName());
+System.out.println(pnr.toString10()); // 4604300014
+System.out.println(pnr.toString11()); // 460430-0014
+System.out.println(pnr.toString12()); // 194604300014, twelve digits having era (automatically) 
+System.out.println(pnr.toString13()); // 19460430-0014, twelve digits, with era and '-' sign
+System.out.println("Gender: " + pnr.getGender("Woman", "Man")); // Man
+System.out.println("Age " + pnr.getAgeNow() + " years old!"); // Age 73 years old!"
+System.out.println("Birth date: " + pnr.getBirthDate()); // Birth date: 1946-04-30
+System.out.println("Born on a: " + DateTimeFormat.forPattern("EEEE").print(pnr.getBirthDate())); // Born on a: Tuesday
+System.out.println("Days from birth: " + pnr.getDaysFromBirth()); // Days from birth: 26958
+System.out.println("Personnummer checksum: " + pnr.getChecksum()); // Personnummer checksum: 4
+System.out.println("Zodiac sign: " + IDHelper.getZodiacSign(pnr).getLatinName()); // Zodiac sign: Taurus
 
 ```
 
-and the output becomes...
-
-
-```
-4604300014
-460430-0014
-194604300014
-19460430-0014
-Gender: Man
-Age right now: 70 years old
-Birth date: 1946-04-30
-Born on a: Tuesday
-Days from birth: 25730
-Personnummer checksum: 4
-Zodiac sign: Taurus
-```
-
-##Example code (2)...
+## Example code (2)...
 The API also supports the use of '+' sign, to indicate +100 years of age when Personnummer is written with only 10 digits (dates without era)...
 
 
 ```
 
-	Personnummer pnr = Personnummer.parse("101201+0342"); // using + to indicate >100 years old.
+	Personnummer pnr = Personnummer.parse("101201+0342").get(); // using + to indicate >100 years old.
 		
-	System.out.println(pnr.toString13()); // Correct era automatically, regardless of input string. 
-	System.out.println("Age: " + pnr.getAgeNow());
+	System.out.println(pnr.toString13()); // 19101201-0342, Correct era (19) automatically, regardless of input string. 
+	System.out.println("Age: " + pnr.getAgeNow()); // Age: 109
 
-```
-output...
-
-```
-19101201-0342
-Age: 105
 ```
 
 
