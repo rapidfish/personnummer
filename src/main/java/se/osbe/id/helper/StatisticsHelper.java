@@ -2,7 +2,7 @@ package se.osbe.id.helper;
 
 import se.osbe.id.enums.GenderType;
 import se.osbe.id.exception.PersonnummerException;
-import se.osbe.id.pnr.Personnummer;
+import se.osbe.id.Personnummer;
 
 import java.util.HashMap;
 import java.util.LinkedList;

@@ -1,10 +1,9 @@
-package se.osbe.id.pnr;
+package se.osbe.id;
 
 import org.joda.time.Days;
 import org.joda.time.IllegalFieldValueException;
 import org.joda.time.LocalDate;
 import org.joda.time.Years;
-import se.osbe.id.SweId;
 import se.osbe.id.enums.GenderType;
 import se.osbe.id.enums.IDType;
 
@@ -16,7 +15,7 @@ import java.util.regex.Pattern;
 import static java.lang.Integer.parseInt;
 import static java.util.Optional.ofNullable;
 
-public class Personnummer implements Comparable<Personnummer>, SweId {
+public class Personnummer implements Comparable<Personnummer>, Id {
     private static final String PERSONNUMMER_PATTERN = IDType.PERSONNUMMER.getPattern();
     private static final int LAST4DIGITS = 4;
     private static final int MIN_CENTURY = 18;

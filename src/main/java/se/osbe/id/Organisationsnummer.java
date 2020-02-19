@@ -1,9 +1,8 @@
-package se.osbe.id.sam;
+package se.osbe.id;
 
-import se.osbe.id.SweId;
 import se.osbe.id.enums.IDType;
 
-public class Samordningsnummer implements SweId {
+public class Organisationsnummer implements Id {
 
     @Override
     public IDType getType() {

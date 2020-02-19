@@ -9,7 +9,6 @@ import se.osbe.id.enums.PnrZodiacType;
 import se.osbe.id.exception.PersonnummerException;
 import se.osbe.id.helper.PersonnummerBuilder;
 import se.osbe.id.helper.PersonnummerHelper;
-import se.osbe.id.pnr.Personnummer;
 
 import java.util.Arrays;
 import java.util.List;

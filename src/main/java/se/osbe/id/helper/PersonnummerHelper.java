@@ -5,7 +5,7 @@ import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import se.osbe.id.enums.LocationType;
 import se.osbe.id.enums.PnrZodiacType;
-import se.osbe.id.pnr.Personnummer;
+import se.osbe.id.Personnummer;
 
 import java.util.Collections;
 import java.util.List;

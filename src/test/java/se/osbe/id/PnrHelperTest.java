@@ -9,7 +9,6 @@ import org.junit.Test;
 import se.osbe.id.enums.LocationType;
 import se.osbe.id.enums.PnrZodiacType;
 import se.osbe.id.helper.PersonnummerHelper;
-import se.osbe.id.pnr.Personnummer;
 
 import java.util.LinkedList;
 import java.util.List;

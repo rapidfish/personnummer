@@ -5,7 +5,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import se.osbe.id.exception.PersonnummerException;
 import se.osbe.id.helper.PersonnummerBuilder;
-import se.osbe.id.pnr.Personnummer;
 
 import java.util.ArrayList;
 import java.util.List;

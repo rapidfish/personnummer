@@ -4,7 +4,7 @@ import org.joda.time.LocalDate;
 import se.osbe.id.enums.GenderType;
 import se.osbe.id.enums.LocationType;
 import se.osbe.id.exception.PersonnummerException;
-import se.osbe.id.pnr.Personnummer;
+import se.osbe.id.Personnummer;
 
 import java.util.Collections;
 import java.util.LinkedList;

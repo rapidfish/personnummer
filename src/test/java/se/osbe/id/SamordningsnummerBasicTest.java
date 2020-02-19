@@ -3,7 +3,6 @@ package se.osbe.id;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import se.osbe.id.pnr.Personnummer;
 
 import java.util.List;
 import java.util.Optional;
