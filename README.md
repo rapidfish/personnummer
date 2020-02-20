@@ -4,7 +4,7 @@
 
 * API to handle Swedish Personnummer
 
-* It can do validation, extract information
+* Do validation, or extract information from a Personnummer (age, gender, or sometimes even place of birth... etc)
 
 * Generate multiple valid Personnummer (useful for creating test data purposes)
 
