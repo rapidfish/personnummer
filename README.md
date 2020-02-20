@@ -10,7 +10,7 @@
 
 * It can still parse a Personnummer regardless of different input leghts for year (or when the '-' and '+' separator is not present), as long as it is a valid Personnummer.
 
-* Era is calculated automatically - If 'year', the leading part a Personnummer, is using only two digits instead of four ('89' instead of '1989') then its era part is calculated automatically
+* Era is calculated automatically - If 'year', the leading part a Personnummer, is using only two digits instead of four (e.g. '89' instead of '1989') then its era part is calculated automatically
 
 * Output of a parsed Personnummer can be presented in five different ways, including toString()
 
