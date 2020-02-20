@@ -4,21 +4,21 @@
 
 * API to handle Swedish Personnummer
 
-* It can do validation, extract information or even create/generate multiple valid Personnummer (useful when creating test data) *
+* It can do validation, extract information or even create/generate multiple valid Personnummer (useful when creating test data)
 
-* It can parse a Personnummer regardless on which leght it is written, or if it has a (-/+) separator, as long as it is a valid Personnummer *
+* It can parse a Personnummer regardless on which leght it is written, or if it has a (-/+) separator, as long as it is a valid Personnummer
 
-* Era is calculated automatically - If 'year', the leading part a Personnummer input is using two digits instead of four ('89' instead of '1989') then its era part is calculated automatically *
+* Era is calculated automatically - If 'year', the leading part a Personnummer input is using two digits instead of four ('89' instead of '1989') then its era part is calculated automatically
 
-* Output of a parsed Personnummer can be presented in five different ways, including toString() *
+* Output of a parsed Personnummer can be presented in five different ways, including toString()
 
-* It makes use of Java Optional - when parsing a Personnummer it produces an Optional<Personnummer> *
+* It makes use of Java Optional - when parsing a Personnummer it produces an Optional<Personnummer>
 
-* An 'invalid' Personnummer produces an empty Optional when parsed *
+* An 'invalid' Personnummer produces an empty Optional when parsed
 
-* It is even possible to parse a Personnummer with having an 'invalid' checksum, by setting a 'forgiving' flag when doing a parse * 
+* It is even possible to parse a Personnummer with having an 'invalid' checksum, by setting a 'forgiving' flag when doing a parse
 
-* Examples below show how to parse four equivalent versions of the very same Personnummer (different leghts). *
+* Examples below show how to parse four equivalent versions of the very same Personnummer (different leghts).
 
 
 ## Example ...
