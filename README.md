@@ -4,7 +4,9 @@
 
 * API to handle Swedish Personnummer
 
-* It can do validation, extract information or even create/generate multiple valid Personnummer (useful when creating test data)
+* It can do validation, extract information
+
+* Generate multiple valid Personnummer (useful for creating test data purposes)
 
 * It can parse a Personnummer regardless on which leght it is written, or if it has a (-/+) separator, as long as it is a valid Personnummer
 
