@@ -8,7 +8,7 @@
 
 * Generate multiple random, yet valid Personnummer, super fast (useful when creating test data)
 
-* It can parse a Personnummer regardless of different leghts for year (or if the '-' and '+' separator is present), as long as it is a valid Personnummer.
+* It can still parse a Personnummer regardless of different input leghts for year (or when the '-' and '+' separator is not present), as long as it is a valid Personnummer.
 
 * Era is calculated automatically - If 'year', the leading part a Personnummer input is using two digits instead of four ('89' instead of '1989') then its era part is calculated automatically
 
