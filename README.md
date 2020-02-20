@@ -2,9 +2,13 @@
 
 ## Open Source Java API to handle Swedish "Personnummer" (personal identity number)
 
-* API to extract information from Swedish personnummer. *
+Features...
 
-* project originally initiated by Oskar Bergstrom as a project on bitbucket 2015-09-27.*
+* validates and extracts information from Swedish personnummer. *
+
+* Automatically shows correct era in output (toString) of Personnummer, even when not present in input *
+
+* This project was originally hosted on bitbucket 2015-09-27, but has moved to GitHub since 2020-02-19 *
 
 * This project is licensed under the terms of the [GPL v3](https://www.gnu.org/licenses/gpl-3.0.txt )*
 
