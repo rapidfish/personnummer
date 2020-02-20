@@ -6,7 +6,7 @@
 
 * Do validation, or extract information from a Personnummer (age, gender, or sometimes even place of birth... etc)
 
-* Generate multiple valid Personnummer (useful for creating test data purposes)
+* Generate multiple random, yet valid Personnummer, super fast (useful when creating test data)
 
 * It can parse a Personnummer regardless of different leghts for year (or if the '-' and '+' separator is present), as long as it is a valid Personnummer.
 
