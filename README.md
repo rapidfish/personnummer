@@ -4,11 +4,16 @@
 
 * API to handle Swedish Personnummer, It can do validation, extract information and even create/generate new valid Personnummer (useful when creating test data) *
 
-This project was originally hosted on bitbucket 2015-09-27, but has moved to GitHub since 2020-02-19
-This project is licensed under the terms of the [GPL v3](https://www.gnu.org/licenses/gpl-3.0.txt
+* After the Personnummer being parsed, the output will allways be the same regardless on which form it had for input, as long as the input was valid. *
+* An invalid Personnummer produces an empty Optional when parsed. *
 
-##Example code (1)...
-Same personnummer can be written in four different ways (lengths), however it still represents the same Personnummer. 
+* It is even possible to parse a Personnummer with having an 'invalid' checksum, by setting a 'forgiving' flag when doing a parse * 
+
+* Examples below show how to parse four equivalent versions of the very same Personnummer (different leghts). *
+
+
+## Example ...
+ 
 
 ```
 Optional<Personnummer> pnrOpt = Personnummer.parse("4604300014");
@@ -23,8 +28,9 @@ Optional<Personnummer> pnrOpt = Personnummer.parse("194604300014");
 ```
 or...
 ```
-Optional<Personnummer> pnrOpt = Personnummer.parse("19460430-0014"); // parse produces an empty Optional if not a valid id.
+Optional<Personnummer> pnrOpt = Personnummer.parse("19460430-0014");
 ```
+
 
 validate ...
 ```
@@ -124,6 +130,10 @@ Unit tests are based on JUnit.
 * Checksum algorithm is based upon the Luhn-algorithm a.k.a modulus-10-algorithm.
 
 * This API is based on documents publicly available at the Swedish Tax Agency: [http://www.skatteverket.se].
+
+* This project was originally hosted on bitbucket 2015-09-27, but has moved to GitHub since 2020-02-19 *
+
+* This project is licensed under the terms of the [GPL v3](https://www.gnu.org/licenses/gpl-3.0.txt *
 
 
 ### Who do I talk to? ###
