@@ -90,7 +90,7 @@ The API also supports the use of '+' sign, to indicate +100 years of age when Pe
 
 
 ## Set up
-* Clone the project from bitbucket with Git or simply download it manually from the Bitbucket.org.
+* Clone the project from bitbucket with Git or simply download it manually.
 * Import the project as an "existing maven project" in your favourite IDE (e.g. Eclipse).
 * Build using Maven from your IDE or from your command prompt (under the project root folder): **mvn clean install**
 * ...or build using Maven plugin inside your favourite IDE (e.g. Eclipse) using a Maven plugin.
