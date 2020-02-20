@@ -43,10 +43,6 @@ Personnummer pnr = pnrOpt.get(); // get Personnummer from Optional.
 ```
 
 ```
-System.out.println(pnr.toString10()); // 4604300014
-System.out.println(pnr.toString11()); // 460430-0014
-System.out.println(pnr.toString12()); // 194604300014, twelve digits having era (automatically) 
-System.out.println(pnr.toString13()); // 19460430-0014, twelve digits, with era and '-' sign
 System.out.println("Gender: " + pnr.getGender("Woman", "Man")); // Man
 System.out.println("Age " + pnr.getAgeNow() + " years old!"); // Age 73 years old!"
 System.out.println("Birth date: " + pnr.getBirthDate()); // Birth date: 1946-04-30
@@ -55,6 +51,14 @@ System.out.println("Days since birth: " + pnr.getDaysSinceBirth()); // Days sinc
 System.out.println("Personnummer checksum: " + pnr.getChecksum()); // Personnummer checksum: 4
 System.out.println("Zodiac sign: " + IDHelper.getZodiacSign(pnr).getLatinName()); // Zodiac sign: Taurus
 
+```
+
+toString methods
+```
+System.out.println(pnr.toString10()); // 4604300014
+System.out.println(pnr.toString11()); // 460430-0014
+System.out.println(pnr.toString12()); // 194604300014, twelve digits having era (automatically) 
+System.out.println(pnr.toString13()); // 19460430-0014, twelve digits, with era and '-' sign
 ```
 
 ## Example code (2)...
