@@ -2,15 +2,10 @@
 
 ## Java API to handle Swedish Personnummer, similar to SSN (Social Security Number)
 
-Features...
+* API to handle Swedish Personnummer, It can do validation, extract information and even create/generate new valid Personnummer (useful when creating test data) *
 
-* validates and extracts information from Swedish personnummer. *
-
-* This project was originally hosted on bitbucket 2015-09-27, but has moved to GitHub since 2020-02-19 *
-
-* This project is licensed under the terms of the [GPL v3](https://www.gnu.org/licenses/gpl-3.0.txt )*
-
-
+This project was originally hosted on bitbucket 2015-09-27, but has moved to GitHub since 2020-02-19
+This project is licensed under the terms of the [GPL v3](https://www.gnu.org/licenses/gpl-3.0.txt
 
 ##Example code (1)...
 Same personnummer can be written in four different ways (lengths), however it still represents the same Personnummer. 
