@@ -2,16 +2,16 @@
 
 ## Open Source Java API to handle Swedish "Personnummer" (personal identity number)
 
-* API to extract information from Swedish personnummer.
+* API to extract information from Swedish personnummer. *
 
-*project originally initiated by Oskar Bergstrom as a project on bitbucket 2015-09-27.*
+* project originally initiated by Oskar Bergstrom as a project on bitbucket 2015-09-27.*
 
-*This project is licensed under the terms of the [GPL v3](https://www.gnu.org/licenses/gpl-3.0.txt)*
+* This project is licensed under the terms of the [GPL v3](https://www.gnu.org/licenses/gpl-3.0.txt )*
 
 
 
 ##Example code (1)...
-Same personnummer can be written in four different ways (lengths), still representing same person. 
+Same personnummer can be written in four different ways (lengths), however it still represents the same Personnummer. 
 
 ```
 Optional<Personnummer> pnrOpt = Personnummer.parse("4604300014");
