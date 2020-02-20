@@ -51,7 +51,7 @@ System.out.println("Gender: " + pnr.getGender("Woman", "Man")); // Man
 System.out.println("Age " + pnr.getAgeNow() + " years old!"); // Age 73 years old!"
 System.out.println("Birth date: " + pnr.getBirthDate()); // Birth date: 1946-04-30
 System.out.println("Born on a: " + DateTimeFormat.forPattern("EEEE").print(pnr.getBirthDate())); // Born on a: Tuesday
-System.out.println("Days from birth: " + pnr.getDaysFromBirth()); // Days from birth: 26958
+System.out.println("Days since birth: " + pnr.getDaysSinceBirth()); // Days since birth: 26958
 System.out.println("Personnummer checksum: " + pnr.getChecksum()); // Personnummer checksum: 4
 System.out.println("Zodiac sign: " + IDHelper.getZodiacSign(pnr).getLatinName()); // Zodiac sign: Taurus
 
