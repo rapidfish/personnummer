@@ -1,12 +1,10 @@
 # Personnummer API
 
-## Open Source Java API to handle Swedish "Personnummer" (personal identity number)
+## Java API to handle Swedish Personnummer, similar to SSN (Social Security Number)
 
 Features...
 
 * validates and extracts information from Swedish personnummer. *
-
-* Automatically shows correct era in output (toString) of Personnummer, even when not present in input *
 
 * This project was originally hosted on bitbucket 2015-09-27, but has moved to GitHub since 2020-02-19 *
 
