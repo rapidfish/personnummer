@@ -2,10 +2,19 @@
 
 ## Java API to handle Swedish Personnummer, similar to SSN (Social Security Number)
 
-* API to handle Swedish Personnummer, It can do validation, extract information and even create/generate new valid Personnummer (useful when creating test data) *
+* API to handle Swedish Personnummer
 
-* After the Personnummer being parsed, the output will allways be the same regardless on which form it had for input, as long as the input was valid. *
-* An invalid Personnummer produces an empty Optional when parsed. *
+* It can do validation, extract information or even create/generate multiple valid Personnummer (useful when creating test data) *
+
+* It can parse a Personnummer regardless on which leght it is written, or if it has a (-/+) separator, as long as it is a valid Personnummer *
+
+* Era is calculated automatically - If 'year', the leading part a Personnummer input is using two digits instead of four ('89' instead of '1989') then its era part is calculated automatically *
+
+* Output of a parsed Personnummer can be presented in five different ways, including toString() *
+
+* It makes use of Java Optional - when parsing a Personnummer it produces an Optional<Personnummer> *
+
+* An 'invalid' Personnummer produces an empty Optional when parsed *
 
 * It is even possible to parse a Personnummer with having an 'invalid' checksum, by setting a 'forgiving' flag when doing a parse * 
 
