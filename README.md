@@ -2,7 +2,9 @@
 
 ## Java API to handle Swedish Personnummer
 
-* Do validation, extract information (age, gender, place of birth, zodiac sign... etc)
+* Do checksum validation of a Personnummer
+
+* Extract meta information such as age, days past since birth, gender, place of birth, days past since birth, zodiac sign etc...
 
 * Generate 'randomized' but yet valid Personnummer, for the purpose of creating test data
 
