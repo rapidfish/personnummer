@@ -2,13 +2,9 @@
 
 ## Java API to handle Swedish Personnummer
 
-* Do checksum validation of a Personnummer
+* Do checksum validation when parsing a candidate String into Personnummer (last digit)
 
-* Extract meta information; age, days since birth, gender, place of birth, zodiac sign etc ...
-
-* Generate 'randomized' but yet valid Personnummer, for the purpose of creating test data
-
-* Parses any string into a Personnummer, as long as it contains a valid Personnummer.
+* Extract meta information after parsing a Personnummer (age, days since birth, gender, place of birth, zodiac sign, etc...)
 
 * Input strings may have leghts between 10 to 13 characters, a missing separator (-/+) automatically gets resolved. 
 
@@ -16,17 +12,18 @@
 
 * Regardless of string input length, when parsing a valid Personnummer, four different formats is available for output strings (default output format is handled by toString())
 
-* Personnummer is implementing the Comparable interface method compareTo()
-
-* Parsing is making use of Java Optional, hence parsing an 'invalid' Personnummer it produces an empty Optional
+* Parsing produces a Java Optional<Personnummer> object, hence 'invalid' Personnummer produces an empty Optional
 
 * Personnummer having 'invalid' checksums can still be parsed (error corrected), by adding the parameter 'forgiving flag' (boolean) when invoking parse
+	
+* Two Personnummer can be compared for age using the compareTo() method
 
-* Examples below show how to parse four equivalent versions of the very same Personnummer (different leghts).
+* Generate 'random' yet valid Personnummer (a way to create 'mocked' test data)
 
 
 ## Example ...
- 
+
+Examples below show how to parse strings into Personnummer, using four equivalent versions of the same Personnummer. It uses different leghts for year, with and without the use of a delimiter (-).
 
 ```
 Optional<Personnummer> pnrOpt = Personnummer.parse("4604300014");
