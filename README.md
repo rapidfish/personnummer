@@ -2,8 +2,6 @@
 
 ## Java API to handle Swedish Personnummer
 
-* API to handle Swedish Personnummer
-
 * Do validation, extract information (age, gender, place of birth, zodiac sign... etc)
 
 * Generate 'randomized' but yet valid Personnummer, for the purpose of creating test data
