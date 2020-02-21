@@ -72,7 +72,7 @@ System.out.println("Zodiac sign: " + IDHelper.getZodiacSign(pnr).getLatinName())
 toString methods
 ```
 System.out.println(pnr.toString10()); // 4604300014
-System.out.println(pnr.toString11()); // 460430-0014
+System.out.println(pnr.toString11()); // 460430-0014, same as toString()
 System.out.println(pnr.toString12()); // 194604300014, twelve digits having era (automatically) 
 System.out.println(pnr.toString13()); // 19460430-0014, twelve digits, with era and '-' sign
 ```
