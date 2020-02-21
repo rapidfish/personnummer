@@ -44,15 +44,18 @@ Optional<Personnummer> pnrOpt = Personnummer.parse("19460430-0014");
 
 validate ...
 ```
-if(!pnrOpt.isPresent()) {
-	throw new RuntimeException("Not a valid Personnummer");
+if(pnrOpt.isPresent()) {
+	System.out.println("Personnummer is valid!");
+} else {
+	System.out.println("Personnummer is NOT valid!");
+	System.exit(1);
 }
 ```
 
-extracting information...
+Validate and create a Personnummer object, or else throw an exeption ...
 
 ```
-Personnummer pnr = pnrOpt.get(); // get Personnummer from Optional.
+Personnummer pnr = pnrOpt.orElseThrow(RuntimeException::new);
 ```
 
 ```
