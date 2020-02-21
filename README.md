@@ -1,24 +1,26 @@
 # Personnummer API
 
-## Java API to handle Swedish Personnummer, similar to SSN (Social Security Number)
+## Java API to handle Swedish Personnummer
 
 * API to handle Swedish Personnummer
 
-* Do validation, or extract information from a Personnummer (age, gender, or sometimes even place of birth... etc)
+* Do validation, extract information (age, gender, place of birth, zodiac sign... etc)
 
-* Generate multiple random, yet valid Personnummer, super fast (useful when creating test data)
+* Generate 'randomized' but yet valid Personnummer, for the purpose of creating test data
 
-* It can still parse a Personnummer regardless of different input leghts for year (or when the '-' and '+' separator is not present), as long as it is a valid Personnummer.
+* Parses any string into a Personnummer, as long as it contains a valid Personnummer.
 
-* Era is calculated automatically - If 'year', the leading part of a Personnummer, is using only two digits instead of four (e.g. '89' instead of '1989') then its era part is calculated automatically
+* Input strings may have leghts between 10 to 13 characters, a missing separator (-/+) automatically gets resolved. 
 
-* Output of a parsed Personnummer can be presented in five different ways, including toString()
+* Era gets calculated automatically (e.g. '89' becomes '1989')
 
-* It makes use of Java Optional - when parsing a Personnummer it produces an Optional<Personnummer>
+* Regardless of string input length, when parsing a valid Personnummer, four different formats is available for output strings (default output format is handled by toString())
 
-* An 'invalid' Personnummer produces an empty Optional when parsed
+* Personnummer is implementing the Comparable interface method compareTo()
 
-* It is even possible to parse a Personnummer with having an 'invalid' checksum, by setting a 'forgiving' flag when doing a parse
+* Parsing is making use of Java Optional, hence parsing an 'invalid' Personnummer it produces an empty Optional
+
+* Personnummer having 'invalid' checksums can still be parsed (error corrected), by adding the parameter 'forgiving flag' (boolean) when invoking parse
 
 * Examples below show how to parse four equivalent versions of the very same Personnummer (different leghts).
 
