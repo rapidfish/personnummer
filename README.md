@@ -4,7 +4,7 @@
 
 * Do checksum validation when parsing a candidate String into Personnummer (last digit)
 
-* Extract meta information after parsing a Personnummer (age, days since birth, gender, place of birth, zodiac sign, etc...)
+* Extract meta information from a Personnummer (age, days since birth, gender, place of birth, zodiac sign, etc...)
 
 * Input strings may have leghts between 10 to 13 characters, a missing separator (-/+) automatically gets resolved. 
 
