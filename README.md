@@ -114,17 +114,6 @@ The API also supports the use of '+' sign, to indicate +100 years of age when Pe
 
 ```
 
-## Features... 
-* Validate any Swedish personnummer.
-* Validation done through control of both **valid date** and **valid checksum** , not just the checksum (like other APIs).
-* Personnummer can present **output in four different formats**, regardless of original input string.
-* Once parsing is done, the Personnummer class can extract information such as **birth date, age, gender and even zodiac sign**.
-* In some cases it is also possible to **extract place of birth** (only when birth date is before 1990). 
-* Statistics class for **easy analyse of whole collections** with personnummer data (average/minimum/maximum age, amount of men/women etc...) 
-* Builder class to quickly **generate any number of valid personnummer** (for testing purpose to produce perosnnummer in situations where use of sensitive "live" data is prohibited.
-* Optional feature, to "repair" Personnummer with invalid checksums automatically.
-* **Helper class** with useful methods to support searching, calculation of checksums (separate stand-alone methods), date handling etc...
-
 **Version 0.4.0**
 
 Current stable branch is (not ready)
