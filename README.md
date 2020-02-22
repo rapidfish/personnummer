@@ -2,7 +2,7 @@
 
 ## Java API to handle Swedish Personnummer
 
-* Do checksum validation when parsing a candidate String into Personnummer (last digit)
+* Do checksum validation (last digit) by parsing a candidate String into a Personnummer object
 
 * Extract meta information from a Personnummer (age, days since birth, gender, place of birth, zodiac sign, etc...)
 
