@@ -16,7 +16,7 @@
 
 * Parsing produces a Java Optional<Personnummer> object, hence 'invalid' Personnummer produces an empty Optional
 
-* Personnummer having 'invalid' checksums can still be parsed (error corrected), by adding the parameter 'forgiving flag' (boolean) when invoking parse
+* [Optional] Personnummer having 'invalid' checksums can still be parsed (error correction) by passing an exta parameter, a 'forgiving flag' (boolean)
 	
 * Two Personnummer can be compared for age using the compareTo() method
 
