@@ -18,9 +18,9 @@
 
 * [Optional] Personnummer having 'invalid' checksums can still be parsed (error correction) by passing an exta parameter, a 'forgiving flag' (boolean)
 	
-* Two Personnummer can be compared for age using the compareTo() method
+* Comparing age of two Personnummer, compareTo() method can be used
 
-* Generate 'random' yet valid Personnummer (a way to create 'mocked' test data)
+* Generate large collections of 'random', yet valid, Personnummer (a way to create 'mocked' test data, super fast!)
 
 
 ## Example ...
