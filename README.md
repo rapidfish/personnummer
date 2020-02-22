@@ -6,7 +6,7 @@
 
 * Extract meta information from a Personnummer (age, days since birth, gender, place of birth, zodiac sign, etc...)
 
-* Input strings may have leghts between 10 to 13 characters, a missing separator (-/+) automatically gets resolved. 
+* Input strings may have leghts between 10 and 13 characters, a missing separator (-/+) automatically gets resolved. 
 
 * Era gets calculated automatically (e.g. '89' becomes '1989')
 
