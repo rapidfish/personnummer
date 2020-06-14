@@ -9,9 +9,9 @@
 
 * toString() can be used as default output after parsing, but there is also four other methods to represent it
 
-* Extract meta data from any Personnummer such as age, days since birth, gender, zodiac sign, or sometimes even place of birth
+* compareTo() compares age between any two Personnummer
 
-* Compare age between Personnummer by using compareTo() (based on date of birth)
+* Extract meta data from a Personnummer; age, gender, zodiac sign and sometimes even the place of birth (on region level)
 
 * Create Personnummer - quickly generate any number of Personnummer (random, but yet valid), useful for testing purposes.
 
