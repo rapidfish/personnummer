@@ -7,7 +7,7 @@
 
 * Produces an Optional<Personnummer> object when parsing. If not valid (or no valid checksum) it becomes an empty Optional
 
-* toString() can be used as default output after parsing, but there are four other methods to represent it in differents ways
+* toString() can be used as default output after parsing, but there is also four other methods to represent it
 
 * Extract meta data from any Personnummer such as age, days since birth, gender, zodiac sign, or sometimes even place of birth
 
