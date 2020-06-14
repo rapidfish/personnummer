@@ -2,26 +2,27 @@
 
 ## Java API to handle Swedish Personnummer
 
-* Checksum validation when parsing an input string to a Personnummer object
 
-* Parsing of an input string produces an Optional<Personnummer> object, invalid (checksum) input produces an empty Optional
+* Automatic checksum validation when parsing an input string to a Personnummer object
+
+* Produces an Optional<Personnummer> object when parsing. If input is invalid (or no valid checksum) becomes an empty Optional
+
+* toString() can be used as default output after parsing, but there are four other methods to represent it in differents ways
 
 * Extract meta data from any Personnummer such as age, days since birth, gender, zodiac sign, or sometimes even place of birth
 
-* Input strings may have a leghts from 10 to 13 characters (e.g. '1212121212', '121212-1212', '201212121212', '20121212-1212')
+* Compare age between Personnummer by using compareTo() (based on date of birth)
+
+* Create Personnummer - quickly generate any number of Personnummer (random, but yet valid), useful for testing purposes.
 
 * Missing separator ('-' or '+') is automatically resolved (when age over hundred+ it is indicated by a '+' sign 
 
 * When era is missing it gets calculated automatically (e.g. '89' becomes '1989', not '2089' using present date comparison.
 
-* Once parsed, toString() can be used as default output, but there are four other methods to present it in differents ways
+* Input strings may have a leghts from 10 to 13 characters (e.g. '1212121212', '121212-1212', '201212121212', '20121212-1212')
 
 * [Optional] Personnummer having 'invalid' checksums can be parsed by using a 'forgiving flag' with error correction.
 	
-* Compare age between Personnummer by using compareTo() (based on date of birth)
-
-* Create Personnummer - quickly generate any number of Personnummer (random, but yet valid), useful for testing purposes.
-
 
 ## Example ...
 
