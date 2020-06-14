@@ -2,25 +2,25 @@
 
 ## Java API to handle Swedish Personnummer
 
-* Do checksum validation (last digit) by parsing a candidate String into a Personnummer object
+* Checksum validation when parsing an input string to a Personnummer object
 
-* Extract meta information from a Personnummer (age, days since birth, gender, place of birth, zodiac sign, etc...)
+* Parsing of an input string produces an Optional<Personnummer> object, invalid (checksum) input produces an empty Optional
 
-* Input strings may have leghts between 10 and 13 characters
+* Extract meta data from any Personnummer such as age, days since birth, gender, zodiac sign, or sometimes even place of birth
 
-* Input strings having missing a separator ('-' or '+') will automatically be resolved once parse is done 
+* Input strings may have a leghts from 10 to 13 characters (e.g. '1212121212', '121212-1212', '201212121212', '20121212-1212')
 
-* Era gets calculated automatically (e.g. '89' becomes '1989')
+* Missing separator ('-' or '+') is automatically resolved (when age over hundred+ it is indicated by a '+' sign 
 
-* Regardless of string input length, when parsing a valid Personnummer, four different formats is available for output strings (default output format is handled by toString())
+* When era is missing it gets calculated automatically (e.g. '89' becomes '1989', not '2089' using present date comparison.
 
-* Parsing produces a Java Optional<Personnummer> object, hence 'invalid' Personnummer produces an empty Optional
+* Once parsed, toString() can be used as default output, but there are four other methods to present it in differents ways
 
-* [Optional] Personnummer having 'invalid' checksums can still be parsed (error correction), by passing in a 'forgiving flag' as an exta parameter (boolean)
+* [Optional] Personnummer having 'invalid' checksums can be parsed by using a 'forgiving flag' with error correction.
 	
-* Compare two different Personnummer by calling the compareTo() method (compare is based on date of birth)
+* Compare age between Personnummer by using compareTo() (based on date of birth)
 
-* Generate large collections of 'random', yet valid, Personnummer (a way to create 'mocked' test data, super fast!)
+* Create Personnummer - quickly generate any number of Personnummer (random, but yet valid), useful for testing purposes.
 
 
 ## Example ...
