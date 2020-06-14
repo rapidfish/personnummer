@@ -5,7 +5,7 @@
 
 * Automatic checksum validation when parsing an input string to a Personnummer object
 
-* Produces an Optional<Personnummer> object when parsing. If input is invalid (or no valid checksum) becomes an empty Optional
+* Produces an Optional<Personnummer> object when parsing. If not valid (or no valid checksum) it becomes an empty Optional
 
 * toString() can be used as default output after parsing, but there are four other methods to represent it in differents ways
 
