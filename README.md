@@ -5,17 +5,17 @@
 
 * Automatic checksum validation when parsing an input string to a Personnummer object
 
-* Produces an Optional<Personnummer> object when parsing. If not valid (or no valid checksum) it becomes an empty Optional
+* Produces an Optional<Personnummer> object when parsing. If not valid it becomes an empty Optional
 
 * toString() can be used as default output after parsing, but there is also four other methods to represent it
 
-* compareTo() compares age between any two Personnummer
+* compareTo() can be used to compare age between any two Personnummer
 
 * Extract meta data from a Personnummer; age, gender, zodiac sign and sometimes even the place of birth (on region level)
 
 * Create Personnummer - quickly generate any number of Personnummer (random, but yet valid), useful for testing purposes.
 
-* Missing separator ('-' or '+') is automatically resolved (when age over hundred+ it is indicated by a '+' sign 
+* Automatically resolving missing '-' separator  (or a '+' whan indicating an age above hundred years)
 
 * When era is missing it gets calculated automatically (e.g. '89' becomes '1989', not '2089' using present date comparison.
 
