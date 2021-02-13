@@ -46,12 +46,13 @@ public class PnrHelperTest {
         });
     }
 
-    // @Test
+    @Test
     public void testAllSsnFromRandomDateUntilToday() {
         // Tests ALL Personnummer from year 1800-- and onwards until today!
         LocalDate now = LocalDate.now();
         int nowAsInt = Integer.parseInt(now.toString("yyyy"));
-        int randomYear = PersonnummerHelper.dice(1800, nowAsInt);  // Randomize a year between 1800 -- now
+        // int randomYear = PersonnummerHelper.dice(1800, nowAsInt);  // Randomize a year between 1800 -- now
+        int randomYear = 1800;
         LocalDate startingDate = new LocalDate(randomYear, 1, 1);
         while (!startingDate.isAfter(now)) {
             List<Personnummer> ssnList = PersonnummerHelper.generateAllValidPnrForDate(startingDate.toString("yyyy-MM-dd"));

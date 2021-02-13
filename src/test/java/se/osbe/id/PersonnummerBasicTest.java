@@ -18,7 +18,7 @@ public class PersonnummerBasicTest {
 
     private List<String> _pnrOKList;
     private List<String> _pnrNOKList;
-    final int FORMER_ERA = (LocalDate.now().getCenturyOfEra() - 1);
+    final int ERA_MINUS_ONE = (LocalDate.now().getCenturyOfEra() - 1);
 
     @Before
     public void before() {
@@ -201,7 +201,7 @@ public class PersonnummerBasicTest {
         _pnrOKList.stream().forEach(p -> {
             Personnummer pnr = Personnummer.parse(p).get();
             Personnummer pnr11 = Personnummer.parse(pnr.toString11()).get();
-            if (p.length() == 13 && Integer.parseInt(p.substring(0, 2)) < FORMER_ERA) {
+            if (p.length() == 13 && Integer.parseInt(p.substring(0, 2)) < ERA_MINUS_ONE) {
                 Assert.assertNotSame(pnr, pnr11);
             }
         });
@@ -303,7 +303,7 @@ public class PersonnummerBasicTest {
         try {
             int rand = PersonnummerHelper.dice(1, 130);
             LocalDate earlier = LocalDate.now().minusDays(rand);
-            new PersonnummerBuilder().setStartAndEndDate(earlier, earlier).build().forEach(p -> Assert.assertEquals(rand, p.getDaysFromBirth()));
+            new PersonnummerBuilder().setStartAndEndDate(earlier, earlier).build().forEach(p -> Assert.assertEquals(rand, p.getDaysSinceBirth()));
         } catch (PersonnummerException e) {
             e.printStackTrace();
         }
@@ -328,7 +328,10 @@ public class PersonnummerBasicTest {
     }
 
     @Test
-    public void testSsnBirthDate() {
+    public void testSsnBirthDate() throws Exception {
+        final String DAY_OF_WEEK = "EEEE";
+        Optional<Personnummer> pnrOpt = Personnummer.parse("194604300014");
+        Personnummer pnr = pnrOpt.orElseThrow(() -> new Exception("Not a valid Personnummer"));
         _pnrOKList.forEach(p -> Assert.assertNotNull(Personnummer.parse(p).get().getBirthDate()));
     }
 }

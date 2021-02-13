@@ -11,12 +11,12 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.IntStream;
 
 import static java.lang.Integer.parseInt;
 import static java.util.Optional.ofNullable;
 
 public class Personnummer implements Comparable<Personnummer>, Id {
-    private static final String PERSONNUMMER_PATTERN = IDType.PERSONNUMMER.getPattern();
     private static final int LAST4DIGITS = 4;
     private static final int MIN_CENTURY = 18;
 
@@ -44,22 +44,23 @@ public class Personnummer implements Comparable<Personnummer>, Id {
 
     private Personnummer(LocalDate pnrDate, String lastDigits, boolean isForgiving) {
         _pnrDate = pnrDate;
-        for (int i = 0; i < lastDigits.length(); i++) {
-            _lastDigits[i] = Integer.valueOf("" + lastDigits.charAt(i)).intValue();
-        }
+        IntStream.range(0, lastDigits.length()).forEach(i -> {
+            _lastDigits[i] = parseInt("" + lastDigits.charAt(i));
+        });
         _isForgiving = isForgiving;
     }
 
     private static int calculateChecksum(String year, String month, String day, String last3) {
-        char[] pnrNumbersWithoutChecksum = (year + month + day + last3).toCharArray();
+        final int TEN = 10;
+        char[] pnrNumbersWithoutChecksum = String.join("", year, month, day, last3).toCharArray();
         boolean even = true;
         int sum = 0;
         for (char c : pnrNumbersWithoutChecksum) {
             int partSum = (parseInt(Character.toString(c)) * ((even) ? 2 : 1));
-            sum += ((partSum > 9) ? (1 + (partSum % 10)) : partSum);
+            sum += ((partSum > 9) ? (1 + (partSum % TEN)) : partSum);
             even = !even;
         }
-        return ((10 - (sum % 10)) % 10);
+        return ((TEN - (sum % TEN)) % TEN);
     }
 
     private static LocalDate resolveBirthDate(String era, int yearInt, int monthInt, int dayInt, boolean plus) {
@@ -84,21 +85,15 @@ public class Personnummer implements Comparable<Personnummer>, Id {
     }
 
     private String toString(boolean useEra, boolean useSign) {
-        StringBuilder sb = new StringBuilder();
         int yearOfCentury = _pnrDate.getYearOfCentury();
         int monthOfYear = _pnrDate.getMonthOfYear();
         int dayOfMonth = _pnrDate.getDayOfMonth();
-        if (!useEra && yearOfCentury < 10) {
-            sb.append("0");
-        }
+        StringBuilder sb = new StringBuilder();
+        sb.append((!useEra && yearOfCentury < 10) ? "0" : "");
         sb.append(useEra ? _pnrDate.getYear() : yearOfCentury);
-        if (monthOfYear < 10) {
-            sb.append("0");
-        }
+        sb.append(monthOfYear < 10 ? "0" : "");
         sb.append(monthOfYear);
-        if (dayOfMonth < 10) {
-            sb.append("0");
-        }
+        sb.append(dayOfMonth < 10 ? "0" : "");
         sb.append(dayOfMonth);
         if (useSign) {
             sb.append(useEra ? "-" : (this.isHundredYears() ? "+" : "-"));
@@ -136,7 +131,7 @@ public class Personnummer implements Comparable<Personnummer>, Id {
         if (pnrCandidate == null || pnrCandidate.trim().length() < 9) {
             return Optional.empty();
         }
-        final Pattern preCompiledPattern = Pattern.compile(PERSONNUMMER_PATTERN);
+        final Pattern preCompiledPattern = Pattern.compile(IDType.PERSONNUMMER.getPattern());
         Matcher matcher = preCompiledPattern.matcher(pnrCandidate.trim());
         if (matcher.find()) {
             String era = matcher.group("era");
@@ -241,7 +236,7 @@ public class Personnummer implements Comparable<Personnummer>, Id {
      *
      * @return number of days from birth until today as an integer
      */
-    public int getDaysFromBirth() {
+    public int getDaysSinceBirth() {
         return Days.daysBetween(_pnrDate, LocalDate.now()).getDays();
     }
 
@@ -309,13 +304,12 @@ public class Personnummer implements Comparable<Personnummer>, Id {
     }
 
     public int compareTo(Personnummer pnr) {
-        int result = 0;
         if (_pnrDate.isBefore(pnr.getBirthDate())) {
-            result = (-1);
+            return (-1);
         } else if (_pnrDate.isAfter(pnr.getBirthDate())) {
-            result = 1;
+            return 1;
         }
-        return result;
+        return 0;
     }
 
     @Override
