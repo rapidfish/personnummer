@@ -96,11 +96,9 @@ The API also supports the use of '+' sign, to indicate +100 years of age when Pe
 
 ## Set up
 * Clone the project from bitbucket with Git or simply download it manually.
-* Import the project as an "existing maven project" in your favourite IDE (e.g. Eclipse).
-* Build using Maven from your IDE or from your command prompt (under the project root folder): **mvn clean install**
-* ...or build using Maven plugin inside your favourite IDE (e.g. Eclipse) using a Maven plugin.
-* When you receive "Build success" message from Maven, you are good to go! Start using it as a dependency in your own projects.
-* To add the API in your project as a Maven dependency in you pom.xml, your pom.xml should look like this...
+* Import the project as an "existing maven project" in your favourite IDE (e.g. IntelliJ).
+* Build using your IDE, or use Maven from command line, navigate to your project and type:  **mvn clean install**
+* Afterwards its in your local Maven repo (~/.m2/) and you can start using it as a dependency in your own projects (se POM.xml fragment below).
 
 ```
 <dependencies>
