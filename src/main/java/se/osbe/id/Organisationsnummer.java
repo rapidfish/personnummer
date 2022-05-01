@@ -13,7 +13,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
-import static java.lang.Integer.*;
 import static java.lang.Integer.parseInt;
 import static java.util.Optional.ofNullable;
 
@@ -21,8 +20,8 @@ public class Organisationsnummer implements Id {
     private static final int LAST4DIGITS = 4;
     private static final int MIN_CENTURY = 18;
 
-    private LocalDate _orgDate;
-    private int[] _lastDigits = new int[LAST4DIGITS];
+    private final LocalDate _orgDate;
+    private final int[] _lastDigits = new int[LAST4DIGITS];
     private final boolean _isForgiving;
 
     // Used for optimizing toString
@@ -265,7 +264,7 @@ public class Organisationsnummer implements Id {
      * @return Gender
      */
     public GenderType getGender() {
-        return (_lastDigits[2] % 2 == 0) ? GenderType.WOMAN : GenderType.MAN;
+        return (_lastDigits[2] % 2 == 0) ? GenderType.FEMALE : GenderType.MALE;
     }
 
     /**
@@ -303,10 +302,7 @@ public class Organisationsnummer implements Id {
             return false;
         }
         Personnummer other = (Personnummer) obj;
-        if (!this.toString13().equals(other.toString13())) {
-            return false;
-        }
-        return true;
+        return this.toString13().equals(other.toString13());
     }
 
     public int compareTo(Organisationsnummer org) {

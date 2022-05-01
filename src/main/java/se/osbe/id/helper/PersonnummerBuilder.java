@@ -21,7 +21,6 @@ public class PersonnummerBuilder {
     private Integer _checksum;
 
     public PersonnummerBuilder() {
-        ;
     }
 
     /**
@@ -191,7 +190,7 @@ public class PersonnummerBuilder {
     private String resolveGenderRegex(GenderType gender) {
         String result = "[0-9]";
         if (gender != null) {
-            result = gender.equals(GenderType.WOMAN) ? "(0|2|4|6|8)" : "(1|3|5|7|9)";
+            result = gender.equals(GenderType.FEMALE) ? "(0|2|4|6|8)" : "(1|3|5|7|9)";
         }
         return result;
     }

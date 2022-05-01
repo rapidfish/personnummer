@@ -7,6 +7,6 @@ import se.osbe.id.enums.IDType;
  */
 public interface Id {
 
-    public IDType getType();
+    IDType getType();
 
 }

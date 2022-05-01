@@ -46,7 +46,7 @@ public class PnrHelperTest {
         });
     }
 
-    @Test
+    //@Test
     public void testAllSsnFromRandomDateUntilToday() {
         // Tests ALL Personnummer from year 1800-- and onwards until today!
         LocalDate now = LocalDate.now();
@@ -65,7 +65,7 @@ public class PnrHelperTest {
         }
     }
 
-    @Test
+    //@Test
     public void testAllSsnForARandomDate() {
         int yy = PersonnummerHelper.dice(1900, 2014);
         int mm = PersonnummerHelper.dice(1, 12);

@@ -16,17 +16,9 @@ public class SamordningsnummerBasicTest {
 
     @Before
     public void setup() {
-        _samOKList = Stream.of("121272-1219")
-                .map(Personnummer::parse)
-                .filter(Optional::isPresent)
-                .map(Optional::get)
-                .collect(Collectors.toList());
+        _samOKList = Stream.of("121272-1219").map(Personnummer::parse).filter(Optional::isPresent).map(Optional::get).collect(Collectors.toList());
 
-        _samNOKList = Stream.of("121212-1212")
-                .map(Personnummer::parse)
-                .filter(Optional::isPresent)
-                .map(Optional::get)
-                .collect(Collectors.toList());
+        _samNOKList = Stream.of("121212-1212").map(Personnummer::parse).filter(Optional::isPresent).map(Optional::get).collect(Collectors.toList());
     }
 
 

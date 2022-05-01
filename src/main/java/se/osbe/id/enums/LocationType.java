@@ -67,11 +67,11 @@ public enum LocationType {
     NORRBOTTEN(89, 92, "Norrbottens län"),
     UTLANDSFODD2(93, 99, "Utlandsfödd");
 
-    private int _rangeLow;
-    private int _rangeHigh;
-    private String _description;
+    private final int _rangeLow;
+    private final int _rangeHigh;
+    private final String _description;
 
-    private LocationType(int rangeLow, int rangeHigh, String description) {
+    LocationType(int rangeLow, int rangeHigh, String description) {
         _rangeLow = rangeLow;
         _rangeHigh = rangeHigh;
         _description = description;

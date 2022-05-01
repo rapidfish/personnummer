@@ -154,7 +154,7 @@ public class PersonnummerBasicTest {
     @Test
     public void testPnrParseNOK() {
         _pnrNOKList.stream()
-                .forEach(p -> Assert.assertFalse("False candidates for Pnr '" + p.toString() + "' should not be valid, but was!",
+                .forEach(p -> Assert.assertFalse("False candidates for Pnr '" + p + "' should not be valid, but was!",
                         Personnummer.parse(p).isPresent()));
     }
 
@@ -263,7 +263,7 @@ public class PersonnummerBasicTest {
             Personnummer pnr = Personnummer.parse(okPnr).get();
             boolean isEven = (Integer.parseInt(pnr.getLastFour().substring(2, 3)) % 2 == 0);
             Assert.assertEquals((isEven ? "woman" : "man"), pnr.getGender("woman", "man"));
-            Assert.assertTrue(pnr.getGender() == GenderType.MAN || pnr.getGender() == GenderType.WOMAN);
+            Assert.assertTrue(pnr.getGender() == GenderType.MALE || pnr.getGender() == GenderType.FEMALE);
         }
     }
 

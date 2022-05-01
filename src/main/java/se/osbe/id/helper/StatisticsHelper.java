@@ -21,7 +21,6 @@ public class StatisticsHelper {
 
     @SuppressWarnings("unused")
     private StatisticsHelper() {
-        ;
     }
 
     public StatisticsHelper(List<Personnummer> pnrList) throws PersonnummerException {
@@ -36,7 +35,7 @@ public class StatisticsHelper {
                 _pnrDuplicatesList.add(pnr);
             }
         }
-        _pnrList = (List<Personnummer>) new LinkedList<Personnummer>(_pnrMap.values());
+        _pnrList = new LinkedList<Personnummer>(_pnrMap.values());
         _pnrMap.clear(); // save memory
         _maxAge = resolveHighestAge();
         _minAge = resolveLowestAge();
@@ -78,9 +77,9 @@ public class StatisticsHelper {
         _amountMen = 0;
         _amountWomen = 0;
         for (Personnummer pnr : _pnrList) {
-            if (pnr.getGender().equals(GenderType.MAN))
+            if (pnr.getGender().equals(GenderType.MALE))
                 _amountMen++;
-            else if (pnr.getGender().equals(GenderType.WOMAN))
+            else if (pnr.getGender().equals(GenderType.FEMALE))
                 _amountWomen++;
         }
     }
@@ -134,7 +133,7 @@ public class StatisticsHelper {
         Double average = resolveAverageAge();
         if (!_pnrList.isEmpty()) {
             for (Personnummer pnr : _pnrList) {
-                double ageNow = (double) pnr.getAgeNow();
+                double ageNow = pnr.getAgeNow();
                 if (ageNow >= (average - diff) && ageNow <= (average + diff)) {
                     allAverage.add(pnr);
                 }

@@ -21,7 +21,7 @@ public enum IDType {
     private final String _description;
     private final String _pattern;
 
-    private IDType(final String description, String pattern) {
+    IDType(final String description, String pattern) {
         _description = description;
         _pattern = pattern;
     }

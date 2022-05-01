@@ -36,8 +36,12 @@ public class Personnummer implements Comparable<Personnummer>, Id {
          *
          * Use the static parser methods to instantiate objects of this class...
          *
-         * e.g. Personnummer.parse("121212-1212") will get you an Optional<Personnummer>().
+         * e.g. Personnummer.parse("121212-1212") will get you an Optional<Personnummer> object.
          *
+         *  Optional<Personnummer> pnrOpt = Personnummer.parse("121212-1212");
+         * if(pnrOpt.isPresent()) {
+         *     System.out.println("The SSN is valid: " + pnrOpt.get().isValid());
+         * }
          */
         this(null, null, false);
     }
@@ -259,7 +263,7 @@ public class Personnummer implements Comparable<Personnummer>, Id {
      * @return Gender
      */
     public GenderType getGender() {
-        return (_lastDigits[2] % 2 == 0) ? GenderType.WOMAN : GenderType.MAN;
+        return (_lastDigits[2] % 2 == 0) ? GenderType.FEMALE : GenderType.MALE;
     }
 
     /**

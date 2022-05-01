@@ -36,12 +36,13 @@ public class MainCLI {
                 exit();
             }
             Optional<Personnummer> pnrOpt = Personnummer.parse(argList.get(0), line.hasOption("f"));
-            if (!pnrOpt.isPresent()) {
+            if (pnrOpt.isEmpty()) {
                 System.out.println("Parsing failed.  Reason: Unrecognizable personnummer");
                 exit();
             }
             StringBuilder sb = new StringBuilder(line.hasOption("c") ? pnrOpt.get().toString13() : pnrOpt.get().toString());
             if (line.hasOption("x")) {
+                //noinspection OptionalGetWithoutIsPresent
                 sb.append("\n")
                         .append("Last four digits: ").append(pnrOpt.get().getLastFour()).append("\n")
                         .append("isForgiving: ").append(pnrOpt.get().isForgiving()).append("\n")
@@ -55,7 +56,6 @@ public class MainCLI {
             System.out.println(sb);
 
         } catch (ParseException exp) {
-            // oops, something went wrong
             System.out.println("Parsing failed.  Reason: " + exp.getMessage());
         }
     }
