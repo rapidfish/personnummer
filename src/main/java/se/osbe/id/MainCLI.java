@@ -8,6 +8,8 @@ import java.util.Optional;
 
 public class MainCLI {
 
+    private final static String VERSION = "1.0";
+
     MainCLI(String[] args) {
         Options options = new Options();
 
@@ -31,6 +33,10 @@ public class MainCLI {
                 System.out.println("\nExample usage: java -jar personnummer.jar 460430-0014\n");
                 exit();
             }
+            if(line.hasOption("v")){
+                System.out.println("Version " + VERSION);
+                exit();
+            }
             if (argList.size() != 1) {
                 System.out.println("No personnummer argument given - nothing to do! Use -h to get help");
                 exit();
@@ -51,6 +57,7 @@ public class MainCLI {
                         .append("Age: ").append(pnrOpt.get().getAgeNow()).append("\n")
                         .append("Gender: ").append(pnrOpt.get().getGender()).append("\n")
                         .append("Zodiac sign: ").append(PersonnummerHelper.getZodiacSign(pnrOpt.get()).get().getLatinName()).append("\n")
+                        .append("Zodiac sign Swe: ").append(PersonnummerHelper.getZodiacSign(pnrOpt.get()).get().getSwedishName()).append("\n")
                         ;
             }
             System.out.println(sb);
