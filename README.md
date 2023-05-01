@@ -24,6 +24,7 @@
 * [Optional] Personnummer having 'invalid' checksums can be parsed by using a 'forgiving flag' with error correction.
 
 
+
 ## Example ...
 
 Examples below show how to parse strings into Personnummer, using four equivalent versions of the same Personnummer. It uses different leghts for year, with and without the use of a delimiter (-).
