@@ -22,7 +22,7 @@
 * Input strings may have a leghts from 10 to 13 characters (e.g. '1212121212', '121212-1212', '201212121212', '20121212-1212')
 
 * [Optional] Personnummer having 'invalid' checksums can be parsed by using a 'forgiving flag' with error correction.
-	
+
 
 ## Example ...
 
