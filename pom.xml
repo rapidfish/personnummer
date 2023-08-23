@@ -8,6 +8,7 @@
     <version>0.5.0</version>
     <name>Personnummer</name>
     <description>a RaspberryPi API by Oskar Bergström</description>
+    <packaging>jar</packaging>
 
     <properties>
         <!-- <java.version>11</java.version>-->

@@ -1,13 +1,16 @@
 package se.osbe.id;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
+import static java.lang.Integer.parseInt;
+import static java.util.stream.Stream.of;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class SamordningsnummerBasicTest {
 
@@ -16,25 +19,23 @@ public class SamordningsnummerBasicTest {
 
     @Before
     public void setup() {
-        _samOKList = Stream.of("121272-1219").map(Personnummer::parse).filter(Optional::isPresent).map(Optional::get).collect(Collectors.toList());
-
-        _samNOKList = Stream.of("121212-1212").map(Personnummer::parse).filter(Optional::isPresent).map(Optional::get).collect(Collectors.toList());
+        _samOKList = of("121272-1219").map(Personnummer::parse).filter(Optional::isPresent).map(Optional::get).collect(Collectors.toList());
+        _samNOKList = of("121212-1212").map(Personnummer::parse).filter(Optional::isPresent).map(Optional::get).collect(Collectors.toList());
     }
-
 
     @Test
     public void testInvalidSamordningsnummerNorPersonnummerNOK() {
-        Assert.assertFalse(Personnummer.parse("1122334566").isPresent());
+        assertFalse(Personnummer.parse("1122334566").isPresent());
     }
 
     @Test
     public void testSamordningsnummerToStringOK() {
         _samOKList.stream().forEach(s -> {
-            Assert.assertTrue(Integer.parseInt(s.toString().substring(4, 5)) > 3);
-            Assert.assertTrue(Integer.parseInt(s.toString10().substring(4, 5)) > 3);
-            Assert.assertTrue(Integer.parseInt(s.toString11().substring(4, 5)) > 3);
-            Assert.assertTrue(Integer.parseInt(s.toString12().substring(6, 7)) > 3);
-            Assert.assertTrue(Integer.parseInt(s.toString13().substring(6, 7)) > 3);
+            assertTrue(parseInt(s.toString().substring(4, 5)) > 3);
+            assertTrue(parseInt(s.toString10().substring(4, 5)) > 3);
+            assertTrue(parseInt(s.toString11().substring(4, 5)) > 3);
+            assertTrue(parseInt(s.toString12().substring(6, 7)) > 3);
+            assertTrue(parseInt(s.toString13().substring(6, 7)) > 3);
         });
     }
 
@@ -42,11 +43,11 @@ public class SamordningsnummerBasicTest {
     public void testSamordningsnummerToStringNOK() {
         // Not samordningsnummer, still valid as Personnummer though!
         _samNOKList.stream().forEach(s -> {
-            Assert.assertTrue(Integer.parseInt(s.toString().substring(4, 5)) <= 3);
-            Assert.assertTrue(Integer.parseInt(s.toString10().substring(4, 5)) <= 3);
-            Assert.assertTrue(Integer.parseInt(s.toString11().substring(4, 5)) <= 3);
-            Assert.assertTrue(Integer.parseInt(s.toString12().substring(6, 7)) <= 3);
-            Assert.assertTrue(Integer.parseInt(s.toString13().substring(6, 7)) <= 3);
+            assertTrue(parseInt(s.toString().substring(4, 5)) <= 3);
+            assertTrue(parseInt(s.toString10().substring(4, 5)) <= 3);
+            assertTrue(parseInt(s.toString11().substring(4, 5)) <= 3);
+            assertTrue(parseInt(s.toString12().substring(6, 7)) <= 3);
+            assertTrue(parseInt(s.toString13().substring(6, 7)) <= 3);
         });
     }
 }

@@ -11,7 +11,6 @@ import java.util.Optional;
 public class MainCLI {
 
     private final static String VERSION = "1.0";
-    private ObjectMapper objectMapper;
 
     MainCLI(String[] args) throws JsonProcessingException {
         String output = "n/a";
