@@ -126,10 +126,50 @@ Import the project as an existing maven projekt into your IDE, compile with Mave
 
 This project uses Jodatime ver 2.7 from Apache to handle all dates (see pom.xml file in the project root folder). It is automatically installed by maven at build time. Jodatime ensures that the API can be used in both old and newer versions of Java. Joda-Time was the "de facto" standard date and time library for Java prior to Java SE 8. It may be so that this Joda time dependency will become deprecated in future versions of Personnummer. For more information, go to http://www.joda.org/joda-time/
 
-** How to run tests **
-Unit tests are based on JUnit.
+**How to run unit tests**
 
-** more facts **
+Unit tests are based on JUnit.
+Use mvn command:
+```
+mvn test
+```
+
+**How to run the jar as a command**
+You can use the output Jar file from CLI (command-line interface).
+Here is how: Build the project make use the 'standalone' built jar ( personnummer-0.5.0-jar-with-dependencies.jar )
+After building the project with Maven (mvn package).
+Start your favourite CLI and navigate to the subfolder "target/" (ralative to the project root folder)
+Now, try running it to see what you can make out of this Personnummer: 8010101015
+
+
+bash:
+```
+  java -jar ./personnummer-0.5.0-jar-with-dependencies.jar -x 8010101015
+```
+
+windows (DOS):
+```
+  java -jar personnummer-0.5.0-jar-with-dependencies.jar -x 8010101015
+```
+
+
+
+In this case I show you how to make use of the "-x" argument that shows "extended" info about a Personnummer.
+
+_Output:_
+```
+
+PnrCliDao(personnummer10=8010101015, personnummer11=801010-1015, personnummer12=198010101015, personnummer13=19801010-1015, lastFourDigits=1015, isForgiving=false, correctChecksum=5, birthDate=1980-10-10, age=42, gender=MALE, zo
+diacSign=Libra, zodiacSignSwe=Vågen)
+
+```
+
+...also try the -h (or --help) argument for help.
+```
+java -jar ./personnummer-0.5.0-jar-with-dependencies.jar -h
+```
+
+**More facts**
 
 * Checksum algorithm is based upon the Luhn-algorithm a.k.a modulus-10-algorithm.
 
