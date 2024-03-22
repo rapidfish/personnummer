@@ -3,9 +3,9 @@
 ## Java API to handle Swedish Personnummer
 
 
-* Automatic checksum validation when parsing an input string to a Personnummer object
+* Automatic validation of checksum, directly when parsing, of strings with Personnummer
 
-* Produces an Optional<Personnummer> object when parsing. If not valid it becomes an empty Optional
+* Produces an Optional<Personnummer> when parsing. If not valid it becomes an empty Optional
 
 * toString() can be used as default output after parsing, but there is also four other methods to represent it
 
@@ -134,27 +134,23 @@ Use mvn command:
 mvn test
 ```
 
-**How to run the jar as a command**
-You can use the output Jar file from CLI (command-line interface).
-Here is how: Build the project make use the 'standalone' built jar ( personnummer-0.5.0-jar-with-dependencies.jar )
-After building the project with Maven (mvn package).
-Start your favourite CLI and navigate to the subfolder "target/" (ralative to the project root folder)
-Now, try running it to see what you can make out of this Personnummer: 8010101015
-
+**How to run as a standalone command**
+Type "mvn clean package" in your terminal to build the project to a 'standalone' jarfile
+Use the file target/personnummer-0.5.0-jar-with-dependencies.jar when running it as a standalone command (terminal)
 
 bash:
 ```
-  java -jar ./personnummer-0.5.0-jar-with-dependencies.jar -x 8010101015
+  java -jar target/personnummer-0.5.0-jar-with-dependencies.jar -jx 8010101015
 ```
 
 windows (DOS):
 ```
-  java -jar personnummer-0.5.0-jar-with-dependencies.jar -x 8010101015
+  java -jar target\personnummer-0.5.0-jar-with-dependencies.jar -jx 8010101015
 ```
 
 
 
-In this case I show you how to make use of the "-x" argument that shows "extended" info about a Personnummer.
+In this case we use the "-jx" argument, where -j means "json formatted" and -x means "extended" info about a Personnummer.
 
 _Output:_
 ```
@@ -166,7 +162,7 @@ diacSign=Libra, zodiacSignSwe=Vågen)
 
 ...also try the -h (or --help) argument for help.
 ```
-java -jar ./personnummer-0.5.0-jar-with-dependencies.jar -h
+java -jar ./target/personnummer-0.5.0-jar-with-dependencies.jar -h
 ```
 
 **More facts**
