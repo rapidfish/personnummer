@@ -21,8 +21,9 @@
 
 * Input strings may have a leghts from 10 to 13 characters (e.g. '1212121212', '121212-1212', '201212121212', '20121212-1212')
 
-* [Optional] Personnummer having 'invalid' checksums can be parsed by using a 'forgiving flag' with error correction.
-
+* Use the 'Forgiving flag' [Optional] for automatic error correction
+  - Automatic error correction is achieved if turn on the 'forgiving flag' when trying to calculate a Personnummer with an 'invalid checksum' number.
+  - The forgiving flag also lets you handle Personnumer with a birthdate set in the future (thus 'unborn' persons). Making its category still parsable.
 
 
 ## Example ...
