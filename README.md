@@ -139,12 +139,12 @@ mvn test
 Type "mvn clean package" in your terminal to build the project to a 'standalone' jarfile
 Use the file target/personnummer-0.5.0-jar-with-dependencies.jar when running it as a standalone command (terminal)
 
-bash:
+Linux/Mac/Unix (terminal):
 ```
   java -jar target/personnummer-0.5.0-jar-with-dependencies.jar -jx 8010101015
 ```
 
-windows (DOS):
+Windows (CMD/DOS):
 ```
   java -jar target\personnummer-0.5.0-jar-with-dependencies.jar -jx 8010101015
 ```
