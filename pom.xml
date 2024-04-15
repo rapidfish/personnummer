@@ -7,11 +7,11 @@
     <artifactId>personnummer</artifactId>
     <version>0.5.0</version>
     <name>Personnummer</name>
-    <description>a RaspberryPi API by Oskar Bergström</description>
+    <description>Project by Oskar Bergström</description>
     <packaging>jar</packaging>
 
     <properties>
-        <!-- <java.version>11</java.version>-->
+         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -58,11 +58,12 @@
             <version>2.13.4.2</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
             <scope>compile</scope>
-            <version>1.18.24</version>
         </dependency>
 
     </dependencies>
@@ -75,22 +76,10 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>20</source>
-                    <target>20</target>
+                    <source>11</source>
+                    <target>11</target>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-jar-plugin</artifactId>-->
-<!--                <version>3.3.0</version>-->
-<!--                <configuration>-->
-<!--                    <archive>-->
-<!--                        <manifest>-->
-<!--                            <mainClass>se.osbe.id.MainCLI</mainClass>-->
-<!--                        </manifest>-->
-<!--                    </archive>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -98,7 +87,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>se.osbe.id.MainCLI</mainClass>
+                            <mainClass>se.osbe.main.MainCLI</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

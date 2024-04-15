@@ -6,6 +6,7 @@ import org.joda.time.LocalDate;
 import org.joda.time.Years;
 import se.osbe.id.enums.GenderType;
 import se.osbe.id.enums.IDType;
+import se.osbe.id.helper.ChecksumHelper;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -16,13 +17,20 @@ import java.util.stream.IntStream;
 import static java.lang.Integer.parseInt;
 import static java.util.Optional.ofNullable;
 
-public class Personnummer implements Comparable<Personnummer>, Id {
+public class Personnummer implements Comparable<Personnummer>, Identifiable {
+
+    private static final String PNR_PATTERN = "^(?<era>\\d{2})?(?<year>\\d{2})(?<month>0[1-9]|1[012])(?<day>0[1-9]|[12][0-9]|3[01]|[6789]\\d)(?<sign>[\\-+])?(?<last3>\\d{3})(?<checksum>\\d{1})?$";
+    private static final Pattern PRE_COMPILED_PNR_PATTERN = Pattern.compile(PNR_PATTERN);
+
     private static final int LAST4DIGITS = 4;
     private static final int MIN_CENTURY = 18;
+    private static final int SAMORDNINGSNUMMER_OFFSET_FOR_DAY_IN_DATE = 60;
 
     private LocalDate _pnrDate;
     private int[] _lastDigits = new int[LAST4DIGITS];
     private final boolean _isForgiving;
+
+    private boolean _isSamordningsnummer;
 
     // Used for optimizing toString
     private String toString10;
@@ -43,28 +51,21 @@ public class Personnummer implements Comparable<Personnummer>, Id {
          *     System.out.println("The SSN is valid: " + pnrOpt.get().isValid());
          * }
          */
-        this(null, null, false);
+        this(null, null, false, false);
     }
 
-    private Personnummer(LocalDate pnrDate, String lastDigits, boolean isForgiving) {
+    private Personnummer(LocalDate pnrDate, String lastDigits, boolean isForgiving, boolean isSamordningsnummer) {
         _pnrDate = pnrDate;
         IntStream.range(0, lastDigits.length()).forEach(i -> {
             _lastDigits[i] = parseInt("" + lastDigits.charAt(i));
         });
         _isForgiving = isForgiving;
+        _isSamordningsnummer = isSamordningsnummer;
     }
 
-    private static int calculateChecksum(String year, String month, String day, String last3) {
-        final int TEN = 10;
+    private static String calculateChecksum(String year, String month, String day, String last3) {
         char[] pnrNumbersWithoutChecksum = String.join("", year, month, day, last3).toCharArray();
-        boolean even = true;
-        int sum = 0;
-        for (char c : pnrNumbersWithoutChecksum) {
-            int partSum = (parseInt(Character.toString(c)) * ((even) ? 2 : 1));
-            sum += ((partSum > 9) ? (1 + (partSum % TEN)) : partSum);
-            even = !even;
-        }
-        return ((TEN - (sum % TEN)) % TEN);
+        return ChecksumHelper.calculateChecksum(pnrNumbersWithoutChecksum);
     }
 
     private static LocalDate resolveBirthDate(String era, int yearInt, int monthInt, int dayInt, boolean plus) {
@@ -91,7 +92,9 @@ public class Personnummer implements Comparable<Personnummer>, Id {
     private String toString(boolean useEra, boolean useSign) {
         int yearOfCentury = _pnrDate.getYearOfCentury();
         int monthOfYear = _pnrDate.getMonthOfYear();
-        int dayOfMonth = _pnrDate.getDayOfMonth();
+        int dayOfMonth = _isSamordningsnummer ?
+                (_pnrDate.getDayOfMonth() + SAMORDNINGSNUMMER_OFFSET_FOR_DAY_IN_DATE)
+                : _pnrDate.getDayOfMonth();
         StringBuilder sb = new StringBuilder();
         sb.append((!useEra && yearOfCentury < 10) ? "0" : "");
         sb.append(useEra ? _pnrDate.getYear() : yearOfCentury);
@@ -135,8 +138,8 @@ public class Personnummer implements Comparable<Personnummer>, Id {
         if (pnrCandidate == null || pnrCandidate.trim().length() < 9) {
             return Optional.empty();
         }
-        final Pattern preCompiledPattern = Pattern.compile(IDType.PERSONNUMMER.getPattern());
-        Matcher matcher = preCompiledPattern.matcher(pnrCandidate.trim());
+
+        final Matcher matcher = PRE_COMPILED_PNR_PATTERN.matcher(pnrCandidate.trim());
         if (matcher.find()) {
             String era = matcher.group("era");
             String year = matcher.group("year");
@@ -145,14 +148,14 @@ public class Personnummer implements Comparable<Personnummer>, Id {
             String sign = matcher.group("sign");
             String last3 = matcher.group("last3");
             String checksum = matcher.group("checksum");
-            int calculatedChecksum = calculateChecksum(year, month, day, last3);
+            String calculatedChecksum = calculateChecksum(year, month, day, last3);
             boolean plus = "+".equals(sign);
             if (era != null && plus) {
                 return Optional.empty(); // Personnummer cannot have both era and plus sign
             }
             if (isForgiving) {
-                checksum = String.valueOf(calculatedChecksum);
-            } else if (checksum == null || (parseInt(checksum) != calculatedChecksum)) {
+                checksum = calculatedChecksum;
+            } else if (checksum == null || !checksum.equals(calculatedChecksum)) {
                 return Optional.empty();
             }
             if (!isForgiving && "0000".equals(last3 + checksum)) {
@@ -161,9 +164,8 @@ public class Personnummer implements Comparable<Personnummer>, Id {
             int yearInt = parseInt(year);
             int monthInt = parseInt(month);
             int dayInt = parseInt(day);
-            if (monthInt >= 20) {
-                return Optional.empty(); // Not a Personnummer
-            }
+            boolean isSam = (dayInt >= SAMORDNINGSNUMMER_OFFSET_FOR_DAY_IN_DATE);
+            dayInt = isSam ? (dayInt - SAMORDNINGSNUMMER_OFFSET_FOR_DAY_IN_DATE) : dayInt;
             LocalDate pnrDate = null;
             try {
                 pnrDate = resolveBirthDate(era, yearInt, monthInt, dayInt, plus);
@@ -173,7 +175,7 @@ public class Personnummer implements Comparable<Personnummer>, Id {
             if (!isForgiving && (pnrDate.centuryOfEra().get() < MIN_CENTURY || pnrDate.isAfter(LocalDate.now()))) {
                 return Optional.empty(); // Personnummer is in future, not valid
             }
-            return Optional.of(new Personnummer(pnrDate, (last3 + checksum), isForgiving));
+            return Optional.of(new Personnummer(pnrDate, (last3 + checksum), isForgiving, isSam));
         }
         return Optional.empty();
     }
@@ -344,7 +346,7 @@ public class Personnummer implements Comparable<Personnummer>, Id {
     }
 
     @Override
-    public IDType getType() {
-        return IDType.PERSONNUMMER;
+    public IDType getIDType() {
+        return _isSamordningsnummer ? IDType.SAMORDNINGSNUMMER : IDType.PERSONNUMMER;
     }
 }

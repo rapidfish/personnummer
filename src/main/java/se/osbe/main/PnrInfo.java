@@ -1,13 +1,14 @@
-package se.osbe.id;
+package se.osbe.main;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import se.osbe.id.enums.GenderType;
+import se.osbe.id.enums.IDType;
 
 @Data
 @NoArgsConstructor
-public class PnrCliDao {
+public class PnrInfo {
 
     @JsonProperty("personnummer10")
     private String personnummer10;
@@ -44,4 +45,7 @@ public class PnrCliDao {
 
     @JsonProperty("zodiacSignSwe")
     private String zodiacSignSwe;
+
+    @JsonProperty("idType")
+    private IDType idType;
 }

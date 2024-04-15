@@ -1,8 +1,9 @@
-package se.osbe.id;
+package se.osbe.main;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.cli.*;
+import se.osbe.id.Personnummer;
 import se.osbe.id.helper.PersonnummerHelper;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class MainCLI {
 
     MainCLI(String[] args) throws JsonProcessingException {
         String output = "n/a";
-        PnrCliDao result = null;
+        PnrInfo result = null;
         Options options = new Options();
 
         options.addOption(Option.builder("h").longOpt("help").desc("Bring up this help screen").build()); // .required()
@@ -61,28 +62,29 @@ public class MainCLI {
             }
 
             // Happy flow from here ...
-
+            Personnummer pnr = pnrOpt.get();
             if (line.hasOption("x")) {
-                result = new PnrCliDao();
-                result.setPersonnummer10(pnrOpt.get().toString10());
-                result.setPersonnummer11(pnrOpt.get().toString11());
-                result.setPersonnummer12(pnrOpt.get().toString12());
-                result.setPersonnummer13(pnrOpt.get().toString13());
-                result.setLastFourDigits(pnrOpt.get().getLastFour());
-                result.setForgiving(pnrOpt.get().isForgiving());
-                result.setCorrectChecksum(pnrOpt.get().getChecksum());
-                result.setBirthDate(pnrOpt.get().getBirthDate().toString());
-                result.setAge(pnrOpt.get().getAgeNow());
-                result.setGender(pnrOpt.get().getGender());
-                result.setZodiacSign(PersonnummerHelper.getZodiacSign(pnrOpt.get()).get().getLatinName());
-                result.setZodiacSignSwe(PersonnummerHelper.getZodiacSign(pnrOpt.get()).get().getSwedishName());
+                result = new PnrInfo();
+                result.setPersonnummer10(pnr.toString10());
+                result.setPersonnummer11(pnr.toString11());
+                result.setPersonnummer12(pnr.toString12());
+                result.setPersonnummer13(pnr.toString13());
+                result.setLastFourDigits(pnr.getLastFour());
+                result.setForgiving(pnr.isForgiving());
+                result.setCorrectChecksum(pnr.getChecksum());
+                result.setBirthDate(pnr.getBirthDate().toString());
+                result.setAge(pnr.getAgeNow());
+                result.setGender(pnr.getGender());
+                result.setZodiacSign(PersonnummerHelper.getZodiacSign(pnr).get().getLatinName());
+                result.setZodiacSignSwe(PersonnummerHelper.getZodiacSign(pnr).get().getSwedishName());
+                result.setIdType(pnr.getIDType());
 
                 output = (line.hasOption("j")) ?
-                        new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString((PnrCliDao) result) :
+                        new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString((PnrInfo) result) :
                         result.toString();
             } else {
-                String pnr = line.hasOption("c") ? pnrOpt.get().toString13() : pnrOpt.get().toString11();
-                output = (line.hasOption("j")) ? "{ 'personnummer' : '" + pnr + "' }" : pnr;
+                String pnrStr = line.hasOption("c") ? pnr.toString13() : pnr.toString11();
+                output = (line.hasOption("j")) ? "{ 'personnummer' : '" + pnrStr + "' }" : pnrStr;
             }
 
             System.out.println(output);

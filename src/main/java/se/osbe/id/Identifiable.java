@@ -5,8 +5,6 @@ import se.osbe.id.enums.IDType;
 /**
  * Marker interface for Swedish Id number (Person-, Organisations- or Samordningsnummer).
  */
-public interface Id {
-
-    IDType getType();
-
+public interface Identifiable {
+    IDType getIDType();
 }

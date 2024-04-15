@@ -5,3 +5,4 @@ target/
 /.idea/encodings.xml
 /.idea/jarRepositories.xml
 /.idea/misc.xml
+.DS_Store

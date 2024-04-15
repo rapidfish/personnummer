@@ -1,6 +1,6 @@
 # Personnummer API
 
-## Java API to verify- or calculate Swedish Personnummer
+## Java API to handle Swedish Personnummer
 
 
 * Automatic validation of checksum, directly when parsing, of strings with Personnummer

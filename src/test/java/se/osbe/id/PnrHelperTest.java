@@ -12,39 +12,83 @@ import se.osbe.id.helper.PersonnummerHelper;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.IntStream;
 
 public class PnrHelperTest {
 
     @Test
-    public void testZodiacSign() {
-
-        String[][] ssnArr = {
-                //start			// middle		// end
-                {"CAPRICORNUS", "120101-0010", "120115-0010", "120119-0010"},
-                {"AQUARIUS", "120120-0010", "120215-0010", "120218-0010"},
-                {"PISCES", "120219-0010", "120315-0010", "120320-0010"},
-
-                {"ARIES", "120321-0010", "120415-0010", "120419-0010"},
-                {"TAURUS", "120420-0010", "120515-0010", "120521-0010"},
-                {"GEMINI", "120522-0010", "120615-0010", "120621-0010"},
-
-                {"CANCER", "120622-0010", "120715-0010", "120722-0010"},
-                {"LEO", "120723-0010", "120815-0010", "120822-0010"},
-                {"VIRGO", "120823-0010", "120915-0010", "120922-0010"},
-
-                {"LIBRA", "120923-0010", "121015-0010", "121022-0010"},
-                {"SCORPIO", "121023-0010", "121115-0010", "121121-0010"},
-                {"SAGITTARIUS", "121222-0010", "121225-0010", "121231-0010"}
-        };
-
-        IntStream.range(1, ssnArr.length).forEach(x -> {
-            PnrZodiacType zodiacSign = PnrZodiacType.valueOf(PnrZodiacType.class, ssnArr[x][0]);
-            IntStream.range(1, 3).forEach(y -> {
-                Assert.assertEquals(zodiacSign, PersonnummerHelper.getZodiacSign(Personnummer.parse(ssnArr[x][y], true).get()).get());
-            });
-        });
+    public void testZodiacSignCapricornus() {
+        Assert.assertEquals(PnrZodiacType.CAPRICORNUS, PersonnummerHelper.getZodiacSign(Personnummer.parse("120101-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.CAPRICORNUS, PersonnummerHelper.getZodiacSign(Personnummer.parse("120115-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.CAPRICORNUS, PersonnummerHelper.getZodiacSign(Personnummer.parse("120119-0010", true).get()).get());
     }
+
+    public void testZodiacSignAquarius() {
+        Assert.assertEquals(PnrZodiacType.AQUARIUS, PersonnummerHelper.getZodiacSign(Personnummer.parse("120120-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.AQUARIUS, PersonnummerHelper.getZodiacSign(Personnummer.parse("120215-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.AQUARIUS, PersonnummerHelper.getZodiacSign(Personnummer.parse("120218-0010", true).get()).get());
+    }
+
+    public void testZodiacSignPisces() {
+        Assert.assertEquals(PnrZodiacType.PISCES, PersonnummerHelper.getZodiacSign(Personnummer.parse("120219-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.PISCES, PersonnummerHelper.getZodiacSign(Personnummer.parse("120315-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.PISCES, PersonnummerHelper.getZodiacSign(Personnummer.parse("120320-0010", true).get()).get());
+    }
+
+    public void testZodiacSignAries() {
+        Assert.assertEquals(PnrZodiacType.ARIES, PersonnummerHelper.getZodiacSign(Personnummer.parse("120321-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.ARIES, PersonnummerHelper.getZodiacSign(Personnummer.parse("120415-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.ARIES, PersonnummerHelper.getZodiacSign(Personnummer.parse("120419-0010", true).get()).get());
+    }
+
+    public void testZodiacSignTaurus() {
+        Assert.assertEquals(PnrZodiacType.TAURUS, PersonnummerHelper.getZodiacSign(Personnummer.parse("120420-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.TAURUS, PersonnummerHelper.getZodiacSign(Personnummer.parse("120515-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.TAURUS, PersonnummerHelper.getZodiacSign(Personnummer.parse("120521-0010", true).get()).get());
+    }
+
+    public void testZodiacSignGemini() {
+        Assert.assertEquals(PnrZodiacType.GEMINI, PersonnummerHelper.getZodiacSign(Personnummer.parse("120522-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.GEMINI, PersonnummerHelper.getZodiacSign(Personnummer.parse("120615-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.GEMINI, PersonnummerHelper.getZodiacSign(Personnummer.parse("120621-0010", true).get()).get());
+    }
+
+    public void testZodiacSignCancer() {
+        Assert.assertEquals(PnrZodiacType.CANCER, PersonnummerHelper.getZodiacSign(Personnummer.parse("120622-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.CANCER, PersonnummerHelper.getZodiacSign(Personnummer.parse("120715-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.CANCER, PersonnummerHelper.getZodiacSign(Personnummer.parse("120722-0010", true).get()).get());
+    }
+
+    public void testZodiacSignLeo() {
+        Assert.assertEquals(PnrZodiacType.LEO, PersonnummerHelper.getZodiacSign(Personnummer.parse("120723-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.LEO, PersonnummerHelper.getZodiacSign(Personnummer.parse("120815-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.LEO, PersonnummerHelper.getZodiacSign(Personnummer.parse("120822-0010", true).get()).get());
+    }
+
+    public void testZodiacSignVirgo() {
+        Assert.assertEquals(PnrZodiacType.VIRGO, PersonnummerHelper.getZodiacSign(Personnummer.parse("120823-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.VIRGO, PersonnummerHelper.getZodiacSign(Personnummer.parse("120915-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.VIRGO, PersonnummerHelper.getZodiacSign(Personnummer.parse("120922-0010", true).get()).get());
+    }
+
+    public void testZodiacSignLibra() {
+        Assert.assertEquals(PnrZodiacType.LIBRA, PersonnummerHelper.getZodiacSign(Personnummer.parse("120923-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.LIBRA, PersonnummerHelper.getZodiacSign(Personnummer.parse("121015-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.LIBRA, PersonnummerHelper.getZodiacSign(Personnummer.parse("121022-0010", true).get()).get());
+    }
+
+    public void testZodiacSignScorpio() {
+        Assert.assertEquals(PnrZodiacType.SCORPIO, PersonnummerHelper.getZodiacSign(Personnummer.parse("121023-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.SCORPIO, PersonnummerHelper.getZodiacSign(Personnummer.parse("121115-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.SCORPIO, PersonnummerHelper.getZodiacSign(Personnummer.parse("121121-0010", true).get()).get());
+    }
+
+    public void testZodiacSignSagittarius() {
+        Assert.assertEquals(PnrZodiacType.SAGITTARIUS, PersonnummerHelper.getZodiacSign(Personnummer.parse("121222-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.SAGITTARIUS, PersonnummerHelper.getZodiacSign(Personnummer.parse("121225-0010", true).get()).get());
+        Assert.assertEquals(PnrZodiacType.SAGITTARIUS, PersonnummerHelper.getZodiacSign(Personnummer.parse("121231-0010", true).get()).get());
+   }
 
     //@Test
     public void testAllSsnFromRandomDateUntilToday() {
