@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
 
     <properties>
-         <java.version>11</java.version>
+        <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -87,7 +87,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>se.osbe.main.MainCLI</mainClass>
+                            <mainClass>se.osbe.id.main.MainCLI</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
@@ -107,13 +107,13 @@
         </plugins>
     </build>
 
-    <profiles>
-        <profile>
-            <id>no-test</id>
-            <properties>
-                <maven.test.skip>true</maven.test.skip>
-            </properties>
-        </profile>
-    </profiles>
+<!--    <profiles>-->
+<!--        <profile>-->
+<!--            <id>no-test</id>-->
+<!--            <properties>-->
+<!--                <maven.test.skip>true</maven.test.skip>-->
+<!--            </properties>-->
+<!--        </profile>-->
+<!--    </profiles>-->
 
 </project>

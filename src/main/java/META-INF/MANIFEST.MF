@@ -1,3 +1,2 @@
 Manifest-Version: 1.0
-Main-Class: se.osbe.id.MainCLI
-
+Main-Class: se.osbe.id.main.MainCLI

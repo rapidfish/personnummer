@@ -1,7 +1,6 @@
 package se.osbe.id;
 
 import se.osbe.id.enums.IDType;
-import se.osbe.id.helper.ChecksumHelper;
 
 import java.util.Optional;
 import java.util.regex.Matcher;
@@ -36,12 +35,13 @@ public class Organisationsnummer implements Identifiable {
 
     private static final String SAMORDNNR_PATTERN = "^(?<num1gruppnr>\\d)(?<num2>\\d)(?<num3>\\d)(?<num4to6>\\d{3})(?<sign>[-])?(?<num7to9>\\d{3})(?<num10checksum>\\d)$";
     private static final Pattern PRE_COMPILED_PATTERN = compile(SAMORDNNR_PATTERN);
-    private static final String DELIMITER = "-";
-    private static final int JURIDISKPERSON = 2;
+    private static final String _DELIMITER = "-"; // the delimiter char used in the organisationsnummer
+    private static final int _JURIDISKPERSON = 2; // the prefix for "juridisk person"
 
-    private final String _organisationsnummer; // calculated and allways correct!
-    private final boolean _isForgiving;
-    private final boolean _isJuridiskPerson;
+    // Organisationsnummer, trusted to always be correctly calculated, before being fed as argument to the private constructor!
+    private final String _organisationsnummer; // the organisationsnummer given as input
+    private final boolean _isForgiving; // if true, a calculated checksum is used and substituted, regardless of the actual checksum digit in the organisationsnummer given as input
+    private final boolean _isJuridiskPerson; // gets automatically calculated from the _organisationsnummer in the private constructor
 
     private Organisationsnummer() {
         // private protected constructor
@@ -51,7 +51,7 @@ public class Organisationsnummer implements Identifiable {
     private Organisationsnummer(String orgNr, boolean isForgiving) {
         // private protected constructor
         _organisationsnummer = orgNr;
-        _isJuridiskPerson = parseInt(orgNr.substring(2, 3)) >= JURIDISKPERSON; // (< 2 is a physical person, hence treated as a Personnummer instead)
+        _isJuridiskPerson = parseInt(orgNr.substring(2, 3)) >= _JURIDISKPERSON; // (< 2 is a physical person, thus it gets treated exactly like a basic Personnummer would)
         _isForgiving = isForgiving;
     }
 
@@ -77,7 +77,7 @@ public class Organisationsnummer implements Identifiable {
         String calculatedChecksum = calculateChecksum(orgNr);
         boolean isChecksumOk = isForgiving || num10checksum.equals(calculatedChecksum);
         return isChecksumOk
-                ? of(new Organisationsnummer(join(asList(num1, num2, num3, num4to6, DELIMITER, num7to9, calculatedChecksum).toArray()), isForgiving))
+                ? of(new Organisationsnummer(join(asList(num1, num2, num3, num4to6, _DELIMITER, num7to9, calculatedChecksum).toArray()), isForgiving))
                 : empty();
     }
 
@@ -104,7 +104,7 @@ public class Organisationsnummer implements Identifiable {
     }
 
     public String toString10() {
-        return toString().replaceAll(DELIMITER, EMPTY);
+        return toString().replaceAll(_DELIMITER, EMPTY);
     }
 
     public String toString11() {
@@ -112,7 +112,7 @@ public class Organisationsnummer implements Identifiable {
     }
 
     public String toString12() {
-        return "16" + _organisationsnummer.replaceAll(DELIMITER, EMPTY); // TODO: 16 is the prefix for juridisk person?
+        return "16" + _organisationsnummer.replaceAll(_DELIMITER, EMPTY); // TODO: 16 is the prefix for juridisk person?
     }
 
     public String toString13() {

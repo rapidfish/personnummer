@@ -1,10 +1,11 @@
-package se.osbe.main;
+package se.osbe.id.main;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.cli.*;
 import se.osbe.id.Personnummer;
 import se.osbe.id.helper.PersonnummerHelper;
+import se.osbe.id.vo.PnrInfoVO;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,7 +16,7 @@ public class MainCLI {
 
     MainCLI(String[] args) throws JsonProcessingException {
         String output = "n/a";
-        PnrInfo result = null;
+        PnrInfoVO result = null;
         Options options = new Options();
 
         options.addOption(Option.builder("h").longOpt("help").desc("Bring up this help screen").build()); // .required()
@@ -64,7 +65,7 @@ public class MainCLI {
             // Happy flow from here ...
             Personnummer pnr = pnrOpt.get();
             if (line.hasOption("x")) {
-                result = new PnrInfo();
+                result = new PnrInfoVO();
                 result.setPersonnummer10(pnr.toString10());
                 result.setPersonnummer11(pnr.toString11());
                 result.setPersonnummer12(pnr.toString12());
@@ -80,7 +81,7 @@ public class MainCLI {
                 result.setIdType(pnr.getIDType());
 
                 output = (line.hasOption("j")) ?
-                        new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString((PnrInfo) result) :
+                        new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString((PnrInfoVO) result) :
                         result.toString();
             } else {
                 String pnrStr = line.hasOption("c") ? pnr.toString13() : pnr.toString11();
