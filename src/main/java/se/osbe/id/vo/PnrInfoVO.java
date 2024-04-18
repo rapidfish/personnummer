@@ -46,6 +46,12 @@ public class PnrInfoVO {
     @JsonProperty("zodiacSignSwe")
     private String zodiacSignSwe;
 
+    @JsonProperty("chineseZodiacAnimal")
+    private String chineseZodiacAnimal;
+
+    @JsonProperty("chineseZodiacAnimalSwe")
+    private String chineseZodiacAnimalSwe;
+
     @JsonProperty("idType")
     private IDType idType;
 }
