@@ -108,7 +108,7 @@ The API also supports the use of '+' sign, to indicate +100 years of age when Pe
    <dependency>
       <groupId>se.osbe.id</groupId>
       <artifactId>personnummer</artifactId>
-      <version>0.4.0</version>
+      <version>0.5.0</version>
    </dependency>
    ...
 </dependencies>
