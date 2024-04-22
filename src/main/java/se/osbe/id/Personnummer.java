@@ -212,6 +212,10 @@ public class Personnummer implements Comparable<Personnummer>, Identifiable {
         return _isForgiving;
     }
 
+    public boolean isSamordningsnummer() {
+        return _isSamordningsnummer;
+    }
+
     /**
      * Get age for a Personnummer.
      * <p>

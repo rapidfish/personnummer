@@ -2,6 +2,7 @@ package se.osbe.id;
 
 import org.junit.Before;
 import org.junit.Test;
+import se.osbe.id.enums.IDType;
 
 import java.util.List;
 import java.util.Optional;
@@ -52,6 +53,23 @@ public class SamordningsnummerBasicTest {
             assertTrue(parseInt(s.toString11().substring(4, 6)) <= SAMORDNINGSNUMMER_OFFSET_FOR_DAY_IN_DATE);
             assertTrue(parseInt(s.toString12().substring(6, 8)) <= SAMORDNINGSNUMMER_OFFSET_FOR_DAY_IN_DATE);
             assertTrue(parseInt(s.toString13().substring(6, 8)) <= SAMORDNINGSNUMMER_OFFSET_FOR_DAY_IN_DATE);
+        });
+    }
+
+    @Test
+    public void testIsSamordningsnummerOK() {
+        _samOKList.forEach(s -> {
+            assertTrue(s.isSamordningsnummer());
+            assertTrue(s.getIDType() == IDType.SAMORDNINGSNUMMER);
+        });
+    }
+
+
+    @Test
+    public void testIsSamordningsnummerNOK() {
+        _samNOKList.forEach(s -> {
+            assertFalse(s.isSamordningsnummer());
+            assertFalse(s.getIDType() == IDType.SAMORDNINGSNUMMER);
         });
     }
 }
