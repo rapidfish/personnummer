@@ -12,79 +12,79 @@ public class PnrTungshuAnimalTypeTest {
 
     // Positive tests
     @Test
-    public void testZodiacSignCapricornusRat() {
+    public void testZodiacSignTungshuAnimalRat() {
         assertEquals("Rat", RAT.getAnimalName());
         assertEquals("Råttan", RAT.getAnimalNameSwe());
     }
 
     @Test
-    public void testZodiacSignCapricornusOx() {
+    public void testZodiacSignTungshuAnimalOx() {
         assertEquals("Ox", OX.getAnimalName());
         assertEquals("Oxen", OX.getAnimalNameSwe());
     }
 
     @Test
-    public void testZodiacSignCapricornusTiger() {
+    public void testZodiacSignTungshuAnimalTiger() {
         assertEquals("Tiger", TIGER.getAnimalName());
         assertEquals("Tigern", TIGER.getAnimalNameSwe());
     }
 
     @Test
-    public void testZodiacSignCapricornusRabbit() {
+    public void testZodiacSignTungshuAnimalRabbit() {
         assertEquals("Rabbit", RABBIT.getAnimalName());
         assertEquals("Kaninen", RABBIT.getAnimalNameSwe());
     }
 
     @Test
-    public void testZodiacSignCapricornusDragon() {
+    public void testZodiacSignTungshuAnimalDragon() {
         assertEquals("Dragon", DRAGON.getAnimalName());
         assertEquals("Draken", DRAGON.getAnimalNameSwe());
     }
 
     @Test
-    public void testZodiacSignCapricornusSnake() {
+    public void testZodiacSignTungshuAnimalSnake() {
         assertEquals("Snake", SNAKE.getAnimalName());
         assertEquals("Ormen", SNAKE.getAnimalNameSwe());
     }
 
     @Test
-    public void testZodiacSignCapricornusHorse() {
+    public void testZodiacSignTungshuAnimalHorse() {
         assertEquals("Horse", HORSE.getAnimalName());
         assertEquals("Hästen", HORSE.getAnimalNameSwe());
     }
 
     @Test
-    public void testZodiacSignCapricornusGoat() {
+    public void testZodiacSignTungshuAnimalGoat() {
         assertEquals("Goat", GOAT.getAnimalName());
         assertEquals("Geten", GOAT.getAnimalNameSwe());
     }
 
     @Test
-    public void testZodiacSignCapricornusMonkey() {
+    public void testZodiacSignTungshuAnimalMonkey() {
         assertEquals("Monkey", MONKEY.getAnimalName());
         assertEquals("Apan", MONKEY.getAnimalNameSwe());
     }
 
     @Test
-    public void testZodiacSignCapricornusRooster() {
+    public void testZodiacSignTungshuAnimalRooster() {
         assertEquals("Rooster", ROOSTER.getAnimalName());
         assertEquals("Tuppen", ROOSTER.getAnimalNameSwe());
     }
 
     @Test
-    public void testZodiacSignCapricornusDog() {
+    public void testZodiacSignTungshuAnimalDog() {
         assertEquals("Dog", DOG.getAnimalName());
         assertEquals("Hunden", DOG.getAnimalNameSwe());
     }
 
     @Test
-    public void testZodiacSignCapricornusPig() {
+    public void testZodiacSignTungshuAnimalPig() {
         assertEquals("Pig", PIG.getAnimalName());
         assertEquals("Grisen", PIG.getAnimalNameSwe());
     }
 
     @Test
-    public void testZodiacSignCapricornusLogicRAT() {
+    public void testZodiacSignTungshuAnimalLogicRAT() {
         assertEquals(RAT, getTypeForYear(LocalDate.parse("2020-01-01")));
         assertEquals(RAT, getTypeForYear(LocalDate.parse("2008-01-01")));
         assertEquals(RAT, getTypeForYear(LocalDate.parse("1996-01-01")));
@@ -92,7 +92,7 @@ public class PnrTungshuAnimalTypeTest {
     }
 
     @Test
-    public void testZodiacSignCapricornusLogicOX() {
+    public void testZodiacSignTungshuAnimalLogicOX() {
         assertEquals(OX, getTypeForYear(LocalDate.parse("2021-01-01")));
         assertEquals(OX, getTypeForYear(LocalDate.parse("2009-01-01")));
         assertEquals(OX, getTypeForYear(LocalDate.parse("1997-01-01")));
@@ -100,7 +100,7 @@ public class PnrTungshuAnimalTypeTest {
     }
 
     @Test
-    public void testZodiacSignCapricornusLogicTIGER() {
+    public void testZodiacSignTungshuAnimalLogicTIGER() {
         assertEquals(TIGER, getTypeForYear(LocalDate.parse("2022-01-01")));
         assertEquals(TIGER, getTypeForYear(LocalDate.parse("2010-01-01")));
         assertEquals(TIGER, getTypeForYear(LocalDate.parse("1998-01-01")));
@@ -108,7 +108,7 @@ public class PnrTungshuAnimalTypeTest {
     }
 
     @Test
-    public void testZodiacSignCapricornusLogicRABBIT() {
+    public void testZodiacSignTungshuAnimalLogicRABBIT() {
         assertEquals(RABBIT, getTypeForYear(LocalDate.parse("2023-01-01")));
         assertEquals(RABBIT, getTypeForYear(LocalDate.parse("2011-01-01")));
         assertEquals(RABBIT, getTypeForYear(LocalDate.parse("1999-01-01")));
@@ -116,7 +116,7 @@ public class PnrTungshuAnimalTypeTest {
     }
 
     @Test
-    public void testZodiacSignCapricornusLogicDRAGON() {
+    public void testZodiacSignTungshuAnimalLogicDRAGON() {
         assertEquals(DRAGON, getTypeForYear(LocalDate.parse("2024-01-01")));
         assertEquals(DRAGON, getTypeForYear(LocalDate.parse("2012-01-01")));
         assertEquals(DRAGON, getTypeForYear(LocalDate.parse("2000-01-01")));
@@ -124,7 +124,7 @@ public class PnrTungshuAnimalTypeTest {
     }
 
     @Test
-    public void testZodiacSignCapricornusLogicSNAKE() {
+    public void testZodiacSignTungshuAnimalLogicSNAKE() {
         assertEquals(SNAKE, getTypeForYear(LocalDate.parse("2025-01-01")));
         assertEquals(SNAKE, getTypeForYear(LocalDate.parse("2013-01-01")));
         assertEquals(SNAKE, getTypeForYear(LocalDate.parse("2001-01-01")));
@@ -132,7 +132,7 @@ public class PnrTungshuAnimalTypeTest {
     }
 
     @Test
-    public void testZodiacSignCapricornusLogicHORSE() {
+    public void testZodiacSignTungshuAnimalLogicHORSE() {
         assertEquals(HORSE, getTypeForYear(LocalDate.parse("2026-01-01")));
         assertEquals(HORSE, getTypeForYear(LocalDate.parse("2014-01-01")));
         assertEquals(HORSE, getTypeForYear(LocalDate.parse("2002-01-01")));
@@ -140,7 +140,7 @@ public class PnrTungshuAnimalTypeTest {
     }
 
     @Test
-    public void testZodiacSignCapricornusLogicGOAT() {
+    public void testZodiacSignTungshuAnimalLogicGOAT() {
         assertEquals(GOAT, getTypeForYear(LocalDate.parse("2027-01-01")));
         assertEquals(GOAT, getTypeForYear(LocalDate.parse("2015-01-01")));
         assertEquals(GOAT, getTypeForYear(LocalDate.parse("2003-01-01")));
@@ -148,7 +148,7 @@ public class PnrTungshuAnimalTypeTest {
     }
 
     @Test
-    public void testZodiacSignCapricornusLogicMONKEY() {
+    public void testZodiacSignTungshuAnimalLogicMONKEY() {
         assertEquals(MONKEY, getTypeForYear(LocalDate.parse("2028-01-01")));
         assertEquals(MONKEY, getTypeForYear(LocalDate.parse("2016-01-01")));
         assertEquals(MONKEY, getTypeForYear(LocalDate.parse("2004-01-01")));
@@ -156,7 +156,7 @@ public class PnrTungshuAnimalTypeTest {
     }
 
     @Test
-    public void testZodiacSignCapricornusLogicROOSTER() {
+    public void testZodiacSignTungshuAnimalLogicROOSTER() {
         assertEquals(ROOSTER, getTypeForYear(LocalDate.parse("2029-01-01")));
         assertEquals(ROOSTER, getTypeForYear(LocalDate.parse("2017-01-01")));
         assertEquals(ROOSTER, getTypeForYear(LocalDate.parse("2005-01-01")));
@@ -165,7 +165,7 @@ public class PnrTungshuAnimalTypeTest {
     }
 
     @Test
-    public void testZodiacSignCapricornusLogicDOG() {
+    public void testZodiacSignTungshuAnimalLogicDOG() {
         assertEquals(DOG, getTypeForYear(LocalDate.parse("2030-01-01")));
         assertEquals(DOG, getTypeForYear(LocalDate.parse("2018-01-01")));
         assertEquals(DOG, getTypeForYear(LocalDate.parse("2006-01-01")));
@@ -174,7 +174,7 @@ public class PnrTungshuAnimalTypeTest {
     }
 
     @Test
-    public void testZodiacSignCapricornusLogicPIG() {
+    public void testZodiacSignTungshuAnimalLogicPIG() {
         assertEquals(PIG, getTypeForYear(LocalDate.parse("2031-01-01")));
         assertEquals(PIG, getTypeForYear(LocalDate.parse("2019-01-01")));
         assertEquals(PIG, getTypeForYear(LocalDate.parse("2007-01-01")));
@@ -183,7 +183,7 @@ public class PnrTungshuAnimalTypeTest {
     }
 
     @Test
-    public void testZodiacSignCapricornusLogicExtremeDates() {
+    public void testZodiacSignTungshuAnimalLogicExtremeDates() {
         assertEquals(HORSE, getTypeForYear(LocalDate.parse("1066-01-01"))); // Hastings
         assertEquals(HORSE, getTypeForYear(LocalDate.parse("1666-01-01"))); // Mirabilis
         assertEquals(SNAKE, getTypeForYear(LocalDate.parse("2001-01-01"))); // Twin Tower
@@ -193,12 +193,12 @@ public class PnrTungshuAnimalTypeTest {
 
     // Negative tests
     @Test(expected = NullPointerException.class)
-    public void testZodiacSignCapricornusLogic_NOK() {
+    public void testZodiacSignTungshuAnimalLogic_NOK() {
         getTypeForYear(null);
     }
 
     @Test
-    public void testZodiacSignCapricornusLogicRAT_NOK() {
+    public void testZodiacSignTungshuAnimalLogicRAT_NOK() {
         assertNotEquals(RAT, getTypeForYear(LocalDate.parse("2021-01-01")));
         assertNotEquals(RAT, getTypeForYear(LocalDate.parse("2009-01-01")));
         assertNotEquals(RAT, getTypeForYear(LocalDate.parse("1997-01-01")));
