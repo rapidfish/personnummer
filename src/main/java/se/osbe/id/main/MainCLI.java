@@ -78,10 +78,9 @@ public class MainCLI {
                 result.setGender(pnr.getGender());
                 result.setZodiacSign(PersonnummerHelper.getZodiacSign(pnr).get().getLatinName());
                 result.setZodiacSignSwe(PersonnummerHelper.getZodiacSign(pnr).get().getSwedishName());
-                result.setChineseZodiacAnimal("The year of the " + PersonnummerHelper.getTypeForYear(pnr.getBirthDate().toDateTimeAtCurrentTime()).getAnimalName());
-                result.setChineseZodiacAnimalSwe(PersonnummerHelper.getTypeForYear(pnr.getBirthDate().toDateTimeAtCurrentTime()).getAnimalNameSwe() + "s år");
+                result.setChineseZodiacAnimal("The year of the " + PersonnummerHelper.getTypeForYear(pnr.getBirthDate()).getAnimalName());
+                result.setChineseZodiacAnimalSwe(PersonnummerHelper.getTypeForYear(pnr.getBirthDate()).getAnimalNameSwe() + "s år");
                 result.setIdType(pnr.getIDType());
-
                 output = (line.hasOption("j")) ?
                         new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString((PnrInfoVO) result) :
                         result.toString();

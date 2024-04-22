@@ -1,11 +1,11 @@
 package se.osbe.id;
 
-import org.joda.time.LocalDate;
 import org.junit.Assert;
 import org.junit.Test;
 import se.osbe.id.exception.PersonnummerException;
 import se.osbe.id.helper.PersonnummerBuilder;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,14 +27,14 @@ public class PnrBuilderTest {
     @Test
     public void testSsnBuilder100WithAgeZeroTo101() {
         List<Personnummer> ssnList = IntStream.rangeClosed(0, 100).mapToObj(a -> {
-            try {
-                return new PersonnummerBuilder().setAge(a).setUpperLimitForGenerate(100).build();
-            } catch (PersonnummerException e) {
-                e.printStackTrace();
-                Assert.fail();
-            }
-            return new ArrayList<Personnummer>();
-        })
+                    try {
+                        return new PersonnummerBuilder().setAge(a).setUpperLimitForGenerate(100).build();
+                    } catch (PersonnummerException e) {
+                        e.printStackTrace();
+                        Assert.fail();
+                    }
+                    return new ArrayList<Personnummer>();
+                })
                 .flatMap(p -> p.stream())
                 .collect(Collectors.toList());
         Assert.assertNotNull(ssnList);

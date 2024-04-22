@@ -1,18 +1,14 @@
 package se.osbe.id.helper;
 
 import org.apache.commons.lang3.StringUtils;
-import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
-import org.joda.time.format.DateTimeFormat;
+import se.osbe.id.Personnummer;
 import se.osbe.id.enums.LocationType;
 import se.osbe.id.enums.PnrTungshuAnimalType;
 import se.osbe.id.enums.PnrZodiacType;
-import se.osbe.id.Personnummer;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.time.LocalDate;
+import java.time.format.TextStyle;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -36,8 +32,8 @@ public class PersonnummerHelper {
             int startDay = Integer.parseInt(sign.getStartDate().split("-")[1]);
             int endMonth = Integer.parseInt(sign.getEndDate().split("-")[0]);
             int endDay = Integer.parseInt(sign.getEndDate().split("-")[1]);
-            LocalDate start = new LocalDate(birthDate.getYear(), startMonth, startDay);
-            LocalDate end = new LocalDate(birthDate.getYear(), endMonth, endDay);
+            LocalDate start = LocalDate.of(birthDate.getYear(), startMonth, startDay);
+            LocalDate end = LocalDate.of(birthDate.getYear(), endMonth, endDay);
             if ((birthDate.isAfter(start) || birthDate.equals(start))
                     && (birthDate.isBefore(end) || birthDate.isEqual(end))) {
                 return Optional.of(sign);
@@ -46,7 +42,7 @@ public class PersonnummerHelper {
         return Optional.empty();
     }
 
-    public static PnrTungshuAnimalType getTypeForYear(DateTime date) {
+    public static PnrTungshuAnimalType getTypeForYear(LocalDate date) {
         requireNonNull(date);
         final int DIVIDER = 12;
         final int YEAR_OF_THE_RAT = 2020; // the year of the rat is the first animal of a twelve-year cycle in the Tungshu Zodiac
@@ -97,7 +93,7 @@ public class PersonnummerHelper {
      * or null if input was null.
      */
     public static Optional<LocationType> getPlaceOfBirth(Personnummer pnr) {
-        if (pnr == null || pnr.getBirthDate().isAfter(new LocalDate(1990, 1, 1))) {
+        if (pnr == null || pnr.getBirthDate().isAfter(LocalDate.of(1990, 1, 1))) {
             return Optional.empty();
         }
         int loc = Integer.parseInt(pnr.getLastFour().substring(0, 2));
@@ -136,14 +132,14 @@ public class PersonnummerHelper {
             return Collections.emptyList();
         }
         return IntStream.rangeClosed(0, 999).mapToObj(triplet -> {
-            return Personnummer.parse(
-                    new StringBuilder()
-                            .append(date.toString().replaceAll("\\D", ""))
-                            .append(triplet < 100 ? "0" : "")
-                            .append(triplet < 10 ? "0" : "")
-                            .append(triplet).toString(), true)
-                    .get();
-        })
+                    return Personnummer.parse(
+                                    new StringBuilder()
+                                            .append(date.toString().replaceAll("\\D", ""))
+                                            .append(triplet < 100 ? "0" : "")
+                                            .append(triplet < 10 ? "0" : "")
+                                            .append(triplet).toString(), true)
+                            .get();
+                })
                 .collect(Collectors.toList());
     }
 
@@ -159,11 +155,10 @@ public class PersonnummerHelper {
             String yearStr = matcher.group("year");
             String monthStr = matcher.group("month");
             String dayStr = matcher.group("day");
-
             LocalDate now = LocalDate.now();
-            int thisEra = now.getCenturyOfEra() * CENTURY_MULTIPLIER;
-            int thisYear = now.getYearOfCentury();
-            int thisMonth = now.getMonthOfYear();
+            int thisEra = 0; // now.getCenturyOfEra() * CENTURY_MULTIPLIER;
+            int thisYear = 0; // now.getYearOfCentury();
+            int thisMonth = 0; // now.getMonthOfYear();
             int thisDay = now.getDayOfMonth();
 
             boolean isEraPresent = StringUtils.isNotBlank(eraStr);
@@ -187,7 +182,7 @@ public class PersonnummerHelper {
                     extractedEra = thisEra;
                 }
             }
-            return Optional.of(new LocalDate((extractedEra + extractedYear), extractedMonth, extractedDay));
+            return Optional.of(LocalDate.of((extractedEra + extractedYear), extractedMonth, extractedDay));
         }
         return Optional.empty();
     }
@@ -240,6 +235,6 @@ public class PersonnummerHelper {
     }
 
     public String getNameOfWeekdayForDate(LocalDate date) {
-        return DateTimeFormat.forPattern("EEEE").print(date);
+        return date.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.ENGLISH);
     }
 }

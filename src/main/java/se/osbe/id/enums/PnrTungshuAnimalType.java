@@ -1,10 +1,8 @@
 package se.osbe.id.enums;
 
-
-import org.joda.time.DateTime;
 import se.osbe.id.helper.PersonnummerHelper;
 
-import static java.util.Objects.requireNonNull;
+import java.time.LocalDate;
 
 /**
  * An attempt to model the Tungshu Zodiac lists of animals associated with certain years.
@@ -49,7 +47,7 @@ public enum PnrTungshuAnimalType {
         return this.name();
     }
 
-    public static PnrTungshuAnimalType getTypeForYear(DateTime date) {
+    public static PnrTungshuAnimalType getTypeForYear(LocalDate date) {
         return PersonnummerHelper.getTypeForYear(date);
     }
 }

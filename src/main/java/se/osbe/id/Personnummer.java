@@ -1,13 +1,11 @@
 package se.osbe.id;
 
-import org.joda.time.Days;
-import org.joda.time.IllegalFieldValueException;
-import org.joda.time.LocalDate;
-import org.joda.time.Years;
 import se.osbe.id.enums.GenderType;
 import se.osbe.id.enums.IDType;
 import se.osbe.id.helper.ChecksumHelper;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.regex.Matcher;
@@ -15,15 +13,25 @@ import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
 import static java.lang.Integer.parseInt;
+import static java.time.LocalDate.now;
+import static java.time.LocalDate.of;
+import static java.time.temporal.ChronoField.YEAR_OF_ERA;
+import static java.time.temporal.ChronoUnit.YEARS;
+import static java.util.Objects.nonNull;
+import static java.util.Optional.empty;
 import static java.util.Optional.ofNullable;
 
 public class Personnummer implements Comparable<Personnummer>, Identifiable {
 
+    public static final int PNR_MINIMUM_LIMIT_YEAR = 1875;
     private static final String PNR_PATTERN = "^(?<era>\\d{2})?(?<year>\\d{2})(?<month>0[1-9]|1[012])(?<day>0[1-9]|[12][0-9]|3[01]|[6789]\\d)(?<sign>[\\-+])?(?<last3>\\d{3})(?<checksum>\\d{1})?$";
     private static final Pattern PRE_COMPILED_PNR_PATTERN = Pattern.compile(PNR_PATTERN);
 
     private static final int LAST4DIGITS = 4;
     private static final int MIN_CENTURY = 18;
+    private static final int CENTURY = 100;
+    private static final int DECADE = 10;
+    private static final int ONE_YEAR = 1;
     private static final int SAMORDNINGSNUMMER_OFFSET_FOR_DAY_IN_DATE = 60;
 
     private LocalDate _pnrDate;
@@ -70,37 +78,42 @@ public class Personnummer implements Comparable<Personnummer>, Identifiable {
 
     private static LocalDate resolveBirthDate(String era, int yearInt, int monthInt, int dayInt, boolean plus) {
         int yearCandidate;
-        if (era != null) {
-            yearCandidate = ((parseInt(era) * 100) + yearInt);
-            return new LocalDate(yearCandidate, monthInt, dayInt);
+        if (nonNull(era)) {
+            yearCandidate = ((parseInt(era) * CENTURY) + yearInt); // Concat in the era and century to the year part
+            return of(yearCandidate, monthInt, dayInt);
         }
-        LocalDate now = LocalDate.now();
-        int newEra = now.getCenturyOfEra();
-        newEra = (plus) ? (--newEra) : newEra;
-        yearCandidate = ((newEra * 100) + yearInt);
-        LocalDate birthDate = new LocalDate(yearCandidate, monthInt, dayInt);
-        if (birthDate.isAfter(now)) {
-            yearCandidate = (((now.getCenturyOfEra() - 1) * 100) + yearInt);
-            birthDate = new LocalDate(yearCandidate, monthInt, dayInt);
-            if (plus) {
-                birthDate = birthDate.minusYears(100);
-            }
+        LocalDate now = now();
+        int eraNow = now.get(YEAR_OF_ERA) / CENTURY;
+        eraNow = (plus) ? (--eraNow) : eraNow; // adjust, if a plus sign is present
+        yearCandidate = ((eraNow * CENTURY) + yearInt);
+        LocalDate birthDate = of(yearCandidate, monthInt, dayInt);
+        yearCandidate = birthDate.isAfter(now) ? (((eraNow - ONE_YEAR) * CENTURY) + yearInt) : yearCandidate;
+        birthDate = of(yearCandidate, monthInt, dayInt);
+        if (plus) {
+            birthDate = birthDate.minusYears(CENTURY);
         }
         return birthDate;
     }
 
     private String toString(boolean useEra, boolean useSign) {
-        int yearOfCentury = _pnrDate.getYearOfCentury();
-        int monthOfYear = _pnrDate.getMonthOfYear();
+        int era = _pnrDate.get(YEAR_OF_ERA) / CENTURY;
+        int yearOfCentury = _pnrDate.get(YEAR_OF_ERA) - (era * CENTURY);
+        int monthOfYear = _pnrDate.getMonthValue();
         int dayOfMonth = _isSamordningsnummer ?
                 (_pnrDate.getDayOfMonth() + SAMORDNINGSNUMMER_OFFSET_FOR_DAY_IN_DATE)
                 : _pnrDate.getDayOfMonth();
         StringBuilder sb = new StringBuilder();
-        sb.append((!useEra && yearOfCentury < 10) ? "0" : "");
-        sb.append(useEra ? _pnrDate.getYear() : yearOfCentury);
-        sb.append(monthOfYear < 10 ? "0" : "");
+        if(useEra) {
+            sb.append(_pnrDate.getYear());
+        } else {
+            if(yearOfCentury < DECADE) {
+                sb.append("0"); // Add leading zero if needed!
+            }
+            sb.append(yearOfCentury);
+        }
+        sb.append(monthOfYear < DECADE ? "0" : "");
         sb.append(monthOfYear);
-        sb.append(dayOfMonth < 10 ? "0" : "");
+        sb.append(dayOfMonth < DECADE ? "0" : "");
         sb.append(dayOfMonth);
         if (useSign) {
             sb.append(useEra ? "-" : (this.isHundredYears() ? "+" : "-"));
@@ -136,9 +149,8 @@ public class Personnummer implements Comparable<Personnummer>, Identifiable {
      */
     public static Optional<Personnummer> parse(String pnrCandidate, boolean isForgiving) {
         if (pnrCandidate == null || pnrCandidate.trim().length() < 9) {
-            return Optional.empty();
+            return empty();
         }
-
         final Matcher matcher = PRE_COMPILED_PNR_PATTERN.matcher(pnrCandidate.trim());
         if (matcher.find()) {
             String era = matcher.group("era");
@@ -150,16 +162,16 @@ public class Personnummer implements Comparable<Personnummer>, Identifiable {
             String checksum = matcher.group("checksum");
             String calculatedChecksum = calculateChecksum(year, month, day, last3);
             boolean plus = "+".equals(sign);
-            if (era != null && plus) {
-                return Optional.empty(); // Personnummer cannot have both era and plus sign
+            if (nonNull(era) && plus) {
+                return empty(); // Personnummer cannot have both era and plus sign
             }
             if (isForgiving) {
                 checksum = calculatedChecksum;
             } else if (checksum == null || !checksum.equals(calculatedChecksum)) {
-                return Optional.empty();
+                return empty(); // Checksum error -> empty
             }
             if (!isForgiving && "0000".equals(last3 + checksum)) {
-                return Optional.empty();
+                return empty(); // Personnummer cannot have 0000 as last four digits -> empty
             }
             int yearInt = parseInt(year);
             int monthInt = parseInt(month);
@@ -169,15 +181,18 @@ public class Personnummer implements Comparable<Personnummer>, Identifiable {
             LocalDate pnrDate = null;
             try {
                 pnrDate = resolveBirthDate(era, yearInt, monthInt, dayInt, plus);
-            } catch (IllegalFieldValueException e) {
-                return Optional.empty(); // Occurs when trying to parse February 29 and its no leap year!
+            } catch (Exception e) {
+                return empty(); // Occurs when trying to parse impossible such as February 29 when its no leap year!
             }
-            if (!isForgiving && (pnrDate.centuryOfEra().get() < MIN_CENTURY || pnrDate.isAfter(LocalDate.now()))) {
-                return Optional.empty(); // Personnummer is in future, not valid
+            if(!isForgiving && !plus && pnrDate.isBefore(of(PNR_MINIMUM_LIMIT_YEAR,1,1))){
+                return empty(); // Date is too old, should not be used for any Personnummer!
+            }
+            if (!isForgiving && (now().get(YEAR_OF_ERA) / CENTURY < MIN_CENTURY || pnrDate.isAfter(now()))) {
+                return empty(); // Personnummer is in future, not valid
             }
             return Optional.of(new Personnummer(pnrDate, (last3 + checksum), isForgiving, isSam));
         }
-        return Optional.empty();
+        return empty();
     }
 
     /**
@@ -190,7 +205,7 @@ public class Personnummer implements Comparable<Personnummer>, Identifiable {
      * more.
      */
     public boolean isHundredYears() {
-        return _pnrDate.isBefore(LocalDate.now().minus(Years.years(100)));
+        return _pnrDate.isBefore(now().minus(CENTURY, YEARS));
     }
 
     public boolean isForgiving() {
@@ -205,7 +220,8 @@ public class Personnummer implements Comparable<Personnummer>, Identifiable {
      * @return age age now (birth date compared to todays date)
      */
     public int getAgeNow() {
-        return Years.yearsBetween(_pnrDate, LocalDate.now()).getYears();
+        // return Years.yearsBetween(_pnrDate, now()).getYears();
+        return (int) (ChronoUnit.YEARS.between(_pnrDate, now()));
     }
 
     /**
@@ -243,7 +259,7 @@ public class Personnummer implements Comparable<Personnummer>, Identifiable {
      * @return number of days from birth until today as an integer
      */
     public int getDaysSinceBirth() {
-        return Days.daysBetween(_pnrDate, LocalDate.now()).getDays();
+        return (int) (ChronoUnit.DAYS.between(_pnrDate, now()));
     }
 
     /**
