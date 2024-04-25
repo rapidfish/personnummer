@@ -4,7 +4,7 @@
 
 The goal for this project is to provide an api for programmers, or use it directly as a command from your terminal (as a runnable jar).
 
-## Use it as a dependecy in your Java project
+## Complie it and use the dependecy within your own Java project
 Just build it with Maven and use it as a dependecy in your own project(s)
 - mvn clean install
 - go to your project pom.xml and add:
