@@ -242,9 +242,9 @@ java -jar ./target/personnummer-0.5.0-jar-with-dependencies.jar -h
 
 ## More facts on Swedish Personnummer
 
-* Checksum algorithm is based upon the Luhn-algorithm a.k.a modulus-10-algorithm.
+* Checksum algorithm is based upon the Luhn-algorithm a.k.a modulus-10-algorithm [https://sv.wikipedia.org/wiki/Luhn-algoritmen].
 
-* This API is based on documents publicly available at the Swedish Tax Agency: [http://www.skatteverket.se].
+* This API is based upon documents publicly available from the official Swedish Tax Agency: [http://www.skatteverket.se].
 
 * This project was originally hosted on bitbucket 2015-09-27, but has moved to GitHub since 2020-02-19 *
 
