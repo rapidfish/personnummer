@@ -2,7 +2,8 @@
 
 ## Java API that handles everything Swedish Personnummer / Samordningsnummer ( ...and soon Organisationsnummer )
 
-The goal for this project is to provide an accurate and comprehensive Java API for programmers, or as a command in your terminal (runnable jar).
+The goal for this project is to provide an accurate and comprehensive Java API to handle swedish Personnummer-, Samordningsnummer- and hopfully also coverage for swedish Organisationsnummer. Before I started this project I did search for other solutions to handle this matter, but did not find anything to my own satisfaction as a programmer.
+So I felt there was a small 'void' to fill here!
 
 ### Complie it and use the dependecy within your own Java project
 Just build it with Maven and use it as a dependecy in your own project(s)
@@ -87,9 +88,15 @@ Console output example:
   - The forgiving flag also lets you handle Personnumer with a birthdate set in the future (thus 'unborn' persons). Making its category still parsable.
 
 
-## Java usage examples ...
+## Usage examples when coding in Java ...
 
-Examples below show how to parse strings into Personnummer, using four equivalent versions of the same Personnummer. It uses different leghts for year, with and without the use of a delimiter (-).
+Examples below show how to parse a Personnummer string.
+Now an input string with a valid swedish personnummer can be written in a couple of different variations.
+All of them are supported. Four different but equivalent input versions have the same outcome when using the Personnummer class. 
+Input strings can vary in leghts as the year can be written on a short- or long form, and combined with- or without the use of a delimiter (-), between the last four digits.
+No worries, all different variations of the input string for a personnummer is covered. When using just two digits for years it automaticalle detects wether a person is born before- or after the millenium (2000). If your're not getting the checksum right, we can calculat it for you, by setting the special option (the forgiving flag) to handle it when necessary.
+
+
 
 ```
 Optional<Personnummer> pnrOpt = Personnummer.parse("4604300014");
