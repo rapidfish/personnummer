@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>se.osbe.id</groupId>
-    <artifactId>Personnummer2</artifactId>
+    <artifactId>personnummer</artifactId>
     <name>Personnummer</name>
     <version>2.0-SNAPSHOT</version>
     <packaging>jar</packaging>
