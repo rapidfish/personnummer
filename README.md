@@ -32,6 +32,7 @@ Now run the jar-file as a standalone command from terminal and explore what you 
 - java -jar target/Personnummer2-2.0-SNAPSHOT-jar-with-dependencies.jar -xjf 121212-1212
 NOTE: this perticular personnummer (121212-1212, Tolvan Tolvansson) is used as example, it is correct but is not held by any real person (It is used just for demonstration purpose).
 
+Console output example:
 
 ```
 {
