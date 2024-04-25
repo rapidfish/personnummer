@@ -4,10 +4,27 @@
 
 The goal for this project is to provide an api for programmers, or use it directly as a command from your terminal (as a runnable jar).
 
-Just build it using Maven (mvn clean install), then use it as a dependecy in you own projects, from your local repo, or directly
-from your terminal:
+## Use it as a dependecy in your Java project
+Just build it with Maven and use it as a dependecy in your own project(s)
+- mvn clean install
+- go to your project pom.xml and add:
 
-## Build and launch as command from terminal (bash)
+```
+<dependencies>
+   ...
+   <dependency>
+    <groupId>se.osbe.id</groupId>
+    <artifactId>personnummer</artifactId>
+    <version>2.0-SNAPSHOT</version>
+   </dependency>
+   ...
+</dependencies>
+
+```
+
+
+
+## or build it as a runnable jar command, and use it from terminal (bash)
 - git clone https://github.com/rapidfish/personnummer.git
 - mvn clean package
 - chmod +x target/Personnummer2-2.0-SNAPSHOT-jar-with-dependencies.jar
@@ -144,22 +161,22 @@ The API also supports the use of '+' sign, to indicate +100 years of age when Pe
 <dependencies>
    ...
    <dependency>
-      <groupId>se.osbe.id</groupId>
-      <artifactId>personnummer</artifactId>
-      <version>0.5.0</version>
+    <groupId>se.osbe.id</groupId>
+    <artifactId>personnummer</artifactId>
+    <version>2.0-SNAPSHOT</version>
    </dependency>
    ...
 </dependencies>
 
 ```
 
-**Version 0.4.0**
+**Version 2.0-SNAPSHOT**
 
-Current stable branch is (not ready)
+Current stable branch is master
 
 **Configuration**
 
-Import the project as an existing maven projekt into your IDE, compile with Maven (men clean install), Junit tests are run automatically and should all work otherwise there could be a problem with the project setup. Check compiler settings for Java (JDK).
+Import the project as an existing maven projekt into your IDE, compile with Maven (mvn clean install), Junit tests are run automatically and should all work otherwise there could be a problem with the project setup. Check compiler settings for Java (JDK).
 
 **Dependencies**
 
