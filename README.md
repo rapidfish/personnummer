@@ -251,6 +251,6 @@ java -jar ./target/personnummer-0.5.0-jar-with-dependencies.jar -h
 * This project is licensed under the terms of the [GPL v3](https://www.gnu.org/licenses/gpl-3.0.txt *
 
 
-## Who do I talk to if I have questions?**
+## Who do I talk to if I have any questions about this project?
 
 Oskar Bergström (repo owner).
