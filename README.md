@@ -13,6 +13,7 @@ mvn clean package
 chmod +x target/Personnummer2-2.0-SNAPSHOT-jar-with-dependencies.jar
 java -jar target/Personnummer2-2.0-SNAPSHOT-jar-with-dependencies.jar -xjf 121212-1212         <-- 121212-1212 is a valid example of a Swedish personnummer
 
+```
 {
   "personnummer10" : "1212121212",
   "personnummer11" : "121212-1212",
@@ -31,7 +32,7 @@ java -jar target/Personnummer2-2.0-SNAPSHOT-jar-with-dependencies.jar -xjf 12121
   "chineseZodiacAnimalSwe" : "Drakens år",
   "idType" : "PERSONNUMMER"
 }
-
+```
 
 ## Features
 
