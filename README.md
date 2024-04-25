@@ -2,7 +2,7 @@
 
 ## Java API that handles everything Swedish Personnummer / Samordningsnummer ( ...and soon Organisationsnummer )
 
-The goal for this project is to provide an api for programmers, or use it directly as a command from your terminal (as a runnable jar).
+The goal for this project is to provide an accurate and comprehensive Java API for programmers, or as a command in your terminal (runnable jar).
 
 ## Complie it and use the dependecy within your own Java project
 Just build it with Maven and use it as a dependecy in your own project(s)
