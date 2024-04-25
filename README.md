@@ -1,7 +1,39 @@
-# Personnummer API
+# Personnummer API (Beta)
 
-## Java API to handle Swedish Personnummer
+## Java API that handles everything Swedish Personnummer / Samordningsnummer ( ...and soon Organisationsnummer )
 
+The goal for this project is to provide an api for programmers, or use it directly as a command from your terminal (as a runnable jar).
+
+Just build it using Maven (mvn clean install), then use it as a dependecy in you own projects, from your local repo, or directly
+from your terminal:
+
+From terminal (bash) ...
+git clone https://github.com/rapidfish/personnummer.git
+mvn clean package
+chmod +x target/Personnummer2-2.0-SNAPSHOT-jar-with-dependencies.jar
+java -jar target/Personnummer2-2.0-SNAPSHOT-jar-with-dependencies.jar -xjf 121212-1212         <-- 121212-1212 is a valid example of a Swedish personnummer
+
+{
+  "personnummer10" : "1212121212",
+  "personnummer11" : "121212-1212",
+  "personnummer12" : "201212121212",
+  "personnummer13" : "20121212-1212",
+  "lastFourDigits" : "1212",
+  "isForgiving" : true,
+  "correctChecksum" : 2,
+  "birthDate" : "2012-12-12",
+  "age" : 11,
+  "daysSinceBirth" : 4152,
+  "gender" : "MALE",
+  "zodiacSign" : "Sagittarius",
+  "zodiacSignSwe" : "Skytten",
+  "chineseZodiacAnimal" : "The year of the Dragon",
+  "chineseZodiacAnimalSwe" : "Drakens år",
+  "idType" : "PERSONNUMMER"
+}
+
+
+## Features
 
 * Automatic validation of checksum, directly when parsing, of strings with Personnummer
 
