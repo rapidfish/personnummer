@@ -7,11 +7,11 @@ The goal for this project is to provide an api for programmers, or use it direct
 Just build it using Maven (mvn clean install), then use it as a dependecy in you own projects, from your local repo, or directly
 from your terminal:
 
-From terminal (bash) ...
-git clone https://github.com/rapidfish/personnummer.git
-mvn clean package
-chmod +x target/Personnummer2-2.0-SNAPSHOT-jar-with-dependencies.jar
-java -jar target/Personnummer2-2.0-SNAPSHOT-jar-with-dependencies.jar -xjf 121212-1212         <-- 121212-1212 is a valid example of a Swedish personnummer
+## Build and launch as command from terminal (bash)
+- git clone https://github.com/rapidfish/personnummer.git
+- mvn clean package
+- chmod +x target/Personnummer2-2.0-SNAPSHOT-jar-with-dependencies.jar
+- java -jar target/Personnummer2-2.0-SNAPSHOT-jar-with-dependencies.jar -xjf 121212-1212         <-- 121212-1212 is a valid example of a Swedish personnummer
 
 ```
 {
