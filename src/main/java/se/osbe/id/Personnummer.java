@@ -118,7 +118,10 @@ public class Personnummer implements Comparable<Personnummer>, Identifiable {
         if (useSign) {
             sb.append(useEra ? "-" : (this.isHundredYears() ? "+" : "-"));
         }
-        sb.append(_lastDigits[0]).append(_lastDigits[1]).append(_lastDigits[2]).append(_lastDigits[3]);
+        sb.append(_lastDigits[0])
+                .append(_lastDigits[1])
+                .append(_lastDigits[2])
+                .append(_lastDigits[3]);
         return sb.toString();
     }
 
@@ -208,10 +211,14 @@ public class Personnummer implements Comparable<Personnummer>, Identifiable {
         return _pnrDate.isBefore(now().minus(CENTURY, YEARS));
     }
 
+    /**
+     * Indicates if this Personnummer was created using the forgiving flag active.
+     * @return
+     */
     public boolean isForgiving() {
         return _isForgiving;
     }
-
+    @Override
     public boolean isSamordningsnummer() {
         return _isSamordningsnummer;
     }
@@ -253,7 +260,7 @@ public class Personnummer implements Comparable<Personnummer>, Identifiable {
      *
      * @return checksum digit (last digit) of the Personnummer.
      */
-    public int getChecksum() {
+    public Integer getChecksum() {
         return _lastDigits[3];
     }
 

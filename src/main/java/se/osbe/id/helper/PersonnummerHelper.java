@@ -14,12 +14,21 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static java.lang.Integer.parseInt;
+import static java.lang.String.valueOf;
 import static java.util.Objects.requireNonNull;
+import static java.util.Optional.empty;
+import static java.util.Optional.of;
 import static se.osbe.id.enums.PnrTungshuAnimalType.*;
 
 public class PersonnummerHelper {
 
-    private static final int CENTURY_MULTIPLIER = 100;
+    private static final int CENTURY = 100;
+    private static final int DECADE = 10;
+    private static final int SAM_OFFSET_LOW = 4;
+    private static final int SAM_OFFSET_HI = 5;
+    private static final int SAM_OFFSET_FOUR_LAST_DIGITS = 6;
+    private static final int SAM_ADD_TERM = 6;
 
     public static Optional<PnrZodiacType> getZodiacSign(Personnummer pnr) {
         return getZodiacSign(pnr.getBirthDate());
@@ -36,10 +45,10 @@ public class PersonnummerHelper {
             LocalDate end = LocalDate.of(birthDate.getYear(), endMonth, endDay);
             if ((birthDate.isAfter(start) || birthDate.equals(start))
                     && (birthDate.isBefore(end) || birthDate.isEqual(end))) {
-                return Optional.of(sign);
+                return of(sign);
             }
         }
-        return Optional.empty();
+        return empty();
     }
 
     public static PnrTungshuAnimalType getTypeForYear(LocalDate date) {
@@ -94,15 +103,15 @@ public class PersonnummerHelper {
      */
     public static Optional<LocationType> getPlaceOfBirth(Personnummer pnr) {
         if (pnr == null || pnr.getBirthDate().isAfter(LocalDate.of(1990, 1, 1))) {
-            return Optional.empty();
+            return empty();
         }
         int loc = Integer.parseInt(pnr.getLastFour().substring(0, 2));
         for (LocationType location : LocationType.values()) {
             if (loc >= location.getRangeLow() && loc <= location.getRangeHigh()) {
-                return Optional.of(location);
+                return of(location);
             }
         }
-        return Optional.empty();
+        return empty();
     }
 
     /**
@@ -135,8 +144,8 @@ public class PersonnummerHelper {
                     return Personnummer.parse(
                                     new StringBuilder()
                                             .append(date.toString().replaceAll("\\D", ""))
-                                            .append(triplet < 100 ? "0" : "")
-                                            .append(triplet < 10 ? "0" : "")
+                                            .append(triplet < CENTURY ? "0" : "")
+                                            .append(triplet < DECADE ? "0" : "")
                                             .append(triplet).toString(), true)
                             .get();
                 })
@@ -145,7 +154,7 @@ public class PersonnummerHelper {
 
     public static Optional<LocalDate> parseToDate(String date) {
         if (StringUtils.isBlank(date)) {
-            return Optional.empty();
+            return empty();
         }
         String dateStr = date.trim().replaceAll("\\D", "");
         final Pattern pattern = Pattern.compile("^(?<era>\\d{2})?(?<year>\\d{2})(?<month>\\d{2})(?<day>\\d{2})$");
@@ -162,19 +171,19 @@ public class PersonnummerHelper {
             int thisDay = now.getDayOfMonth();
 
             boolean isEraPresent = StringUtils.isNotBlank(eraStr);
-            int extractedEra = isEraPresent ? Integer.parseInt(eraStr) * CENTURY_MULTIPLIER : -1;
+            int extractedEra = isEraPresent ? Integer.parseInt(eraStr) * CENTURY : -1;
             int extractedYear = Integer.parseInt(yearStr);
             int extractedMonth = Integer.parseInt(monthStr);
             int extractedDay = Integer.parseInt(dayStr);
 
             if (!isEraPresent) {
                 if (extractedYear > thisYear) {
-                    extractedEra = thisEra - CENTURY_MULTIPLIER;
+                    extractedEra = thisEra - CENTURY;
                 } else if (extractedYear == thisYear) {
                     if (extractedMonth > thisMonth) {
-                        extractedEra = thisEra - CENTURY_MULTIPLIER;
+                        extractedEra = thisEra - CENTURY;
                     } else if (extractedMonth == thisMonth && extractedDay > thisDay) {
-                        extractedEra = thisEra - CENTURY_MULTIPLIER;
+                        extractedEra = thisEra - CENTURY;
                     } else {
                         extractedEra = thisEra;
                     }
@@ -182,9 +191,9 @@ public class PersonnummerHelper {
                     extractedEra = thisEra;
                 }
             }
-            return Optional.of(LocalDate.of((extractedEra + extractedYear), extractedMonth, extractedDay));
+            return of(LocalDate.of((extractedEra + extractedYear), extractedMonth, extractedDay));
         }
-        return Optional.empty();
+        return empty();
     }
 
     public static int dice(int low, int high) {
@@ -237,4 +246,24 @@ public class PersonnummerHelper {
     public String getNameOfWeekdayForDate(LocalDate date) {
         return date.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.ENGLISH);
     }
+
+//    public static Optional<Personnummer> convertPersonnummerToSamordningsnummer(Personnummer pnr) {
+//        requireNonNull(pnr);
+//        if (pnr.isSamordningsnummer()) {
+//            return of(pnr); // No need to convert!
+//        }
+//        String pnrCandidate = pnr.toString10();
+//        String samOffsetChar = valueOf(parseInt(pnrCandidate.substring(SAM_OFFSET_LOW, SAM_OFFSET_HI)));
+//        String threeLast = pnrCandidate.substring(SAM_OFFSET_FOUR_LAST_DIGITS, pnrCandidate.length() - 1);
+//        String samCandidate = new StringBuffer(10)
+//                .append(pnrCandidate.substring(0, SAM_OFFSET_LOW))
+//                .append(samOffsetChar)
+//                .append(pnrCandidate.substring(SAM_OFFSET_HI, SAM_OFFSET_HI + 1))
+//                .append(threeLast)
+//                .toString();
+//        return Personnummer.parse(new StringBuffer(10)
+//                .append(samCandidate)
+//                .append(ChecksumHelper.calculateChecksum(samCandidate))
+//                .toString());
+//    }
 }

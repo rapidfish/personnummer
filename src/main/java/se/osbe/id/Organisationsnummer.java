@@ -1,5 +1,6 @@
 package se.osbe.id;
 
+import org.apache.commons.lang3.StringUtils;
 import se.osbe.id.enums.IDType;
 
 import java.util.Optional;
@@ -85,12 +86,23 @@ public class Organisationsnummer implements Identifiable {
         return _isForgiving;
     }
 
+    @Override
+    public boolean isOrganisationsnummer() {
+        return isNotEmpty(_organisationsnummer);
+    }
+
     public boolean isJuridiskPerson() {
         return _isJuridiskPerson;
     }
 
     public Integer getChecksum() {
         return isNotEmpty(_organisationsnummer) ? parseInt(_organisationsnummer.substring(_organisationsnummer.length() - 1)) : null;
+    }
+
+    @Override
+    public String getLastFour() {
+        final int LAST4_INDEX = 6;
+        return isNotEmpty(_organisationsnummer) ? toString10().substring(LAST4_INDEX) : EMPTY;
     }
 
     @Override

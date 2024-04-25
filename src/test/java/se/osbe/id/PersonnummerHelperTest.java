@@ -15,7 +15,7 @@ import static java.time.temporal.ChronoField.YEAR;
 import static org.junit.Assert.*;
 import static se.osbe.id.helper.PersonnummerHelper.*;
 
-public class PnrHelperTest {
+public class PersonnummerHelperTest {
 
     @Test
     public void testZodiacSignCapricornus() {

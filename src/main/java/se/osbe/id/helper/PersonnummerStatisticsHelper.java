@@ -1,15 +1,15 @@
 package se.osbe.id.helper;
 
+import se.osbe.id.Personnummer;
 import se.osbe.id.enums.GenderType;
 import se.osbe.id.exception.PersonnummerException;
-import se.osbe.id.Personnummer;
 
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class StatisticsHelper {
+public class PersonnummerStatisticsHelper {
     private Map<String, Personnummer> _pnrMap;
     private List<Personnummer> _pnrList;
     private List<Personnummer> _pnrDuplicatesList;
@@ -20,10 +20,10 @@ public class StatisticsHelper {
     private double _avgAge;
 
     @SuppressWarnings("unused")
-    private StatisticsHelper() {
+    private PersonnummerStatisticsHelper() {
     }
 
-    public StatisticsHelper(List<Personnummer> pnrList) throws PersonnummerException {
+    public PersonnummerStatisticsHelper(List<Personnummer> pnrList) throws PersonnummerException {
         if (pnrList == null || pnrList.isEmpty()) {
             throw new PersonnummerException("pnrList is null or empty");
         }

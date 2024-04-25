@@ -37,6 +37,9 @@ public class PnrInfoVO {
     @JsonProperty("age")
     private int age;
 
+    @JsonProperty("daysSinceBirth")
+    private int daysSinceBirth;
+
     @JsonProperty("gender")
     private GenderType gender;
 

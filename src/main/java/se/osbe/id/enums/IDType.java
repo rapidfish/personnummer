@@ -3,9 +3,12 @@ package se.osbe.id.enums;
 public enum IDType {
     PERSONNUMMER("Personnummer"),
 
-    SAMORDNINGSNUMMER("Personnummer"),
+    SAMORDNINGSNUMMER("Samordningsnummer"),
 
-    ORGANISATIONSNUMMER("Organisationsnummer")
+    ORGANISATIONSNUMMER("Organisationsnummer"),
+
+    UNDEFINDED("Odefinierad");
+
     ;
 
     private final String _description;

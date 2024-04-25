@@ -13,6 +13,7 @@ import java.util.List;
 
 public class PersonnummerBuilder {
 
+    private boolean _isCreateAsSamordningsnummer;
     private int _limit;
     private LocalDate _startDate;
     private LocalDate _endDate;
@@ -83,6 +84,16 @@ public class PersonnummerBuilder {
         return this;
     }
 
+    public PersonnummerBuilder setCreateAsSamordningsnummer(boolean isSam) {
+        _isCreateAsSamordningsnummer = isSam;
+        return this;
+    }
+
+    /**
+     * Biological gender (biological gender when born)
+     * @param gender male or female
+     * @return
+     */
     public PersonnummerBuilder setGender(GenderType gender) {
         _gender = gender;
         return this;

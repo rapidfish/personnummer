@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public class MainCLI {
 
-    private final static String VERSION = "1.0";
+    private final static String VERSION = "2.0";
 
     MainCLI(String[] args) throws JsonProcessingException {
         String output = "n/a";
@@ -75,6 +75,7 @@ public class MainCLI {
                 result.setCorrectChecksum(pnr.getChecksum());
                 result.setBirthDate(pnr.getBirthDate().toString());
                 result.setAge(pnr.getAgeNow());
+                result.setDaysSinceBirth(pnr.getDaysSinceBirth());
                 result.setGender(pnr.getGender());
                 result.setZodiacSign(PersonnummerHelper.getZodiacSign(pnr).get().getLatinName());
                 result.setZodiacSignSwe(PersonnummerHelper.getZodiacSign(pnr).get().getSwedishName());
