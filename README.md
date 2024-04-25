@@ -91,7 +91,7 @@ All according to the ancient Chinese Zodiac calendar (Tungshu). (more to come la
 - Helper class method to extract Zodiac information (Western zodiac signs)
 
 
-## Usage examples when coding in Java ...
+## Usage examples coding in Java ...
 
 Examples below show how to parse a Personnummer string.
 Now an input string with a valid swedish personnummer can be written in a couple of different variations.
