@@ -51,35 +51,37 @@ Just build it with Maven and use it as a dependecy in your own project(s)
 }
 ```
 
-## Features
-
-* Automatic validation of checksum, directly when parsing, of strings with Personnummer
-
-* Produces an Optional<Personnummer> when parsing. If not valid it becomes an empty Optional
-
-* toString() can be used as default output after parsing, but there is also four other methods to represent it
-
-* compareTo() can be used to compare age between any two Personnummer
-
-* Extract meta data from a Personnummer; age, gender, zodiac sign and sometimes even the place of birth (on region level)
-
-* Create Personnummer - quickly generate any number of Personnummer (random, but yet valid), useful for testing purposes.
-
-* Automatically resolving missing '-' separator  (or a '+' whan indicating an age above hundred years)
-
-* When era is missing it gets calculated automatically (e.g. '89' becomes '1989', not '2089' using present date comparison.
-
-* Input strings may have a leghts from 10 to 13 characters (e.g. '1212121212', '121212-1212', '201212121212', '20121212-1212')
-
-* Use the 'Forgiving flag' [Optional] for automatic error correction
-  - Automatic error correction is achieved if turn on the 'forgiving flag' when trying to calculate a Personnummer with an 'invalid checksum' number.
-  - The forgiving flag also lets you handle Personnumer with a birthdate set in the future (thus 'unborn' persons). Making its category still parsable.
 
 ## New Features added (2024-04-18)
   - handles Samordningsnummer
   - Organisationsnummer
   - Helper class method to extract Zodiac information (Western zodiac signs)
   - Helper class method as an attempt to extract the animal name of a birth year, according to the ancient Chinese Zodiac calendar (Tungshu).
+
+## Features
+
+- Automatic validation of checksum, directly when parsing, of strings with Personnummer
+
+- Produces an Optional<Personnummer> when parsing. If not valid it becomes an empty Optional
+
+- toString() can be used as default output after parsing, but there is also four other methods to represent it
+
+- compareTo() can be used to compare age between any two Personnummer
+
+- Extract meta data from a Personnummer; age, gender, zodiac sign and sometimes even the place of birth (on region level)
+
+- Create Personnummer - quickly generate any number of Personnummer (random, but yet valid), useful for testing purposes.
+
+- Automatically resolving missing '-' separator  (or a '+' whan indicating an age above hundred years)
+
+- When era is missing it gets calculated automatically (e.g. '89' becomes '1989', not '2089' using present date comparison.
+
+- Input strings may have a leghts from 10 to 13 characters (e.g. '1212121212', '121212-1212', '201212121212', '20121212-1212')
+
+- Use the 'Forgiving flag' [Optional] for automatic error correction
+  - Automatic error correction is achieved if turn on the 'forgiving flag' when trying to calculate a Personnummer with an 'invalid checksum' number.
+  - The forgiving flag also lets you handle Personnumer with a birthdate set in the future (thus 'unborn' persons). Making its category still parsable.
+
 
 ## Java usage examples ...
 
