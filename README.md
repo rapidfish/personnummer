@@ -240,7 +240,7 @@ diacSign=Libra, zodiacSignSwe=Vågen)
 java -jar ./target/personnummer-0.5.0-jar-with-dependencies.jar -h
 ```
 
-**More facts**
+**More facts to understand Swedish Personnummer**
 
 * Checksum algorithm is based upon the Luhn-algorithm a.k.a modulus-10-algorithm.
 
