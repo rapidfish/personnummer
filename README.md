@@ -58,10 +58,9 @@ Console output example:
 
 
 ## New Features added (since 2024-04-18)
-  - handles Samordningsnummer
-  - Organisationsnummer
-  - Helper class method to extract Zodiac information (Western zodiac signs)
-  - Helper class method as an attempt to extract the animal name of a birth year, according to the ancient Chinese Zodiac calendar (Tungshu).
+  - a way to handle Samordningsnummer within the same Personnummer class (a special form of Personnummer)
+  - new class to handle swedish Organisationsnummer
+  - a new method that makes it possible to calculate which animal a birth year belongs to, according to the ancient Chinese Zodiac calendar (Tungshu).
 
 ## Features
 
@@ -86,6 +85,8 @@ Console output example:
 - Use the 'Forgiving flag' [Optional] for automatic error correction
   - Automatic error correction is achieved if turn on the 'forgiving flag' when trying to calculate a Personnummer with an 'invalid checksum' number.
   - The forgiving flag also lets you handle Personnumer with a birthdate set in the future (thus 'unborn' persons). Making its category still parsable.
+
+- Helper class method to extract Zodiac information (Western zodiac signs)
 
 
 ## Usage examples when coding in Java ...
