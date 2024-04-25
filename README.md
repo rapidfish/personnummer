@@ -1,9 +1,12 @@
 # Personnummer API (2.0 Beta)
 
-## Java API that handles everything Swedish Personnummer / Samordningsnummer ( ...and soon Organisationsnummer )
+## Java API to handle everything Swedish Personnummer
 
-The goal for this project is to provide an accurate and comprehensive Java API to handle swedish Personnummer-, Samordningsnummer- and hopfully also coverage for swedish Organisationsnummer. Before I started this project I did search for other solutions to handle this matter, but did not find anything to my own satisfaction as a programmer.
-So I felt there was a small 'void' to fill here!
+The goal for this project is to provide an accurate and comprehensive Java API to handle Swedish Personnummer-, Samordningsnummer- and hopfully also to cover Swedish Organisationsnummer (Implemented but still some work in progress). 
+
+Background
+Before starting a project like this project I did some research to see if others already had a solution in place. But to my surprise I did not find anything that satisfied me as a programmer. And since this is still being the case 2024, i keep on trying, adding unittests and refaktoring the code until it reaches "perfection".
+
 
 ### Complie it and use the dependecy within your own Java project
 Just build it with Maven and use it as a dependecy in your own project(s)
