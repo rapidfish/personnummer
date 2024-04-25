@@ -60,7 +60,9 @@ Console output example:
 ## New Features added (since 2024-04-18)
   - a way to handle Samordningsnummer within the same Personnummer class (a special form of Personnummer)
   - new class to handle swedish Organisationsnummer
-  - a new method that makes it possible to calculate which animal a birth year belongs to, according to the ancient Chinese Zodiac calendar (Tungshu).
+  - Support for the Chinese Zodiac - added a new helper method to calculate which animal a person belongs to based on his/her date of birth. 
+All according to the ancient Chinese Zodiac calendar (Tungshu). (more to come later ...)
+
 
 ## Features
 
