@@ -30,7 +30,7 @@ Just build it with Maven and use it as a dependecy in your own project(s)
 - chmod +x target/Personnummer2-2.0-SNAPSHOT-jar-with-dependencies.jar
 Now run the jar-file as a standalone command from terminal and explore what you can find out about any Swedish personnummer
 - java -jar target/Personnummer2-2.0-SNAPSHOT-jar-with-dependencies.jar -xjf 121212-1212
-NOTE: this perticular personnummer (121212-1212, Tolvan Tolvansson) is used as anexample, it is correct but is not held by any real person (It is used just for demonstration purpose).
+NOTE: this perticular personnummer (121212-1212, Tolvan Tolvansson) is used as example, it is correct but is not held by any real person (It is used just for demonstration purpose).
 
 
 ```
