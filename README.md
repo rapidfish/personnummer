@@ -81,7 +81,7 @@ Just build it with Maven and use it as a dependecy in your own project(s)
   - Helper class method to extract Zodiac information (Western zodiac signs)
   - Helper class method as an attempt to extract the animal name of a birth year, according to the ancient Chinese Zodiac calendar (Tungshu).
 
-## Example ...
+## Java usage examples ...
 
 Examples below show how to parse strings into Personnummer, using four equivalent versions of the same Personnummer. It uses different leghts for year, with and without the use of a delimiter (-).
 
