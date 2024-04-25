@@ -57,7 +57,7 @@ Console output example:
 ```
 
 
-## New Features added (2024-04-18)
+## New Features added (since 2024-04-18)
   - handles Samordningsnummer
   - Organisationsnummer
   - Helper class method to extract Zodiac information (Western zodiac signs)
