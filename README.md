@@ -4,7 +4,7 @@
 
 The goal for this project is to provide an accurate and comprehensive Java API for programmers, or as a command in your terminal (runnable jar).
 
-## Complie it and use the dependecy within your own Java project
+### Complie it and use the dependecy within your own Java project
 Just build it with Maven and use it as a dependecy in your own project(s)
 - mvn clean install
 - go to your project pom.xml and add:
@@ -24,7 +24,7 @@ Just build it with Maven and use it as a dependecy in your own project(s)
 
 
 
-## ... or build it and run it as a 'runnable jar' command from your favourite terminal (bash)
+### ... or build it and run it as a 'runnable jar' command from your favourite terminal (bash)
 - git clone https://github.com/rapidfish/personnummer.git
 - mvn clean package
 - chmod +x target/Personnummer2-2.0-SNAPSHOT-jar-with-dependencies.jar
