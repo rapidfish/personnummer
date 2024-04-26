@@ -36,15 +36,12 @@ Before starting a project like this project I did some research to see if others
 - mvn clean package
 - chmod +x target/Personnummer2-2.0-SNAPSHOT-jar-with-dependencies.jar
 
-Now run the jar-file as a standalone command from terminal and explore what you can find out about any Swedish personnummer
+Run the jar-file to find out facts about a Swedish personnummer:
 ```
 java -jar target/Personnummer2-2.0-SNAPSHOT-jar-with-dependencies.jar -xjf 121212-1212
 ```
 
-NOTE: this perticular personnummer (121212-1212, Tolvan Tolvansson) is used as example, it is correct but is not held by any real person (It is used just for demonstration purpose).
-
 Console output example:
-
 ```
 {
   "personnummer10" : "1212121212",
@@ -66,6 +63,7 @@ Console output example:
 }
 ```
 
+NOTE: The personnummer from the example above is correct, but not held by any real person (It is used just for demonstration purposes).
 
 ## New Features added (since 2024-04-18)
   - a way to handle Samordningsnummer within the same Personnummer class (a special form of Personnummer)
