@@ -74,7 +74,7 @@ All according to the ancient Chinese Zodiac calendar (Tungshu). (more to come la
 ## Features
 
 ### Parsing
-- Automatic checksum validation when parsing a personnummer string.
+- Automatic checksum validation when parsing a personnummer string into a Personnummer object.
   
 - Produces an Optional<Personnummer> when parsing. If an input string is not valid, it becomes an empty Optional
 
@@ -83,6 +83,17 @@ All according to the ancient Chinese Zodiac calendar (Tungshu). (more to come la
 - Permutations of an input string, that represent the very same Personnummer, is handled automatically.
 
 ( e.g. '1212121212', '121212-1212', '201212121212' or '20121212-1212' all produces the same result )
+
+
+```
+// Example call
+Optional<Personnummer> pnrOpt = Personnummer.parse("191212121212");
+Personnummer pnr = pnrOpt.get();
+System.out.println(pnr.toString13());
+
+Console output:
+20121212-1212
+```
 
 
 ### Extracting information
