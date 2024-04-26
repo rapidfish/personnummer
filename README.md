@@ -63,7 +63,6 @@ Console output example:
 }
 ```
 
-[^1]: NOTE: The personnummer from the example above is correct, but not held by any real person (It is used just for demonstration purposes).
 
 ## New Features added (since 2024-04-18)
   - a way to handle Samordningsnummer within the same Personnummer class (a special form of Personnummer)
