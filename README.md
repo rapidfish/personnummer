@@ -8,19 +8,23 @@ Background
 Before starting a project like this project I did some research to see if others already had a solution in place. But to my surprise I did not find anything that satisfied me as a programmer. And since this is still being the case 2024, i keep on trying, adding unittests and refaktoring the code until it reaches "perfection".
 
 
-### Complie it and use the dependecy within your own Java project
-Just build it with Maven and use it as a dependecy in your own project(s)
+### Howto use it as a dependecy within your own Java project
+- First, you will have to compile this project locally. Build it using Maven3.x
 - mvn clean install
-- go to your project pom.xml and add:
+- Then include it as a dependecy in your own pom.xml (Maven) by following the next point.
+- In your pom.xml, make sure you copy the <dependecy> block, then paste it somewhare in your own <dependencies> block:
 
 ```
 <dependencies>
    ...
+
    <dependency>
     <groupId>se.osbe.id</groupId>
     <artifactId>personnummer</artifactId>
     <version>2.0-SNAPSHOT</version>
+    <scope>compile</scope>
    </dependency>
+
    ...
 </dependencies>
 
