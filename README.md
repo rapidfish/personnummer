@@ -73,9 +73,18 @@ All according to the ancient Chinese Zodiac calendar (Tungshu). (more to come la
 
 ## Features
 
-- Automatic validation of checksum, directly when parsing, of strings with Personnummer
+- Automatic checksum validation when parsing a personnummer string.
+  
+- Automatically detects if Personnummer or Samordningsnummer when parsing an input string.
 
-- Produces an Optional<Personnummer> when parsing. If not valid it becomes an empty Optional
+- Input strings for any one same Person- or Samordningsnummer, can be sent to the parser in four different valid permutations.
+  e.g when parsing these personnummer strings of the "same" personnummer, it produces the same resulting Personnummer object.
+  		1) Personnummer.parse("1212121212");
+  		2) Personnummer.parse("121212-1212");
+  		3) Personnummer.parse("191212121212");
+  		4) Personnummer.parse("19121212-1212");
+
+- Produces an Optional<Personnummer> when parsing. If an input string is not valid, it becomes an empty Optional
 
 - toString() can be used as default output after parsing, but there is also four other methods to represent it
 
