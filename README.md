@@ -73,32 +73,31 @@ All according to the ancient Chinese Zodiac calendar (Tungshu). (more to come la
 
 ## Features
 
+### Parsing
 - Automatic checksum validation when parsing a personnummer string.
   
-- Automatically detects if Personnummer or Samordningsnummer when parsing an input string.
-
-- Input strings for any one same Person- or Samordningsnummer, can be sent to the parser in four different valid permutations.
-  e.g when parsing these personnummer strings of the "same" personnummer, it produces the same resulting Personnummer object.
-  		1) Personnummer.parse("1212121212");
-  		2) Personnummer.parse("121212-1212");
-  		3) Personnummer.parse("191212121212");
-  		4) Personnummer.parse("19121212-1212");
-
 - Produces an Optional<Personnummer> when parsing. If an input string is not valid, it becomes an empty Optional
 
+- Automatically detects if Personnummer or Samordningsnummer when parsing an input string.
+
+- Permutations of an input string, that represent the very same Personnummer, is handled automatically.
+
+( e.g. '1212121212', '121212-1212', '201212121212' or '20121212-1212' all produces the same result )
+
+
+### Extracting information
 - toString() can be used as default output after parsing, but there is also four other methods to represent it
 
 - compareTo() can be used to compare age between any two Personnummer
 
 - Extract meta data from a Personnummer; age, gender, zodiac sign and sometimes even the place of birth (on region level)
 
-- Create Personnummer - quickly generate any number of Personnummer (random, but yet valid), useful for testing purposes.
+- Quickly generate any number of Personnummer - useful when testing.
 
-- Automatically resolving missing '-' separator  (or a '+' whan indicating an age above hundred years)
+- Automatically resolves missing '-' separator  (or a '+' indicating ages above a hundred years)
 
-- When era is missing it gets calculated automatically (e.g. '89' becomes '1989', not '2089' using present date comparison.
+- Era and century, for a birthdate, gets calculated automatically (e.g. '89' becomes '1999', not '2099' using present date in comparison.
 
-- Input strings may have a leghts from 10 to 13 characters (e.g. '1212121212', '121212-1212', '201212121212', '20121212-1212')
 
 - Use the 'Forgiving flag' [Optional] for automatic error correction
   - Automatic error correction is achieved if turn on the 'forgiving flag' when trying to calculate a Personnummer with an 'invalid checksum' number.
