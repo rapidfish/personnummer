@@ -8,7 +8,7 @@ Background
 Before starting a project like this project I did some research to see if others already had a solution in place. But to my surprise I did not find anything that satisfied me as a programmer. And since this is still being the case 2024, i keep on trying, adding unittests and refaktoring the code until it reaches "perfection".
 
 
-### Howto use it as a dependecy within your own Java project
+### Use it within your own Java project, as a dependecy!
 - First, you will have to compile this project locally. Build it using Maven3.x
 - mvn clean install
 - Then include it as a dependecy in your own pom.xml (Maven) by following the next point.
@@ -31,13 +31,16 @@ Before starting a project like this project I did some research to see if others
 ```
 
 
-
-### ... or build it and run it as a 'runnable jar' command from your favourite terminal (bash)
+### Run it as a standalone (runnable jar) command from terminal
 - git clone https://github.com/rapidfish/personnummer.git
 - mvn clean package
 - chmod +x target/Personnummer2-2.0-SNAPSHOT-jar-with-dependencies.jar
+
 Now run the jar-file as a standalone command from terminal and explore what you can find out about any Swedish personnummer
-- java -jar target/Personnummer2-2.0-SNAPSHOT-jar-with-dependencies.jar -xjf 121212-1212
+```
+java -jar target/Personnummer2-2.0-SNAPSHOT-jar-with-dependencies.jar -xjf 121212-1212
+```
+
 NOTE: this perticular personnummer (121212-1212, Tolvan Tolvansson) is used as example, it is correct but is not held by any real person (It is used just for demonstration purpose).
 
 Console output example:
