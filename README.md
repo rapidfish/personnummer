@@ -83,8 +83,11 @@ All according to the ancient Chinese Zodiac calendar (Tungshu). (more to come la
 
 - Permutations of an input string, that represent the very same Personnummer, is handled automatically.
 
-( e.g. '1212121212', '121212-1212', '201212121212' or '20121212-1212' all produces the same result )
-
+E.g. Representing the very same Swedish Personnummer, all four strings below is just different permutations of the same thing and gets the same resuling output object, if used as input to parse method in Personnummer class.
+	"1212121212"
+ 	"121212-1212"
+  	"201212121212"
+   	"20121212-1212"
 
 ```
 // Example call
