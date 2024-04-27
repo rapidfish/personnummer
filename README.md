@@ -1,12 +1,15 @@
 # Personnummer API (2.0 Beta)
 
-## Java API to handle everything Swedish Personnummer
+## Java API to handle everything Swedish Personnummer and Samordningsnummer
 
-The goal for this project is to provide you with an accurate and comprehensive Java API to validate, extract built in information, or simply produce a Personnummer with a valid checksum. The API can handle both Personnummer and Samordningsnummer. 
-Eventually, this api will also cover all things Organisationsnummer (implemented, but still "work in progress" and needs more testing).
+The goal for this project is to provide you with a reliable and accurate Java API to validate, extract or create Swedish Personnummer/Samordningsnummer.
+It also aim to be a good tool to "fabricate" valid Personnummer (and Samordningsnummer). 
+There is absolutley no way of extracting any other personal data from a Personnummer other than a birthdate, age, gender and sometimes the place of birth in general för (personnummer having a birth date before 1990).
+
+Eventually, this api will also cover all things Organisationsnummer (still "work in progress").
 
 Background
-Before starting a project like this project I did some research to see if others already had a solution in place. But to my surprise I did not find anything that satisfied me as a programmer. And since this is still being the case 2024, i keep on trying, adding unittests and refaktoring the code until it reaches "perfection".
+Before starting a project I had to do some research, to see if others already had a solution for this in place. But to my surprise, I did not find anything that satisfied me as a programmer. And since this is still being the case (2024), i keep on trying, adding, unittesting and refaktoring code until it reaches my own standards of "perfection".
 
 
 ### Use it within your own Java project, as a dependecy!
