@@ -23,7 +23,7 @@ public class MainCLI {
         options.addOption(Option.builder("f").longOpt("forgiving").desc("Be forgiving when the checksum (last digit) is wrong").build()); // .required()
         options.addOption(Option.builder("c").longOpt("century").desc("use era and century in output").build()); // .required()
         options.addOption(Option.builder("x").longOpt("extended").desc("View all info about a Personnummer").build()); // .required()
-        options.addOption(Option.builder("v").longOpt("version").desc("Show command version").build()); // .required()
+        options.addOption(Option.builder("v").longOpt("version").desc("Show version of this command").build()); // .required()
         options.addOption(Option.builder("j").longOpt("json").desc("Show output as JSON").build()); // .required()
 
         CommandLineParser parser = new DefaultParser();
@@ -65,23 +65,24 @@ public class MainCLI {
             // Happy flow from here ...
             Personnummer pnr = pnrOpt.get();
             if (line.hasOption("x")) {
-                result = new PnrInfoVO();
-                result.setPersonnummer10(pnr.toString10());
-                result.setPersonnummer11(pnr.toString11());
-                result.setPersonnummer12(pnr.toString12());
-                result.setPersonnummer13(pnr.toString13());
-                result.setLastFourDigits(pnr.getLastFour());
-                result.setForgiving(pnr.isForgiving());
-                result.setCorrectChecksum(pnr.getChecksum());
-                result.setBirthDate(pnr.getBirthDate().toString());
-                result.setAge(pnr.getAgeNow());
-                result.setDaysSinceBirth(pnr.getDaysSinceBirth());
-                result.setGender(pnr.getGender());
-                result.setZodiacSign(PersonnummerHelper.getZodiacSign(pnr).get().getLatinName());
-                result.setZodiacSignSwe(PersonnummerHelper.getZodiacSign(pnr).get().getSwedishName());
-                result.setChineseZodiacAnimal("The year of the " + PersonnummerHelper.getTypeForYear(pnr.getBirthDate()).getAnimalName());
-                result.setChineseZodiacAnimalSwe(PersonnummerHelper.getTypeForYear(pnr.getBirthDate()).getAnimalNameSwe() + "s år");
-                result.setIdType(pnr.getIDType());
+                result = new PnrInfoVO(
+                        pnr.toString10(),
+                        pnr.toString11(),
+                        pnr.toString12(),
+                        pnr.toString13(),
+                        pnr.getLastFour(),
+                        pnr.isForgiving(),
+                        pnr.getChecksum(),
+                        pnr.getBirthDate().toString(),
+                        pnr.getAgeNow(),
+                        pnr.getDaysSinceBirth(),
+                        pnr.getGender(),
+                        PersonnummerHelper.getZodiacSign(pnr).get().getLatinName(),
+                        PersonnummerHelper.getZodiacSign(pnr).get().getSwedishName(),
+                        "Year of the " + PersonnummerHelper.getTypeForYear(pnr.getBirthDate()).getAnimalName(),
+                        PersonnummerHelper.getTypeForYear(pnr.getBirthDate()).getAnimalNameSwe() + "s år",
+                        pnr.getIDType()
+                );
                 output = (line.hasOption("j")) ?
                         new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString((PnrInfoVO) result) :
                         result.toString();
