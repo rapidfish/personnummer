@@ -69,37 +69,35 @@ Console output example:
 
 
 ## New Features added (since 2024-04-18)
-  - a way to handle Samordningsnummer within the same Personnummer class (a special form of Personnummer)
-  - new class to handle swedish Organisationsnummer
-  - Support for the Chinese Zodiac - added a new helper method to calculate which animal a person belongs to based on his/her date of birth. 
-All according to the ancient Chinese Zodiac calendar (Tungshu). (more to come later ...)
+  - Rewritten using Java 21
+  - The Personnummer class now also handles Samordningsnummer (automatically detected when parsing)
+  - new class to handle swedish Organisationsnummer (work in progress)
+  - Find out what animal a birth date is associated with, according to the traditional Chinese Zodiac calendar.
 
+## Basic Features
+  - Automatic checksum validation, when parsing a personnummer string into an Optional<Personnummer> object.
+  - Automatically detects type of swedish id string (Personnummer, Samordningsnummer or Organisationsnummer).
+  - Parsing takes care of all permutations of input strings, as long as the input is a valid id string.
+  - All extracted output data can be presented the same way, no matter what the input string looked like, as long as it was valid.
+  - When/if needed the checksum (last digit) can be calculated, using the a forgiving flag set to true, when parsing.
+    (Personnummer created this way always returns true, when invoking the isForgiving() method on it afterwards.
 
-## Features
-
-### Parsing
-- Automatic checksum validation when parsing a personnummer string into a Personnummer object.
-  
-- Produces an Optional<Personnummer> when parsing. If an input string is not valid, it becomes an empty Optional
-
-- Automatically detects if Personnummer or Samordningsnummer when parsing an input string.
-
-- Permutations of an input string, that represent the very same Personnummer, is handled automatically.
-
-E.g. Representing the very same Swedish Personnummer, all four strings below is just different permutations of the same thing and gets the same resuling output object, if used as input to parse method in Personnummer class.
+E.g. These string examples, can be served as input strings, represents the very same Swedish Personnummer.  
+All of them can be parsed separatley, still having the same result when using the parser method from the class Personnummer.
 	"1212121212"
  	"121212-1212"
   	"201212121212"
    	"20121212-1212"
 
 ```
-// Example call
-Optional<Personnummer> pnrOpt = Personnummer.parse("191212121212");
+// Example - calling the parse() meehod from the Java class Personnummer ...
+
+Optional<Personnummer> pnrOpt = Personnummer.parse("201212121212");
 Personnummer pnr = pnrOpt.get();
 System.out.println(pnr.toString13());
 
 Console output:
-20121212-1212
+121212-1212
 ```
 
 
