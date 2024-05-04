@@ -116,6 +116,12 @@ public class PersonnummerTest {
         assertTrue(Personnummer.parse(_YEAR_NOW + "0115+0459").get().isHundredYears());
         assertTrue(Personnummer.parse(_YEAR_NOW + "0115+0450", true).get().isHundredYears());
         assertEquals(empty(), Personnummer.parse(_HUNDRED_YEARS_AGO + "0115+0459")); // both era and '+' is not valid
+
+        assertTrue(Personnummer.parse("191212121212").get().isHundredYears());
+        assertTrue(Personnummer.parse("19121212-1212", true).get().isHundredYears());
+        assertTrue(Personnummer.parse("121212+1212", true).get().isHundredYears());
+        assertEquals("121212+1212", Personnummer.parse("191212121212").get().toString());
+        assertEquals("121212+1212", Personnummer.parse("191212121212").get().toString11());
     }
 
     @Test
