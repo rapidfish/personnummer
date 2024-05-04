@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static se.osbe.id.enums.PnrTungshuAnimalType.*;
 
-public class PnrTungshuAnimalTypeTest {
+public class PersonnummerTungshuAnimalTypeTest {
 
     // Positive tests
     @Test

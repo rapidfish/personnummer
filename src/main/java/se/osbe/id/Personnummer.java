@@ -84,7 +84,6 @@ public class Personnummer implements Comparable<Personnummer>, Identifiable {
         }
         LocalDate now = now();
         int eraNow = now.get(YEAR_OF_ERA) / CENTURY;
-        eraNow = (plus) ? (--eraNow) : eraNow; // adjust, if a plus sign is present
         yearCandidate = ((eraNow * CENTURY) + yearInt);
         LocalDate birthDate = of(yearCandidate, monthInt, dayInt);
         yearCandidate = birthDate.isAfter(now) ? (((eraNow - ONE_YEAR) * CENTURY) + yearInt) : yearCandidate;
@@ -164,13 +163,13 @@ public class Personnummer implements Comparable<Personnummer>, Identifiable {
             String last3 = matcher.group("last3");
             String checksum = matcher.group("checksum");
             String calculatedChecksum = calculateChecksum(year, month, day, last3);
-            boolean plus = "+".equals(sign);
-            if (nonNull(era) && plus) {
+            boolean isPlusSign = "+".equals(sign);
+            if (nonNull(era) && isPlusSign) {
                 return empty(); // Personnummer cannot have both era and plus sign
             }
             if (isForgiving) {
                 checksum = calculatedChecksum;
-            } else if (checksum == null || !checksum.equals(calculatedChecksum)) {
+            } else if (!calculatedChecksum.equals(checksum)) {
                 return empty(); // Checksum error -> empty
             }
             if (!isForgiving && "0000".equals(last3 + checksum)) {
@@ -183,11 +182,11 @@ public class Personnummer implements Comparable<Personnummer>, Identifiable {
             dayInt = isSam ? (dayInt - SAMORDNINGSNUMMER_OFFSET_FOR_DAY_IN_DATE) : dayInt;
             LocalDate pnrDate = null;
             try {
-                pnrDate = resolveBirthDate(era, yearInt, monthInt, dayInt, plus);
+                pnrDate = resolveBirthDate(era, yearInt, monthInt, dayInt, isPlusSign);
             } catch (Exception e) {
                 return empty(); // Occurs when trying to parse impossible such as February 29 when its no leap year!
             }
-            if(!isForgiving && !plus && pnrDate.isBefore(of(PNR_MINIMUM_LIMIT_YEAR,1,1))){
+            if(!isForgiving && !isPlusSign && pnrDate.isBefore(of(PNR_MINIMUM_LIMIT_YEAR,1,1))){
                 return empty(); // Date is too old, should not be used for any Personnummer!
             }
             if (!isForgiving && (now().get(YEAR_OF_ERA) / CENTURY < MIN_CENTURY || pnrDate.isAfter(now()))) {

@@ -14,7 +14,7 @@ import static java.lang.Integer.parseInt;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class PersonnummerAdvancedTest {
+public class PersonnummerSamordningsnummerTest {
 
     private static final int SAMORDNINGSNUMMER_OFFSET_FOR_DAY_IN_DATE = 60;
     private List<String> _samordningsnummerOKList;

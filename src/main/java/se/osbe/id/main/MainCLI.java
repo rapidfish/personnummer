@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public class MainCLI {
 
-    private final static String VERSION = "2.0";
+    private final static String CLI_VERSION = "2.1-beta";
 
     MainCLI(String[] args) throws JsonProcessingException {
         String output = "n/a";
@@ -47,7 +47,7 @@ public class MainCLI {
             }
 
             if (line.hasOption("v")) {
-                System.out.println("Version " + VERSION);
+                System.out.println("Version " + CLI_VERSION);
                 exit();
             }
 
