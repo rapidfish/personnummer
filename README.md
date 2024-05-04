@@ -38,11 +38,11 @@ Before starting a project I had to do some research, to see if others already ha
 ### Run it as a standalone (runnable jar) command from terminal
 - git clone https://github.com/rapidfish/personnummer.git
 - mvn clean package
-- chmod +x target/Personnummer2-2.0-SNAPSHOT-jar-with-dependencies.jar
+- chmod +x target/Personnummer2-2.1-SNAPSHOT-jar-with-dependencies.jar
 
 Run the jar-file to find out facts about a Swedish personnummer:
 ```
-java -jar target/Personnummer2-2.0-SNAPSHOT-jar-with-dependencies.jar -xjf 121212-1212
+java -jar target/Personnummer2-2.1-SNAPSHOT-jar-with-dependencies.jar -xjf 121212-1212
 ```
 
 Console output example:
@@ -210,14 +210,14 @@ The API also supports the use of '+' sign, to indicate +100 years of age when Pe
    <dependency>
     <groupId>se.osbe.id</groupId>
     <artifactId>personnummer</artifactId>
-    <version>2.0-SNAPSHOT</version>
+    <version>2.1-SNAPSHOT</version>
    </dependency>
    ...
 </dependencies>
 
 ```
 
-**Version 2.0-SNAPSHOT**
+**Version 2.1-SNAPSHOT**
 
 Current stable branch is master
 
