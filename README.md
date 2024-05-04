@@ -1,4 +1,4 @@
-# Personnummer API (2.1 Beta)
+# Personnummer API (2.1-beta)
 
 ## Java API to handle everything Swedish Personnummer and Samordningsnummer
 
