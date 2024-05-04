@@ -81,7 +81,8 @@ public class MainCLI {
                         PersonnummerHelper.getZodiacSign(pnr).get().getSwedishName(),
                         "Year of the " + PersonnummerHelper.getTypeForYear(pnr.getBirthDate()).getAnimalName(),
                         PersonnummerHelper.getTypeForYear(pnr.getBirthDate()).getAnimalNameSwe() + "s år",
-                        pnr.getIDType()
+                        pnr.getIDType(),
+                        pnr.toString()
                 );
                 output = (line.hasOption("j")) ?
                         new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString((PnrInfoVO) result) :

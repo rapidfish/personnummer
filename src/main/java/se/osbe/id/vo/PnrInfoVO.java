@@ -20,5 +20,7 @@ public record PnrInfoVO(
         @JsonProperty("zodiacSignSwe") String zodiacSignSwe,
         @JsonProperty("chineseZodiacAnimal") String chineseZodiacAnimal,
         @JsonProperty("chineseZodiacAnimalSwe") String chineseZodiacAnimalSwe,
-        @JsonProperty("idType") IDType idType
-) {}
+        @JsonProperty("idType") IDType idType,
+        @JsonProperty("toString") String toZtring
+) {
+}
