@@ -122,6 +122,8 @@ public class PersonnummerTest {
         assertTrue(Personnummer.parse("121212+1212", true).get().isHundredYears());
         assertEquals("121212+1212", Personnummer.parse("191212121212").get().toString());
         assertEquals("121212+1212", Personnummer.parse("191212121212").get().toString11());
+        assertEquals("191212121212", Personnummer.parse("191212121212").get().toString12());
+        assertEquals("19121212-1212", Personnummer.parse("191212121212").get().toString13());
     }
 
     @Test
