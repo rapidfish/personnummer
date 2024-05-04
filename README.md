@@ -151,12 +151,12 @@ Optional<Personnummer> pnrOpt = Personnummer.parse("19460430-0014");
 
 validate ...
 ```
-if(pnrOpt.isPresent()) {
-	System.out.println("Personnummer is valid!");
+if(pnrOpt.isPresent() == true) {
+    System.out.println("Personnummer is valid!");
 } else {
-	System.out.println("Personnummer is NOT valid!");
-	System.exit(1);
+    System.out.println("Personnummer is NOT valid!");
 }
+
 ```
 
 Validate and create a Personnummer object, or else throw an exeption ...
