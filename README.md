@@ -12,7 +12,10 @@ Generate personnummer, sometimes useful for test developers when a personnummer 
 
 
 ### Use the API within your own Java project ...
-- Download, build and include the API as a depedency in your own Maven project - super easy!
+- Once built (mvn clean install) a local copy of the dependency (.jar) is stored in your local Maven repo ( in the 'm2/' folder )
+- Now, include it as a depedency, inside your own local Maven project - super easy!
+- Refresh your pom.xml file, and start working using its classes. (Use its JavaDoc)
+
 
 ```
 <dependencies>
