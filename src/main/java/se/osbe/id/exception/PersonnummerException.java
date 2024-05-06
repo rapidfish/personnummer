@@ -1,6 +1,6 @@
 package se.osbe.id.exception;
 
-public class PersonnummerException extends Exception {
+public class PersonnummerException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
     public PersonnummerException() {
