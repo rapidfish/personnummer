@@ -119,12 +119,14 @@ Java code example:
 ```
   // Example - calling the parse() meehod from the Java class Personnummer ...
 
-  Optional<Personnummer> pnrOpt = Personnummer.parse("201212121212");
+  Optional<Personnummer> pnrOpt = Personnummer.parse("121212-1212");
   Personnummer pnr = pnrOpt.get();
-  System.out.println(pnr.toString13());
+  System.out.println(pnr.toString13()); // Showing full length with leading digits of era and century (2012)
+```
 
   Console output:
-  121212-1212
+```
+  20121212-1212
 ```
 
 
