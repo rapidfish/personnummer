@@ -32,7 +32,7 @@ Generate personnummer, sometimes useful for test developers when a personnummer 
 ```
 
 
-### Or, run it as a "runnable jar" directly from your terminal
+### ...or, run it as a "runnable jar" directly from your terminal
 - git clone https://github.com/rapidfish/personnummer.git
 - mvn clean package
 - chmod +x target/Personnummer2-2.1-SNAPSHOT-jar-with-dependencies.jar
