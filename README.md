@@ -6,7 +6,7 @@
 
 Extract information from any Swedish Personnummer (or Samordningsnummer) in a comprehensive manner, yet fast and simple to use!
 
-...gather statistics from collections of peronnummer/samordningsnummer using included helper classes.
+...gather statistics (quickly) from collections of peronnummer/samordningsnummer using included helper classes.
 
 ...generate personnummer (sometimes useful for test developers when a personnummer has to 'make it through' form validation etc...)
 
