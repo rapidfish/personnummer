@@ -6,7 +6,7 @@ Gather statistics from a collection of peronnummer using included helper classes
 Generate personnummer, sometimes useful for test developers when a personnummer has to 'make it through' form validation etc.
 
 
-### Build it using the Maven command 'mvn clean install' (Maven3 needs to be installed)
+### Build using Maven 'mvn clean install'
 - git clone https://github.com/rapidfish/personnummer.git
 - mvn clean install
 
