@@ -1,12 +1,9 @@
 # Personnummer API (2.1-beta)
 
 ## Java API to handle everything Swedish Personnummer and Samordningsnummer
-
-The goal for this project is to provide you with a reliable and accurate Java API to validate, extract or create Swedish Personnummer/Samordningsnummer.
-It also aim to be a good tool to "fabricate" valid Personnummer (and Samordningsnummer). 
-There is absolutley no way of extracting any other personal data from a Personnummer other than a birthdate, age, gender and sometimes the place of birth in general för (personnummer having a birth date before 1990).
-
-The future plans for this API is for it to also cover all things Organisationsnummer (still "work in progress").
+Validate any Swedish Personnummer or Samordningsnummer in a fast, comprehensive manner, yet simple to use!
+Gather statistics from a collection of peronnummer using included helper classes.
+Generate personnummer, sometimes useful for test developers when a personnummer has to 'make it through' form validation etc.
 
 ### Build it using the Maven command 'mvn clean install' (Maven3 needs to be installed)
 - git clone https://github.com/rapidfish/personnummer.git
@@ -245,15 +242,25 @@ Import the project as an existing maven projekt into your IDE, compile with Mave
 
 **Dependencies**
 
-This project uses Jodatime ver 2.7 from Apache to handle all dates (see pom.xml file in the project root folder). It is automatically installed by maven at build time. Jodatime ensures that the API can be used in both old and newer versions of Java. Joda-Time was the "de facto" standard date and time library for Java prior to Java SE 8. It may be so that this Joda time dependency will become deprecated in future versions of Personnummer. For more information, go to http://www.joda.org/joda-time/
-
 **How to run unit tests**
 
-Unit tests are based on JUnit.
-Use mvn command:
+Unit tests are based on JUnit and is automatically run upon compilation using (mvn clean install). It can also be ran from your favourite IDE (such as IntelliJ) or using this Maven command from terminal ...
 ```
 mvn test
 ```
+
+## Project Background
+The aim for this project is was to provide the developer community with a free, comprehensive, reliable, accurate and yet fast Java API. 
+To handle anything Swedhish id strings, from Personnummer, Samordningsnummer and Organisationsnummer.
+
+The main purpose for it is to validate, extract info, analyze and even create any Swedish Personnummer/Samordningsnummer/Organisationsnummer.
+
+Disclaimer
+All information about Swedish Personnummer/Samordningsnummer/Organisationsnummer can be found in the public domain, form official Swedish authority websites, and on Wikipedia.
+There is absolutley no way this API can extract any personal information other than birthdate, age, gender. Sometimes the place of birth can be derivide when availible. But only for personnummer having its birthdate set prior to the year 1990. After 1990 this practice was removed.
+
+The future plans for this API is for it to also bring in more support for Swedish Organisationsnummer (but work is still 'in progress').
+
 
 ## More facts on Swedish Personnummer
 
