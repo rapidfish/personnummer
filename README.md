@@ -121,7 +121,7 @@ Java code example:
 
   Optional<Personnummer> pnrOpt = Personnummer.parse("121212-1212"); // year = 12, month = 12, day = 12
   Personnummer pnr = pnrOpt.get();
-  System.out.println(pnr.toString13()); // Showing full length, having leading digits for era and century (20) resolved
+  System.out.println(pnr.toString13()); // Showing full length, having leading digits for era and century (20) auto resolved
 ```
 
   Console output:
