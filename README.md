@@ -8,6 +8,7 @@ Generate personnummer, sometimes useful for test developers when a personnummer 
 
 ### Build using Maven 'mvn clean install'
 - git clone https://github.com/rapidfish/personnummer.git
+- cd personnummer/
 - mvn clean install
 
 
@@ -36,6 +37,7 @@ Generate personnummer, sometimes useful for test developers when a personnummer 
 
 Example - build and prepare for usage in bash (Linux/Mac/Unix):
 - git clone https://github.com/rapidfish/personnummer.git
+- cd personnummer/
 - mvn clean package
 - chmod +x target/Personnummer2-2.1-SNAPSHOT-jar-with-dependencies.jar
 - mv target/Personnummer2-2.1-SNAPSHOT-jar-with-dependencies.jar target/personnummer
