@@ -5,14 +5,14 @@ Validate any Swedish Personnummer or Samordningsnummer in a fast, comprehensive 
 Gather statistics from a collection of peronnummer using included helper classes.
 Generate personnummer, sometimes useful for test developers when a personnummer has to 'make it through' form validation etc.
 
+
 ### Build it using the Maven command 'mvn clean install' (Maven3 needs to be installed)
 - git clone https://github.com/rapidfish/personnummer.git
 - mvn clean install
 
 
-### Use it within your own Java projects
-- To use this inside your own projects as a depedency, you will have to compile this project locally. 
-- Then include it as a dependency in your own project (pom.xml) like this ...
+### Use the API within your own Java project ...
+- Download, build and include the API as a depedency in your own Maven project - super easy!
 
 ```
 <dependencies>
@@ -28,7 +28,8 @@ Generate personnummer, sometimes useful for test developers when a personnummer 
 
 ```
 
-### Run it as a standalone (runnable jar) command from your terminal
+
+### Or, run it as a "runnable jar" directly from your terminal
 - git clone https://github.com/rapidfish/personnummer.git
 - mvn clean package
 - chmod +x target/Personnummer2-2.1-SNAPSHOT-jar-with-dependencies.jar
@@ -39,7 +40,7 @@ Example:
 java -jar target/personnummer -xjf 121212-1212
 ```
 
-Console output example:
+Output:
 ```
 {
   "personnummer10" : "1212121212",
@@ -62,12 +63,14 @@ Console output example:
 ```
 
 
-... or use -h option to see help screen!
+The -h option gives you all the help you need!
 
 ```
 	java -jar target/personnummer.jar -h
 ```
 
+
+Output:
 ```
 	usage: personnummer [pnr] [args]
 	 -c,--century     use era and century in output
@@ -99,15 +102,17 @@ All of them can be parsed separatley, still having the same result when using th
   	"201212121212"
    	"20121212-1212"
 
+
+Java code example:
 ```
-// Example - calling the parse() meehod from the Java class Personnummer ...
+  // Example - calling the parse() meehod from the Java class Personnummer ...
 
-Optional<Personnummer> pnrOpt = Personnummer.parse("201212121212");
-Personnummer pnr = pnrOpt.get();
-System.out.println(pnr.toString13());
+  Optional<Personnummer> pnrOpt = Personnummer.parse("201212121212");
+  Personnummer pnr = pnrOpt.get();
+  System.out.println(pnr.toString13());
 
-Console output:
-121212-1212
+  Console output:
+  121212-1212
 ```
 
 
@@ -146,52 +151,35 @@ Input strings can vary in leghts as the year can be written on a short- or long 
 No worries, all different variations of the input string for a personnummer is covered. When using just two digits for years it automaticalle detects wether a person is born before- or after the millenium (2000). If your're not getting the checksum right, we can calculat it for you, by setting the special option (the 'forgiving flag') to handle it when necessary.
 
 
-
+Example:
 ```
-Optional<Personnummer> pnrOpt = Personnummer.parse("4604300014");
-```
-or...
-```
-Optional<Personnummer> pnrOpt = Personnummer.parse("460430-0014");
+  Optional<Personnummer> pnrOpt = Personnummer.parse("4604300014");
 ```
 or...
 ```
-Optional<Personnummer> pnrOpt = Personnummer.parse("194604300014");
+  Optional<Personnummer> pnrOpt = Personnummer.parse("460430-0014");
 ```
 or...
 ```
-Optional<Personnummer> pnrOpt = Personnummer.parse("19460430-0014");
+  Optional<Personnummer> pnrOpt = Personnummer.parse("194604300014");
+```
+or...
+```
+  Optional<Personnummer> pnrOpt = Personnummer.parse("19460430-0014");
 ```
 
 
-validate ...
+Validate example...
 ```
 if(pnrOpt.isPresent() == true) {
     System.out.println("Personnummer is valid!");
 } else {
     System.out.println("Personnummer is NOT valid!");
 }
-
 ```
 
-Validate and create a Personnummer object, or else throw an exception ...
+toString method examples ...
 
-```
-Personnummer pnr = pnrOpt.orElseThrow(RuntimeException::new);
-```
-
-```
-System.out.println("Gender: " + pnr.getGender("Woman", "Man")); // Man
-System.out.println("Age " + pnr.getAgeNow() + " years old!"); // Age 73 years old!"
-System.out.println("Birth date: " + pnr.getBirthDate()); // Birth date: 1946-04-30
-System.out.println("Born on a: " + DateTimeFormat.forPattern("EEEE").print(pnr.getBirthDate())); // Born on a: Tuesday
-System.out.println("Days since birth: " + pnr.getDaysSinceBirth()); // Days since birth: 26958
-System.out.println("Personnummer checksum: " + pnr.getChecksum()); // Personnummer checksum: 4
-System.out.println("Zodiac sign: " + PersonnummerHelper.getZodiacSign(pnr).getLatinName()); // Zodiac sign: Taurus
-
-```
-
-toString methods
 ```
 System.out.println(pnr.toString10()); // 4604300014
 System.out.println(pnr.toString11()); // 460430-0014, same as toString()
@@ -199,51 +187,34 @@ System.out.println(pnr.toString12()); // 194604300014, twelve digits having era 
 System.out.println(pnr.toString13()); // 19460430-0014, twelve digits, with era and '-' sign
 ```
 
-## Example code (2)...
-The API also supports the use of '+' sign, to indicate +100 years of age when Personnummer is written with only 10 digits (dates without era)...
-
-
-```
-
-	Personnummer pnr = Personnummer.parse("101201+0342").get(); // using + to indicate >100 years old.
-		
-	System.out.println(pnr.toString13()); // 19101201-0342, Correct era (19) automatically, regardless of input string. 
-	System.out.println("Age: " + pnr.getAgeNow()); // Age: 109
-
-```
-
-
-## Set up
-* Clone the project from bitbucket with Git or simply download it manually.
-* Import the project as an "existing maven project" in your favourite IDE (e.g. IntelliJ).
-* Build using your IDE, or use Maven from command line, navigate to your project and type:  **mvn clean install**
-* Afterwards its in your local Maven repo (~/.m2/) and you can start using it as a dependency in your own projects (se POM.xml fragment below).
-
-```
-<dependencies>
-   ...
-   <dependency>
-    <groupId>se.osbe.id</groupId>
-    <artifactId>personnummer</artifactId>
-    <version>2.1-SNAPSHOT</version>
-   </dependency>
-   ...
-</dependencies>
-
-```
 
 **Version 2.1-SNAPSHOT**
-
 Current stable branch is master
+Built using Java Open JDK 21
+
 
 **Configuration**
+Compiler uses OpenJDK-21 ( https://jdk.java.net/21 )
+Import the project as an existing maven projekt into your IDE ( https://maven.apache.org )
+When all is working, try to run the main class se.osbe.id.main.MainCLI and the output should look like this...
 
-Import the project as an existing maven projekt into your IDE, compile with Maven (mvn clean install), Junit tests are run automatically and should all work otherwise there could be a problem with the project setup. Check compiler settings for Java (JDK).
+Output from MainCLI.java (without args):
+```
+usage: personnummer [args] [pnr]
+ -c,--century     use era and century in output
+ -f,--forgiving   Be forgiving when the checksum (last digit) is wrong
+ -h,--help        Bring up this help screen
+ -j,--json        Show output as JSON
+ -v,--version     Show version of this command
+ -x,--extended    View all info about a Personnummer
+```
+
+
 
 **Dependencies**
+Junit, Apache (commons, collections, cli), Jackson fasterxml (databind), maven-assembly-plugin. 
 
 **How to run unit tests**
-
 Unit tests are based on JUnit and is automatically run upon compilation using (mvn clean install). It can also be ran from your favourite IDE (such as IntelliJ) or using this Maven command from terminal ...
 ```
 mvn test
