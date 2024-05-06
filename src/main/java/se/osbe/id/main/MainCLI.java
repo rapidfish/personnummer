@@ -39,10 +39,6 @@ public class MainCLI {
 
             if (line.hasOption("h")) {
                 new HelpFormatter().printHelp("personnummer [pnr] [args]", options);
-                System.out.println("\nExample usage:\n");
-                System.out.println("personnummer -century -json -extended 460430-0014\n");
-                System.out.println("or...\n");
-                System.out.println("personnummer -cjx 460430-0014\n");
                 exit();
             }
 
