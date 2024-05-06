@@ -6,6 +6,24 @@ Gather statistics from a collection of peronnummer using included helper classes
 Generate personnummer, sometimes useful for test developers when a personnummer has to 'make it through' form validation etc.
 
 
+## New Features added (since 2024-04-18)
+  - Rewritten using Java 21
+  - The Personnummer class now also handles Samordningsnummer (automatically detected when parsing)
+  - new class to handle swedish Organisationsnummer (work in progress)
+  - Find out what animal a birth date is associated with, according to the traditional Chinese Zodiac calendar.
+
+
+## Basic Features
+  - When parsing a string containing a potential personnummer/samordningsnummer its checksum gets verfied automatically.
+  - Parsing creates immutable objects, thus it is not possible to alter object information afterwards.
+  - Automatic checksum validation, when parsing a personnummer string into an Optional<Personnummer> object.
+  - Automatically detects type of swedish id string (Personnummer, Samordningsnummer or Organisationsnummer).
+  - Extract information such as birthdate, age, number of days since birth, gender, and sometimes even regional place of birth.
+  - Support four different permutation of input strings. (10 trough 13 characters in length)
+  - Once successfully parsed, extracted output can be presented in many different ways.
+  - Invalid checksum (last digit) can automatically be error corrected, if the 'forgiving flag' is set to 'true' when parsing.
+
+
 ### Build using Maven 'mvn clean install'
 - git clone https://github.com/rapidfish/personnummer.git
 - cd personnummer/
@@ -44,7 +62,7 @@ Example - build and prepare for usage in bash (Linux/Mac/Unix):
 
 Example:
 ```
-java -jar target/personnummer -xjf 121212-1212
+java -jar target/personnummer -xj 19121212-1212
 ```
 
 Output:
@@ -88,20 +106,7 @@ Output:
 	 -x,--extended    View all info about a Personnummer
 ```
 
-## New Features added (since 2024-04-18)
-  - Rewritten using Java 21
-  - The Personnummer class now also handles Samordningsnummer (automatically detected when parsing)
-  - new class to handle swedish Organisationsnummer (work in progress)
-  - Find out what animal a birth date is associated with, according to the traditional Chinese Zodiac calendar.
-
-## Basic Features
-  - Automatic checksum validation, when parsing a personnummer string into an Optional<Personnummer> object.
-  - Automatically detects type of swedish id string (Personnummer, Samordningsnummer or Organisationsnummer).
-  - Parsing takes care of all permutations of input strings, as long as the input is a valid id string.
-  - All extracted output data can be presented the same way, no matter what the input string looked like, as long as it was valid.
-  - When/if needed the checksum (last digit) can be calculated, using the a forgiving flag set to true, when parsing.
-    (Personnummer created this way always returns true, when invoking the isForgiving() method on it afterwards.
-
+### Handle different input - still present output the same way!
 E.g. These string examples, can be served as input strings, represents the very same Swedish Personnummer.  
 All of them can be parsed separatley, still having the same result when using the parser method from the class Personnummer.
 	"1212121212"
@@ -139,9 +144,10 @@ Java code example:
   This mechanism is also a kind of protection, as it is virtually not possible to hand out personnummer to "unborn" persons a future.
   However, it is actually still possible to handle future dates (thus 'unborn' persons) by using the 'forgiving flag'.
 
-- Use the 'Forgiving flag' [Optional] overrides normal checksum controll and enables automatic error correction of the checksum (kontrollsiffran)
+- Use the 'Forgiving flag' [Optional] overrides normal checksum control.
   - Automatic error correction calculates the correct checsum regardless of it being invalid, or not.
-  - the 'forgiving flag' also lets you handle Personnumer with a birthdate set in the future (thus 'unborn' persons). Making its category still parsable.
+  - Personnummer created using the 'forgiving flag' is indicated by always keeping the forgiving flag (true) afterwards.
+  - the 'forgiving flag' also lets you handle Personnumer with a birthdate set in the future (thus 'unborn' persons). Making its category still parsable. Personnummer created this way, is indicated by always keeping the forgiving flag set to true afterwards.
 
     As an example the year 99' automatically becomes 1999. It can not become '2099' as the date part is in the future.
 	However, it is actually still possible to handle future dates (thus 'unborn' persons) by using the 'forgiving flag' when parsing an id string.
