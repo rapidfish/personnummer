@@ -14,14 +14,14 @@ Generate personnummer, sometimes useful for test developers when a personnummer 
 
 
 ## Basic Features
-  - When parsing a string containing a potential personnummer/samordningsnummer its checksum gets verfied automatically.
-  - Parsing creates immutable objects, thus it is not possible to alter object information afterwards.
   - Automatic checksum validation, when parsing a personnummer string into an Optional<Personnummer> object.
-  - Automatically detects type of swedish id string (Personnummer, Samordningsnummer or Organisationsnummer).
+  - If parsing was unsuccessful due to malformed string, or checksum being wrong, an empty Optional is returned.
+  - Automatically detects type of swedish id string (Personnummer, Samordningsnummer or even Organisationsnummer).
   - Extract information such as birthdate, age, number of days since birth, gender, and sometimes even regional place of birth.
-  - Support four different permutation of input strings. (10 trough 13 characters in length)
-  - Once successfully parsed, extracted output can be presented in many different ways.
-  - Invalid checksum (last digit) can automatically be error corrected, if the 'forgiving flag' is set to 'true' when parsing.
+  - Support of four valid permutations of an input string. (10 trough 13 characters in length)
+  - Once parsed, output can be presented using multiple toString methods. e.g. toString(), toString10(), toString11(), toString12(), toString13()
+  - Extracted data can be accessed through getters methods on the object. e.g. getChecksum(), getAge(), getGender() etc...
+  - Invalid checksum (last digit) can be error corrected (automatically) if using a 'forgiving flag' when parsing.
 
 
 ### Build using Maven 'mvn clean install'
@@ -164,7 +164,7 @@ Input strings can vary in leghts as the year can be written on a short- or long 
 No worries, all different variations of the input string for a personnummer is covered. When using just two digits for years it automaticalle detects wether a person is born before- or after the millenium (2000). If your're not getting the checksum right, we can calculat it for you, by setting the special option (the 'forgiving flag') to handle it when necessary.
 
 
-Example:
+Example with different permutations of strings representing the very same personnummer.
 ```
   Optional<Personnummer> pnrOpt = Personnummer.parse("4604300014");
 ```
