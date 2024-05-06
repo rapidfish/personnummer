@@ -1,4 +1,4 @@
-# Personnummer API (2.1-beta)
+# Personnummer API (2.2-beta)
 
 # Swedish Personnummer (and Samordningsnummer) - Verify/Extract/Analyze/Repair/Create
 
@@ -49,7 +49,7 @@ Extract information from any Swedish Personnummer (or Samordningsnummer) in a co
    <dependency>
     <groupId>se.osbe.id</groupId>
     <artifactId>personnummer</artifactId>
-    <version>2.1-SNAPSHOT</version>
+    <version>2.2-SNAPSHOT</version>
     <scope>compile</scope>
    </dependency>
    ...
@@ -64,8 +64,8 @@ Example - build and prepare for usage in bash (Linux/Mac/Unix):
 - git clone https://github.com/rapidfish/personnummer.git
 - cd personnummer/
 - mvn clean package
-- chmod +x target/Personnummer2-2.1-SNAPSHOT-jar-with-dependencies.jar
-- mv target/Personnummer2-2.1-SNAPSHOT-jar-with-dependencies.jar target/personnummer
+- chmod +x target/Personnummer2-2.2-SNAPSHOT-jar-with-dependencies.jar
+- mv target/Personnummer2-2.2-SNAPSHOT-jar-with-dependencies.jar target/personnummer
 
 Example:
 ```
@@ -210,10 +210,12 @@ System.out.println(pnr.toString13()); // 19460430-0014, twelve digits, with era 
 ```
 
 
-**Version 2.1-SNAPSHOT**
+**Version 2.2-SNAPSHOT**
 Current stable branch is master
 Built using Java Open JDK 21
 
+**Version 2.1-SNAPSHOT**
+Stable version. Minor flaws and poor documentation.
 
 **Configuration**
 Compiler uses OpenJDK-21 ( https://jdk.java.net/21 )

@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public class MainCLI {
 
-    private final static String CLI_VERSION = "2.1-beta";
+    private final static String CLI_VERSION = "2.2-beta";
 
     MainCLI(String[] args) throws JsonProcessingException {
         String output = "n/a";
