@@ -7,7 +7,7 @@
 Extract information from any Swedish Personnummer (or Samordningsnummer) in a comprehensive manner, yet fast and simple to use!
 
 Gather statistics from collections of peronnummer/samordningsnummer using included helper classes.
-Generate personnummer, sometimes useful for test developers when a personnummer has to 'make it through' form validation etc.
+Generate personnummer (sometimes useful for test developers when a personnummer has to 'make it through' form validation etc...)
 
 ...or simply use it to verify if a personnummer having a correct checksum by its built in use of the luhn-10 algorithm.
 
