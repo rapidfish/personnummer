@@ -1,6 +1,7 @@
 # Personnummer API (2.1-beta)
 
-# Verify / Extract / Analyze / Repair / Create Swedish Personnummer (and Samordningsnummer)
+# Verify / Extract / Analyze / Repair / Create
+# Swedish Personnummer (and Samordningsnummer)
 
 ## Java API to handle everything Swedish Personnummer and Samordningsnummer
 Validate any Swedish Personnummer or Samordningsnummer in a fast, comprehensive manner, yet simple to use!
