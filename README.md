@@ -1,5 +1,7 @@
 # Personnummer API (2.1-beta)
 
+# Verify / Extract / Analyze / Repair / Create Swedish Personnummer amd Samordningsnummer
+
 ## Java API to handle everything Swedish Personnummer and Samordningsnummer
 Validate any Swedish Personnummer or Samordningsnummer in a fast, comprehensive manner, yet simple to use!
 Gather statistics from a collection of peronnummer using included helper classes.
@@ -130,7 +132,7 @@ Java code example:
 ```
 
 
-### Extracting, Analyzing, Repair and even Create ...
+### More on what can be done using this API ...
 - toString() can be used as default output after parsing, but there is also four other methods to represent it
 
 - compareTo() can be used to compare age between any two Personnummer
