@@ -33,6 +33,8 @@ Generate personnummer, sometimes useful for test developers when a personnummer 
 
 
 ### ...or, run it as a "runnable jar" command, directly from your favourite terminal (CLI)
+
+Bash example:
 - git clone https://github.com/rapidfish/personnummer.git
 - mvn clean package
 - chmod +x target/Personnummer2-2.1-SNAPSHOT-jar-with-dependencies.jar
