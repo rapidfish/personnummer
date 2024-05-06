@@ -130,16 +130,16 @@ Java code example:
 ```
 
 
-### Extracting information
+### Extracting, Analyzing, Repair and even Create ...
 - toString() can be used as default output after parsing, but there is also four other methods to represent it
 
 - compareTo() can be used to compare age between any two Personnummer
 
 - Extract meta data from a Personnummer; age, gender, zodiac sign and sometimes even the place of birth (on region level)
 
-- Quickly generate any number of Personnummer - useful when testing.
-
 - Automatically resolves missing '-' separator  (or a '+' indicating ages above a hundred years)
+
+- Quickly generate any number of Personnummer - useful when testing.
 
 - Era- and century gets calculated automatically if missing in the input string.
   As an example the year 99' automatically becomes 1999. It can not become '2099' as the whole date part is compared against the present date, when making this decision.
