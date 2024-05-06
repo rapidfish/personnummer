@@ -239,24 +239,25 @@ mvn test
 The aim for this project is was to provide the developer community with a free, comprehensive, reliable, accurate and yet fast Java API. 
 To handle anything Swedhish id strings, from Personnummer, Samordningsnummer and Organisationsnummer.
 
-The main purpose for it is to validate, extract info, analyze and even create any Swedish Personnummer/Samordningsnummer/Organisationsnummer.
-
-Disclaimer
-All information about Swedish Personnummer/Samordningsnummer/Organisationsnummer can be found in the public domain, form official Swedish authority websites, and on Wikipedia.
-There is absolutley no way this API can extract any personal information other than birthdate, age, gender. Sometimes the place of birth can be derivide when availible. But only for personnummer having its birthdate set prior to the year 1990. After 1990 this practice was removed.
-
+Main purpose of this API and its code, is to validate, extract info, analyze and even create any Swedish Personnummer/Samordningsnummer/Organisationsnummer.
 The future plans for this API is for it to also bring in more support for Swedish Organisationsnummer (but work is still 'in progress').
 
 
 ## More facts on Swedish Personnummer
 
-* Checksum algorithm is based upon the Luhn-algorithm a.k.a modulus-10-algorithm [https://sv.wikipedia.org/wiki/Luhn-algoritmen].
+* Checksum algorithm is based upon the Luhn-algorithm a.k.a modulus-10-algorithm [https://sv.wikipedia.org/wiki/Luhn-algoritmen]. *
 
-* This API is based upon documents publicly available from the official Swedish Tax Agency: [http://www.skatteverket.se].
+* This API is based upon documents publicly available from the official Swedish Tax Agency: [http://www.skatteverket.se]. *
 
 * This project was originally hosted on bitbucket 2015-09-27, but has moved to GitHub since 2020-02-19 *
 
 * This project is licensed under the terms of the [GPL v3](https://www.gnu.org/licenses/gpl-3.0.txt *
+
+
+## Disclaimer
+All information about Swedish Personnummer/Samordningsnummer/Organisationsnummer can be found in the public domain, form official Swedish authority websites, and on Wikipedia.
+There is absolutley no way this API can extract any personal information other than birthdate, age, gender. Sometimes the place of birth can be derivide when availible. But only for personnummer having its birthdate set prior to the year 1990. After 1990 this practice was removed.
+
 
 
 ## Who do I talk to if I have any questions about this project?
