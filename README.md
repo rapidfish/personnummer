@@ -209,19 +209,7 @@ Stable version. Minor flaws and poor documentation.
 **Configuration**
 Compiler uses OpenJDK-21 ( https://jdk.java.net/21 )
 Import the project as an existing maven projekt into your IDE ( https://maven.apache.org )
-When all is working, try to run the main class se.osbe.id.main.MainCLI and the output should look like this...
-
-Output from MainCLI.java (without args):
-```
-usage: personnummer [args] [pnr]
- -c,--century     use era and century in output
- -f,--forgiving   Be forgiving when the checksum (last digit) is wrong
- -h,--help        Bring up this help screen
- -j,--json        Show output as JSON
- -v,--version     Show version of this command
- -x,--extended    View all info about a Personnummer
-```
-
+The main class se.osbe.id.main.MainCLI is used as entry when using the project as a CLI command (runnable jar).
 
 
 **Dependencies**
