@@ -229,7 +229,6 @@ I once stumbled upon a webpage that looked promising. You could process personnu
 This project was originally an attempt from my part as a hobby project of my own, and still is. But I also want to contribute to the community of developers with a open, free, reliable and accurate way of dealing with Swedish personnummer. 
 
 ## More facts on Swedish Personnummer
-
 * Checksum algorithm is based upon the Luhn-algorithm a.k.a modulus-10-algorithm [https://sv.wikipedia.org/wiki/Luhn-algoritmen]
 
 * This API is based upon documents publicly available from the official Swedish Tax Agency: [http://www.skatteverket.se]
