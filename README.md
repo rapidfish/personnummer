@@ -4,15 +4,18 @@
 
 ## Java classes to verify, extract, analyze and more...
 
+Java project to process Swedish Personnummer, including Samordningsnummer and Organisationsnummer.
+ 
 Use it as dependency in your project, or run it as a 'stand alone' command (runnable jar)
 
-This project contains Java classes to process Swedish Personnummer, including Samordningsnummer and Organisationsnummer.
+Verify checksum of a personnummer (using its built in luhn-10 algorithm).
 
-Simply use it to verify the checksum of a personnummer (using its built in luhn-10 algorithm).
+Extract every possible built in characteristics of a personnummer, including age, gender, checksum, and even zodiac sign
 
-Included helper classes enables quick gathering of statistics. Works on collection with peronnummer/samordningsnummer.
+Included helper class - to quickly gather statistics on collections with peronnummer/samordningsnummer
 
-Powerful methods to generate vast numbers of correct personnummer. This can be useful when writing unit tests.
+Helper class to quickly generate any number of valid personnummer, based on your criteria - useful when developing tests etc...
+
 
 
 ## New Features added (since 2024-04-18)
