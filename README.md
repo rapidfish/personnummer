@@ -233,7 +233,7 @@ Unit tests are based on JUnit and is automatically run upon compilation using (m
 mvn test
 ```
 
-## Project Background -Why make another project like this?
+## Project Background - Why make another project like this?
 Today there are several projects such as this 'out there' to fulfill the need of handling Swedish personnummer.
 At the time I was starting this little project, there was'nt really any competition. All I foud was a simple script here, and another code written in some esoteric language.
 I once stumbled upon a webpage that looked promising. You could process personnummer within a webpage form, backed by some JavaScript. When I had a closer look at the javascript, I realized it wasn't calculating the checksum correctly in some cases. So I thought; 'Thats it, I'm going to build this myself'. And since I'm a Java developer the language of choice became obious. So here we are, several years later, still not totally satisfied with the result. However it's a good 'nerd' project and I still get some converstaion out of it with like minded people.
