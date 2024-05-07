@@ -8,11 +8,11 @@ Java project to process Swedish Personnummer, including Samordningsnummer and Or
  
 Use it as dependency in your project, or run it as a 'stand alone' command (runnable jar)
 
-Verify checksum of a personnummer (using its built in luhn-10 algorithm).
+Verify checksum of a personnummer (using its built in Luhn-10 algorithm).
 
 Extract every possible built in characteristics of a personnummer, including age, gender, checksum, and even zodiac sign
 
-Included helper class - to quickly gather statistics on collections with peronnummer/samordningsnummer
+Included helper class - to quickly gather statistics on collections with personnummer/samordningsnummer
 
 Helper class to quickly generate any number of valid personnummer, based on your criteria - useful when developing tests etc...
 
@@ -21,7 +21,7 @@ Helper class to quickly generate any number of valid personnummer, based on your
 ## New Features added (since 2024-04-18)
   - Re-written using Java 21
   - The Personnummer class also handles Samordningsnummer (implicitly)
-  - Added a new class to handle swedish Organisationsnummer (work in progress)
+  - Added a new class to handle Swedish Organisationsnummer (work in progress)
   - Calculate the animals of the traditional Chinese zodiac calendar
 
 
@@ -34,7 +34,7 @@ Helper class to quickly generate any number of valid personnummer, based on your
   - Automatic awareness of delimiter indicator ('-', or '+' when indicating ages beyond hundred years of age)
   - Supporting different permutations of input strings
   - Parsed personnummer can be presented in multiple ways, using a set of different toString methods
-  - Use the 'forgiving flag'. If you for some reaason, want to correct an 'invalid' checksum when parsing.
+  - Use the 'forgiving flag'. If you for some reason, want to correct an 'invalid' checksum when parsing.
   - The 'forgiving flag' also permitting having a birthdate set in the future (otherwise protected against)
 
 
@@ -45,8 +45,8 @@ Helper class to quickly generate any number of valid personnummer, based on your
 
 
 ### Use the project as a dependency in your own Java projects ...
-- Once built, the dependency (.jar) is accessable from your local Maven repo
-- Now, include it as a depedency in your project by adding the dependency in your pom.xml
+- Once built, the dependency (.jar) is accessible from your local Maven repo
+- Now, include it as a dependency in your project by adding the dependency in your pom.xml
 - Refresh your pom.xml file, and start working using its classes. (See the JavaDoc)
 
 
@@ -122,7 +122,7 @@ Output:
 
 ### Handle different input - still present output the same way!
 E.g. These string examples, can be served as input strings, represents the very same Swedish Personnummer.  
-All of them can be parsed separatley, still having the same result when using the parser method from the class Personnummer.
+All of them can be parsed separately, still having the same result when using the parser method from the class Personnummer.
 	"1212121212"
  	"121212-1212"
   	"201212121212"
@@ -134,7 +134,7 @@ All of them can be parsed separatley, still having the same result when using th
 Java code - usage example:
 
 ```
-  // Calling the parse() meehod from the Java class Personnummer ...
+  // Calling the parse() method from the Java class Personnummer ...
 
   Optional<Personnummer> pnrOpt = Personnummer.parse("121212-1212"); // year = 12, month = 12, day = 12
 
@@ -153,7 +153,7 @@ Console output:
 
 ## Java code example ...
 
-This example show you how to parse a Personnummer string into a Parsonnummer object.
+This example show you how to parse a Personnummer string into a Personnummer object.
 It shows different permutations of strings representing the very same personnummer.
 
 
