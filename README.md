@@ -249,7 +249,7 @@ Allbeit a 'nerd' project, I still find it very stimulating and fun to develop.
 
 
 ## Disclaimer
-There is absolutley no gurantee that the implementations contributed to this repository is 100% accurate when running (executed).
+There is absolutley no gurantee that the implementation is a 100% accurate when running (executing) it.
 
 This project is only based upon publicly availible information about Swedish Personnummer/Samordningsnummer/Organisationsnummer.
 Mainly from official Swedish authority websites (se above) and Wikipedia online articles.
