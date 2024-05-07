@@ -249,8 +249,18 @@ Allbeit a 'nerd' project, I still find it very stimulating and fun to develop.
 
 
 ## Disclaimer
-All information about Swedish Personnummer/Samordningsnummer/Organisationsnummer can be found in the public domain, form official Swedish authority websites, and on Wikipedia.
-There is absolutley no way this API can extract any personal information other than birthdate, age, gender. Sometimes the place of birth can be derivide when availible. But only for personnummer having its birthdate set prior to the year 1990. After 1990 this practice was removed.
+There is absolutley no gurantee that the implementations contributed to this repository is 100% accurate when running (executed).
+
+This project is only based upon publicly availible information about Swedish Personnummer/Samordningsnummer/Organisationsnummer.
+Mainly from official Swedish authority websites (se above) and Wikipedia online articles.
+No sensitive information about any real Swedish citizen (still alive or dead) is represented here. 
+Personnummer in all examples are all just 'made up'. Any similarities to any real person is therefor just a coinsident. 
+For example: the use of personnummer 19121212-1212, is a commonly used fictive person. He is frequently used among IT-staff as a 'dummy' person and goes way back in tradition.
+This 'not so real person' goes by the name "Tolvan Tolvansson" (eng. "Twelve Twelveson").
+
+Personnummer having its birthdate set prior to the year 1990, could also reveal what region/province (Län) in Sweden a person was born. 
+However, since the year 1990, this no longer practice. Hence it is only relevant for personnummer having a birthdate before this year.
+Regions/provinces (Län) has also gone through renaming since 1990, adding to the case of no longer being relevant.
 
 
 
