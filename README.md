@@ -2,7 +2,7 @@
 
 # Java API to handle Swedish Personnummer
 
-## Java classes to Verify, Extract, Analyze and more...
+## Java classes to verify, extract, analyze and more...
 
 
 This project contains Java classes to process Swedish Personnummer, including Samordningsnummer and Organisationsnummer.
