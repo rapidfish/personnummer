@@ -23,16 +23,16 @@ Powerful methods to generate vast numbers of correct personnummer. This can be u
 
 
 ## Basic Features
-  - Automatic checksum validation when parsing a personnummer string
-  - Access extracted information through getter methods, such as 'birthdate', 'age', 'gender' etc...
-  - Once parsed, the result becomes an immutable object (wrapped inside a Java Optional)
-  - An empty Optional is returned whenever parsing is unsuccessful
-  - Easy detection of id types (Personnummer, Samordningsnummer or Organisationsnummer)
-  - Automatically resolves missing '-' separator  (or a '+' indicating ages above a hundred years)
-  - Supporting different permutations of a valid input strings
-  - Once parsed, the output can be presented in multiple ways by different toString methods
-  - When parsing there is an option to use the 'forgiving flag', making 'invalid' checksums corrected.
-  - The 'forgiving flag' enables parsing of Personnummer having a birthdate set in the future
+  - Automatic checksum validation
+  - Extract information such as 'birthdate', 'age', 'gender' and more ...
+  - Parsed objects is treated as immutable objects
+  - Uses Java Optional - No more 'null check'
+  - Easy detection of type (Personnummer, Samordningsnummer or Organisationsnummer)
+  - Automatic awareness of delimiter indicator ('-', or '+' when indicating ages beyond hundred years of age)
+  - Supporting different permutations of input strings
+  - Parsed personnummer can be presented in multiple ways, using a set of different toString methods
+  - Use the 'forgiving flag'. If you for some reaason, want to correct an 'invalid' checksum when parsing.
+  - The 'forgiving flag' also permitting having a birthdate set in the future (otherwise protected against)
 
 
 ### Build using Maven 'mvn clean install'
