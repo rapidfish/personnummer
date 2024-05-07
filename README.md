@@ -4,7 +4,7 @@
 
 ## Java classes to verify, extract, analyze and more...
 
-Can be used as dependency in your project, or run as a standa alone command 
+Can be used as dependency in your project, or run as a 'stand alone' command 
 
 This project contains Java classes to process Swedish Personnummer, including Samordningsnummer and Organisationsnummer.
 
