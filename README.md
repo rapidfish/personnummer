@@ -1,34 +1,38 @@
 # Personnummer API (2.2-beta)
 
-# Swedish Personnummer (and Samordningsnummer) - Verify/Extract/Analyze/Repair/Create
+# Java API to handle Swedish Personnummer
 
-## Java API to handle everything Swedish Personnummer
+## Java classes to Verify, Extract, Analyze and more...
 
-Extract information from any Swedish Personnummer (or Samordningsnummer) in a comprehensive manner, yet fast and simple to use!
 
-...gather statistics (quickly) from collections of peronnummer/samordningsnummer using included helper classes.
+This project contains Java classes to process Swedish Personnummer, including Samordningsnummer and Organisationsnummer.
 
-...generate personnummer (sometimes useful for test developers when a personnummer has to 'make it through' form validation etc...)
+Simply use it to verify the checksum of a personnummer (using its built in luhn-10 algorithm).
 
-...or simply use it to verify if a personnummer having a correct checksum (using its built in luhn-10 algorithm).
+Included helper classes enables quick gathering of statistics. Works on collection with peronnummer/samordningsnummer.
+
+Powerful methods to generate vast numbers of correct personnummer. This can be useful when writing unit tests.
+
 
 
 ## New Features added (since 2024-04-18)
-  - Rewritten using Java 21
-  - The Personnummer class now also handles Samordningsnummer (automatically detected when parsing)
-  - new class to handle swedish Organisationsnummer (work in progress)
-  - Find out what animal a birth date is associated with, according to the traditional Chinese Zodiac calendar.
+  - Re-written using Java 21
+  - The Personnummer class also handles Samordningsnummer (implicitly)
+  - Added a new class to handle swedish Organisationsnummer (work in progress)
+  - Calculate the animals of the traditional Chinese zodiac calendar
 
 
 ## Basic Features
-  - Automatic checksum validation, when parsing a personnummer string into an Optional<Personnummer> object.
-  - If parsing was unsuccessful due to malformed string, or checksum being wrong, an empty Optional is returned.
-  - Automatically detects type of swedish id string (Personnummer, Samordningsnummer or even Organisationsnummer).
-  - Extract information such as birthdate, age, number of days since birth, gender, and sometimes even regional place of birth.
-  - Support of four valid permutations of an input string. (10 trough 13 characters in length)
-  - Once parsed, output can be presented using multiple toString methods. e.g. toString(), toString10(), toString11(), toString12(), toString13()
-  - Extracted data can be accessed through getters methods on the object. e.g. getChecksum(), getAge(), getGender() etc...
-  - Invalid checksum (last digit) can be error corrected (automatically) if using a 'forgiving flag' when parsing.
+  - Automatic checksum validation when parsing a personnummer string
+  - Access extracted information through getter methods, such as 'birthdate', 'age', 'gender' etc...
+  - Once parsed, the result becomes an immutable object (wrapped inside a Java Optional)
+  - An empty Optional is returned whenever parsing is unsuccessful
+  - Easy detection of id types (Personnummer, Samordningsnummer or Organisationsnummer)
+  - Automatically resolves missing '-' separator  (or a '+' indicating ages above a hundred years)
+  - Supporting different permutations of a valid input strings
+  - Once parsed, the output can be presented in multiple ways by different toString methods
+  - When parsing there is an option to use the 'forgiving flag', making 'invalid' checksums corrected.
+  - The 'forgiving flag' enables parsing of Personnummer having a birthdate set in the future
 
 
 ### Build using Maven 'mvn clean install'
@@ -37,10 +41,10 @@ Extract information from any Swedish Personnummer (or Samordningsnummer) in a co
 - mvn clean install
 
 
-### Use the API within your own Java project ...
-- Once built (mvn clean install) a local copy of the dependency (.jar) is stored in your local Maven repo ( in the 'm2/' folder )
-- Now, include it as a depedency, inside your own local Maven project - super easy!
-- Refresh your pom.xml file, and start working using its classes. (Use its JavaDoc)
+### Use the project as a dependency in your own Java projects ...
+- Once built, the dependency (.jar) is accessable from your local Maven repo
+- Now, include it as a depedency in your project by adding the dependency in your pom.xml
+- Refresh your pom.xml file, and start working using its classes. (See the JavaDoc)
 
 
 ```
@@ -122,91 +126,76 @@ All of them can be parsed separatley, still having the same result when using th
    	"20121212-1212"
 
 
-Java code example:
+
+
+Java code - usage example:
+
 ```
-  // Example - calling the parse() meehod from the Java class Personnummer ...
+  // Calling the parse() meehod from the Java class Personnummer ...
 
   Optional<Personnummer> pnrOpt = Personnummer.parse("121212-1212"); // year = 12, month = 12, day = 12
+
   Personnummer pnr = pnrOpt.get();
+
   System.out.println(pnr.toString13()); // Showing full length, having leading digits for era and century (20) auto resolved
 ```
 
-  Console output:
+
+Console output:
 ```
   20121212-1212
 ```
 
 
-### More on what can be done using this API ...
-- toString() can be used as default output after parsing, but there is also four other methods to represent it
 
-- compareTo() can be used to compare age between any two Personnummer
+## Java code example ...
 
-- Extract meta data from a Personnummer; age, gender, zodiac sign and sometimes even the place of birth (on region level)
-
-- Automatically resolves missing '-' separator  (or a '+' indicating ages above a hundred years)
-
-- Quickly generate any number of Personnummer - useful when testing.
-
-- Era- and century gets calculated automatically if missing in the input string.
-  As an example the year 99' automatically becomes 1999. It can not become '2099' as the whole date part is compared against the present date, when making this decision.
-  This mechanism is also a kind of protection, as it is virtually not possible to hand out personnummer to "unborn" persons a future.
-  However, it is actually still possible to handle future dates (thus 'unborn' persons) by using the 'forgiving flag'.
-
-- Use the 'Forgiving flag' [Optional] overrides normal checksum control.
-  - Automatic error correction calculates the correct checsum regardless of it being invalid, or not.
-  - Personnummer created using the 'forgiving flag' is indicated by always keeping the forgiving flag (true) afterwards.
-  - the 'forgiving flag' also lets you handle Personnumer with a birthdate set in the future (thus 'unborn' persons). Making its category still parsable. Personnummer created this way, is indicated by always keeping the forgiving flag set to true afterwards.
-
-    As an example the year 99' automatically becomes 1999. It can not become '2099' as the date part is in the future.
-	However, it is actually still possible to handle future dates (thus 'unborn' persons) by using the 'forgiving flag' when parsing an id string.
-
-- Extract zodiac information from any birthdate. A helper class lets you extract both Western- and Chinese zodiac calendar info.
+This example show you how to parse a Personnummer string into a Parsonnummer object.
+It shows different permutations of strings representing the very same personnummer.
 
 
-## Usage examples coding in Java ...
-
-Examples below show how to parse a Personnummer string.
-Now an input string with a valid swedish personnummer can be written in a couple of different variations.
-All of them are supported. Four different but equivalent input versions have the same outcome when using the Personnummer class. 
-Input strings can vary in leghts as the year can be written on a short- or long form, and combined with- or without the use of a delimiter (-), between the last four digits.
-No worries, all different variations of the input string for a personnummer is covered. When using just two digits for years it automaticalle detects wether a person is born before- or after the millenium (2000). If your're not getting the checksum right, we can calculat it for you, by setting the special option (the 'forgiving flag') to handle it when necessary.
-
-
-Example with different permutations of strings representing the very same personnummer.
 ```
   Optional<Personnummer> pnrOpt = Personnummer.parse("4604300014");
 ```
+
 or...
+
 ```
   Optional<Personnummer> pnrOpt = Personnummer.parse("460430-0014");
 ```
+
 or...
+
 ```
   Optional<Personnummer> pnrOpt = Personnummer.parse("194604300014");
 ```
+
 or...
+
 ```
   Optional<Personnummer> pnrOpt = Personnummer.parse("19460430-0014");
 ```
 
 
-Validate example...
+Output:
+
 ```
-if(pnrOpt.isPresent() == true) {
-    System.out.println("Personnummer is valid!");
-} else {
+// We use the '.get()' hence it being stored inside an Optional
+System.out.println(pnrOpt.get().toString10()); // 4604300014
+System.out.println(pnrOpt.get().toString11()); // 460430-0014, same as toString()
+System.out.println(pnrOpt.get().toString12()); // 194604300014, twelve digits having era (automatically) 
+System.out.println(pnrOpt.get().toString13()); // 19460430-0014, twelve digits, with era and '-' sign
+```
+
+Validation is done implicitly, as this example may illustrate
+
+```
+if(pnrOpt.isPresent() == false) {
     System.out.println("Personnummer is NOT valid!");
-}
-```
+    System.exit(1);
+} 
+System.out.println("Personnummer is valid, carry on ...");
 
-toString method examples ...
-
-```
-System.out.println(pnr.toString10()); // 4604300014
-System.out.println(pnr.toString11()); // 460430-0014, same as toString()
-System.out.println(pnr.toString12()); // 194604300014, twelve digits having era (automatically) 
-System.out.println(pnr.toString13()); // 19460430-0014, twelve digits, with era and '-' sign
 ```
 
 
