@@ -216,21 +216,23 @@ The main class se.osbe.id.main.MainCLI is used as entry when using the project a
 Junit, Apache (commons, collections, cli), Jackson fasterxml (databind), maven-assembly-plugin. 
 
 **How to run unit tests**
-Unit tests are based on JUnit and is automatically run upon compilation using (mvn clean install). It can also be ran from your favourite IDE (such as IntelliJ) or using this Maven command from terminal ...
+Unit tests are based on JUnit and is automatically run upon compilation using (mvn clean install).
 ```
 mvn test
 ```
 
 ## Project Background - Why make another project like this?
-Today there is many projects such as this one 'out there'. And I'm sure they can all handle Swedish personnummer in a good way.
-Way back, when I started this little project, there was virtually no competition. All I found was a simple script here and there.
-I found solutions coded in somewhat 'esoteric' languages. Others looked promising at first sight. One webpage with a form, backed 
-up by some JavaScript wasn't even calculating the checksum correctly. The web page looked nice though! (I give them that). 
-That's why I took upon me to 'invent the wheel' once more. Since I'm a Java developer in my proffession the language of choice became obious.
-So here I find myself, several years later, still not really finished with it. However, it has become somewhat mature enough, despite being 
-a bit of a 'nerd' project, I still find it to be very stimulating and fun to develop.
-Recently I decided to get it in shape, so that it can make a contribution to the community among developers.
-...It is ok to get inspiration from this project, but plaese dont steal, just copy with pride and give credits! thats all I ask of you. 
+Nowdays, there lots of projects 'out there' and they can all handle Swedish personnummer. So which one should you choose?
+Way back, when I started this little project, there was virtually no competition. All I found, while searching the web, was a few simple script here and there.
+Some solutions where promising, but was often coded in some 'esoteric' language. Others looked promising at first, such as this webpage 
+I stumbled upon. Having a form backed up JavaScript to calculate the checksum of a personnummer. The web page looked all nice and shiny (I give them that).
+However, it did'nt calculate the checksum correctly for some cases, so...
+
+That's why I took upon me to 'invent the wheel' myself. In my proffession I am a Java developer, so the choice of implementation became obious to me.
+A couple of years later, and a low pace of developing. The projct has become somewhat 'mature enough' to be released to the public.
+
+Allbeit a 'nerd' project, I still find it very stimulating and fun to develop.
+
 
 
 ## More facts on Swedish Personnummer
