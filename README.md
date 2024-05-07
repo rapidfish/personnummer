@@ -222,11 +222,16 @@ mvn test
 ```
 
 ## Project Background - Why make another project like this?
-Today there are several projects such as this 'out there' to fulfill the need of handling Swedish personnummer.
-At the time I was starting this little project, there was'nt really any competition. All I foud was a simple script here, and another code written in some esoteric language.
-I once stumbled upon a webpage that looked promising. You could process personnummer within a webpage form, backed by some JavaScript. When I had a closer look at the javascript, I realized it wasn't calculating the checksum correctly in some cases. So I thought; 'Thats it, I'm going to build this myself'. And since I'm a Java developer the language of choice became obious. So here we are, several years later, still not totally satisfied with the result. However it's a good 'nerd' project and I still get some converstaion out of it with like minded people.
+Today there is many projects such as this one 'out there'. And I'm sure they can all handle Swedish personnummer in a good way.
+Way back, when I started this little project, there was virtually no competition. All I found was a simple script here and there.
+I found solutions coded in somewhat 'esoteric' languages. Others looked promising at first sight. One webpage with a form, backed 
+up by some JavaScript wasn't even calculating the checksum correctly. The web page looked nice though! (I give them that). 
+That's why I took upon me to 'invent the wheel' once more. Since I'm a Java developer in my proffession the language of choice became obious.
+So here I find myself, several years later, still not really finished with it. However, it has become somewhat mature enough, despite being 
+a bit of a 'nerd' project, I still find it to be very stimulating and fun to develop.
+Recently I decided to get it in shape, so that it can make a contribution to the community among developers.
+...It is ok to get inspiration from this project, but plaese dont steal, just copy with pride and give credits! thats all I ask of you. 
 
-This project was originally an attempt from my part as a hobby project of my own, and still is. But I also want to contribute to the community of developers with a open, free, reliable and accurate way of dealing with Swedish personnummer. 
 
 ## More facts on Swedish Personnummer
 * Checksum algorithm is based upon the Luhn-algorithm a.k.a modulus-10-algorithm [https://sv.wikipedia.org/wiki/Luhn-algoritmen]
