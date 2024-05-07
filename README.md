@@ -254,7 +254,7 @@ There is absolutley no gurantee that the implementation is a 100% accurate when 
 This project is only based upon publicly availible information about Swedish Personnummer/Samordningsnummer/Organisationsnummer.
 Mainly from official Swedish authority websites (se above) and Wikipedia online articles.
 No sensitive information about any real Swedish citizen (still alive or dead) is represented here. 
-Personnummer in all examples are all just 'made up'. Any similarities to any real person is therefor just a coinsident. 
+Personnummer in all examples are all just 'made up'. Any similarities to any real person is therefor just a coincident. 
 For example: the use of personnummer 19121212-1212, is a commonly used fictive person. He is frequently used among IT-staff as a 'dummy' person and goes way back in tradition.
 This 'not so real person' goes by the name "Tolvan Tolvansson" (eng. "Twelve Twelveson").
 
