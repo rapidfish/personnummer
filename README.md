@@ -1,10 +1,10 @@
-# Personnummer API
+# Personnummer - A Java project to handle Swedish Personnummer
 (2.2-beta)
 
-# Java API to handle Swedish Personnummer
 
 ## Java classes to verify, extract, analyze and more...
 
+Can be used as dependency in your project, or run as a standa alone command 
 
 This project contains Java classes to process Swedish Personnummer, including Samordningsnummer and Organisationsnummer.
 
@@ -13,7 +13,6 @@ Simply use it to verify the checksum of a personnummer (using its built in luhn-
 Included helper classes enables quick gathering of statistics. Works on collection with peronnummer/samordningsnummer.
 
 Powerful methods to generate vast numbers of correct personnummer. This can be useful when writing unit tests.
-
 
 
 ## New Features added (since 2024-04-18)
