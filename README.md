@@ -233,13 +233,12 @@ Unit tests are based on JUnit and is automatically run upon compilation using (m
 mvn test
 ```
 
-## Project Background
-The aim for this project is was to provide the developer community with a free, comprehensive, reliable, accurate and yet fast Java API. 
-To handle anything Swedhish id strings, from Personnummer, Samordningsnummer and Organisationsnummer.
+## Project Background -Why make another project like this?
+Today there are several projects such as this 'out there' to fulfill the need of handling Swedish personnummer.
+At the time I was starting this little project, there was'nt really any competition. All I foud was a simple script here, and another code written in some esoteric language.
+I once stumbled upon a webpage that looked promising. You could process personnummer within a webpage form, backed by some JavaScript. When I had a closer look at the javascript, I realized it wasn't calculating the checksum correctly in some cases. So I thought; 'Thats it, I'm going to build this myself'. And since I'm a Java developer the language of choice became obious. So here we are, several years later, still not totally satisfied with the result. However it's a good 'nerd' project and I still get some converstaion out of it with like minded people.
 
-Main purpose of this API and its code, is to validate, extract info, analyze and even create any Swedish Personnummer/Samordningsnummer/Organisationsnummer.
-The future plans for this API is for it to also bring in more support for Swedish Organisationsnummer (but work is still 'in progress').
-
+This project was originally an attempt from my part as a hobby project of my own, and still is. But I also want to contribute to the community of developers with a open, free, reliable and accurate way of dealing with Swedish personnummer. 
 
 ## More facts on Swedish Personnummer
 
