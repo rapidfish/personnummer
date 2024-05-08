@@ -1,4 +1,4 @@
-# Personnummer - Java project to handle Swedish Personnummer
+# Java project to handle Swedish Personnummer
 (2.2-beta)
 
 
