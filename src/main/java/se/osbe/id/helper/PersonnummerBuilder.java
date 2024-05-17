@@ -10,6 +10,9 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import static se.osbe.id.helper.PersonnummerHelper.generateAllValidPnrForDate;
+import static se.osbe.id.helper.PersonnummerHelper.parseToDate;
+
 
 public class PersonnummerBuilder {
 
@@ -84,7 +87,7 @@ public class PersonnummerBuilder {
         return this;
     }
 
-    public PersonnummerBuilder setCreateAsSamordningsnummer(boolean isSam) {
+    public PersonnummerBuilder setAsSamordningsnummer(boolean isSam) {
         _isCreateAsSamordningsnummer = isSam;
         return this;
     }
@@ -155,7 +158,7 @@ public class PersonnummerBuilder {
             regexBuilder.append(resolveChecksum(_checksum));
             String masterRegex = regexBuilder.toString();
             // Search for hits and add those to tempList, searching one date at a time
-            tempList = PersonnummerHelper.generateAllValidPnrForDate(dateWalk.toString().replaceAll("\\D", ""));
+            tempList = generateAllValidPnrForDate(parseToDate(dateWalk.toString().replaceAll("\\D", "")).get());
             hitList = PersonnummerHelper.findPersonnummerInList(masterRegex, tempList);
             resultList.addAll(hitList);
             if (_limit != 0 && resultList.size() >= _limit) {

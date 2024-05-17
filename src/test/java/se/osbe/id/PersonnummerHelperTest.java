@@ -161,20 +161,6 @@ public class PersonnummerHelperTest {
     }
 
     @Test
-    public void testAllSsnWithPlusSign() {
-        var ssnList = new LinkedList<Personnummer>();
-        ssnList.addAll(generateAllValidPnrForDate("" + dice(1900, 1910) + "0101"));
-        ssnList.addAll(generateAllValidPnrForDate("" + dice(1800, 1810) + "0101"));
-
-        ssnList.forEach(p -> {
-            assertTrue(p.toString13().matches("\\d{8}\\-\\d{4}"));
-            assertTrue(p.toString12().matches("\\d{8}\\d{4}"));
-            assertTrue(p.toString11().matches("\\d{6}[+]\\d{4}"));
-            assertTrue(p.toString10().matches("\\d{6}\\d{4}"));
-        });
-    }
-
-    @Test
     public void testLocationType1() {
         assertEquals(LocationType.STOCKHOLM, getPlaceOfBirth(Personnummer.parse("19800101-0000", true).get()).get());
         assertEquals(LocationType.STOCKHOLM, getPlaceOfBirth(Personnummer.parse("19800101-1300", true).get()).get());

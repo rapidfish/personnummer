@@ -12,8 +12,6 @@ Verify checksum of a personnummer (using its built in Luhn-10 algorithm).
 
 Extract every possible built in characteristics of a personnummer, including age, gender, checksum, and even zodiac sign
 
-Included helper class - to quickly gather statistics on collections with personnummer/samordningsnummer
-
 Helper class to quickly generate any number of valid personnummer, based on your criteria - useful when developing tests etc...
 
 

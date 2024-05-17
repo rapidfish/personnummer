@@ -14,8 +14,8 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static java.lang.Integer.parseInt;
-import static java.lang.String.valueOf;
+import static java.lang.Math.abs;
+import static java.lang.System.nanoTime;
 import static java.util.Objects.requireNonNull;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
@@ -56,7 +56,7 @@ public class PersonnummerHelper {
         final int DIVIDER = 12;
         final int YEAR_OF_THE_RAT = 2020; // the year of the rat is the first animal of a twelve-year cycle in the Tungshu Zodiac
         int yearCandidate = date.getYear();
-        int distance = Math.abs(yearCandidate - YEAR_OF_THE_RAT);
+        int distance = abs(yearCandidate - YEAR_OF_THE_RAT);
         int mod = distance % DIVIDER;
         if (yearCandidate == YEAR_OF_THE_RAT || mod == 0) {
             return RAT; // offset is destined to be 0, thus the result is the year of the rat.
@@ -112,22 +112,6 @@ public class PersonnummerHelper {
             }
         }
         return empty();
-    }
-
-    /**
-     * Generates all valid Personnummer for a date given as parameter.
-     * <p>
-     * Dates can be on the form 'yymmdd' or 'yyyymmdd' with any kind of
-     * non-digit delimiters. e.g. 1912-12-31 or 2013/01/12 or 120523
-     *
-     * @param date Generate all valid Personnummer for this date
-     * @return all valid Personnummer numbers for the date given as parameter.
-     */
-    public static List<Personnummer> generateAllValidPnrForDate(String date) {
-        if (StringUtils.isBlank(date)) {
-            return Collections.emptyList();
-        }
-        return generateAllValidPnrForDate(parseToDate(date).get());
     }
 
     /**
@@ -197,10 +181,7 @@ public class PersonnummerHelper {
     }
 
     public static int dice(int low, int high) {
-        boolean reverse = (low > high);
-        int range = reverse ? (low - high) : (high - low);
-        int nextVal = new Random(System.nanoTime()).nextInt(range + 1);
-        return (nextVal + (reverse ? high : low));
+        return new Random(nanoTime()).nextInt(abs(high - low) + 1);
     }
 
     /**
