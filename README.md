@@ -223,7 +223,7 @@ mvn test
 ```
 
 ## Project Background - Why make another project like this?
-Nowdays, there lots of projects 'out there' and they can all handle Swedish personnummer. So which one should you choose?
+Nowdays, there is a lot of projects 'out there' and they all promise to handle Swedish personnummer correctly. So which one should you choose?
 Way back, when I started this little project, there was virtually no competition. All I found, while searching the web, was a few simple script here and there.
 Some solutions where promising, but was often coded in some 'esoteric' language. Others looked promising at first, such as this webpage 
 I stumbled upon. Having a form backed up JavaScript to calculate the checksum of a personnummer. The web page looked all nice and shiny (I give them that).
