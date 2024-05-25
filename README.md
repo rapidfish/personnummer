@@ -26,8 +26,8 @@ Helper class to quickly generate any number of valid personnummer, based on your
 ## Basic Features
   - Automatic checksum validation
   - Extract information such as 'birthdate', 'age', 'gender' and more ...
-  - Parsed objects is treated as immutable objects
-  - Uses Java Optional - No more 'null check'
+  - Parsed objects is treated as an immutable object
+  - Uses Java Optional - No more null-checking!
   - Easy detection of type (Personnummer, Samordningsnummer or Organisationsnummer)
   - Automatic awareness of delimiter indicator ('-', or '+' when indicating ages beyond hundred years of age)
   - Supporting different permutations of input strings
