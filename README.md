@@ -6,13 +6,13 @@
 
 Java project to process Swedish Personnummer, including Samordningsnummer and Organisationsnummer.
  
-Use it as dependency in your project, or run it as a 'stand alone' command (runnable jar)
+Use it as a dependency in your projects, or run it as a 'stand alone' command (runnable jar)
 
-Verify checksum of a personnummer (using its built in Luhn-10 algorithm).
+Verifiy the checksum of any Swedish personnummer (Uses the Luhn-10 algorithm).
 
-Extract every possible built in characteristics of a personnummer, including age, gender, checksum, and even zodiac sign
+Extract all possible characteristics of any personnummer (births date, age, gender, checksum, ...and even the zodiac sign)
 
-Helper class to quickly generate any number of valid personnummer, based on your criteria - useful when developing tests etc...
+Using the included helper class, you can quickly generate any number of valid personnummer, based on your own criterias - useful when testing, or writing unit tests etc...
 
 
 
