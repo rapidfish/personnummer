@@ -6,7 +6,7 @@
 
 This Java project processes Swedish Personnummer ...including Samordningsnummer and Organisationsnummer.
  
-Use it as a dependency in your projects, or run it as a 'stand alone' command (runnable jar)
+Use it as a dependency in your own Java projects - or compile and run it as a 'stand alone' command (java -jar) from your terminal.
 
 Verifiy the checksum of any Swedish personnummer (Uses the Luhn-10 algorithm).
 
