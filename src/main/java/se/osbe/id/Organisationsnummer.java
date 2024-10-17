@@ -34,8 +34,8 @@ public class Organisationsnummer implements Identifiable {
     // sekelsiffror 18, 19 eller 20 + personnummer eller samordningsnummer (10 siffror).
     // Indikator för fysisk person (dvs personnummer) så är tredje siffran < 2 i samordningsnummer (i de 10 sista siffrorna).
 
-    private static final String SAMORDNNR_PATTERN = "^(?<num1gruppnr>\\d)(?<num2>\\d)(?<num3>\\d)(?<num4to6>\\d{3})(?<sign>[-])?(?<num7to9>\\d{3})(?<num10checksum>\\d)$";
-    private static final Pattern PRE_COMPILED_PATTERN = compile(SAMORDNNR_PATTERN);
+    private static final String ORGANISATIONSNUMMER = "^(?<num1gruppnr>\\d)(?<num2>\\d)(?<num3>\\d)(?<num4to6>\\d{3})(?<sign>[-])?(?<num7to9>\\d{3})(?<num10checksum>\\d)$";
+    private static final Pattern PRE_COMPILED_PATTERN = compile(ORGANISATIONSNUMMER);
     private static final String _DELIMITER = "-"; // the delimiter char used in the organisationsnummer
     private static final int _JURIDISKPERSON = 2; // the prefix for "juridisk person"
 
