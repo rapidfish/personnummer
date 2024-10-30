@@ -7,7 +7,7 @@
     <groupId>se.osbe.id</groupId>
     <artifactId>personnummer</artifactId>
     <name>Personnummer</name>
-    <version>2.2-SNAPSHOT</version>
+    <version>2.3</version>
     <packaging>jar</packaging>
 
     <properties>
