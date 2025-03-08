@@ -16,21 +16,37 @@ This Java library processes Swedish personal identity numbers (personnummer), in
 - Added support for Swedish organization numbers (work in progress).
 - Chinese zodiac calculation.
 
-## Installation & Usage
-### Build with Maven:
+## How to
+
+### Maven
+Step 1: Add repository to pom.xml
+```xml
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+```
+
+Step 2: Add the dependency to pom.xml
+```xml	
+	<dependency>
+	    <groupId>com.github.rapidfish</groupId>
+	    <artifactId>personnummer</artifactId>
+	    <version>v2.3.1</version>
+	</dependency>
+```
+
+For more information see: https://jitpack.io/#rapidfish/personnummer/v2.3.1
+
+
+### Clone & build locally with Maven
+
 ```sh
 git clone https://github.com/rapidfish/personnummer.git
 cd personnummer/
 mvn clean install
-```
-
-### Add as a Dependency (after compiling it locally, using mvn clean install):
-```xml
-<dependency>
-  <groupId>se.osbe.id</groupId>
-  <artifactId>personnummer</artifactId>
-  <version>2.3</version>
-</dependency>
 ```
 
 ### Run as CLI:
