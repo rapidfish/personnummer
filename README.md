@@ -36,6 +36,14 @@ mvn clean install
 ### Run as CLI:
 ```sh
 java -jar target/personnummer.jar -xj 19121212-1212
+
+args:
+	 -c,--century     use era and century in output
+	 -f,--forgiving   Be forgiving when the checksum (last digit) is wrong
+	 -h,--help        Bring up help text
+	 -j,--json        Show output on JSON format
+	 -v,--version     Show version of this command
+	 -x,--extended    View extended info about a Personnummer
 ```
 
 ### Example Output:
