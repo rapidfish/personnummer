@@ -24,7 +24,7 @@ cd personnummer/
 mvn clean install
 ```
 
-### Add as a Dependency:
+### Add as a Dependency (after compiling it locally, using mvn clean install):
 ```xml
 <dependency>
   <groupId>se.osbe.id</groupId>
