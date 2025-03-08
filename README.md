@@ -29,7 +29,7 @@ mvn clean install
 <dependency>
   <groupId>se.osbe.id</groupId>
   <artifactId>personnummer</artifactId>
-  <version>2.2-SNAPSHOT</version>
+  <version>2.3</version>
 </dependency>
 ```
 
