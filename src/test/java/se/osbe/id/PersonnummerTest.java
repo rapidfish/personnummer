@@ -109,11 +109,15 @@ public class PersonnummerTest {
 
     @Test
     public void testPnrParseHundredPlusYearsOldOK() {
-        assertTrue(Personnummer.parse(_HUNDRED_YEARS_AGO + "0115-0459").get().isHundredYears());
+        assertTrue(Personnummer.parse(_HUNDRED_YEARS_AGO + "0115-0458").get().isHundredYears());
         assertTrue(Personnummer.parse(_HUNDRED_YEARS_AGO + "0115-0450", true).get().isHundredYears());
-        assertEquals(1924, Personnummer.parse(_HUNDRED_YEARS_AGO + "0115-0459").get().getBirthDate().get(YEAR_OF_ERA));
-        assertEquals(1924, Personnummer.parse(_HUNDRED_YEARS_AGO + "0115-0450", true).get().getBirthDate().get(YEAR_OF_ERA));
-        assertTrue(Personnummer.parse(_YEAR_NOW + "0115+0459").get().isHundredYears());
+        assertEquals(LocalDateTime.now().minusYears(100).getYear(),
+            Personnummer.parse(_HUNDRED_YEARS_AGO + "0115-0458").get().getBirthDate().get(YEAR_OF_ERA));
+        assertEquals(LocalDateTime.now().minusYears(100).getYear(),
+            Personnummer.parse(_HUNDRED_YEARS_AGO + "0115-0450", true).get().getBirthDate().get(YEAR_OF_ERA));
+        assertTrue(Personnummer.parse(("" + LocalDateTime.now().minusYears(100).getYear()).substring(2) + "0115+0458")
+            .get()
+            .isHundredYears());
         assertTrue(Personnummer.parse(_YEAR_NOW + "0115+0450", true).get().isHundredYears());
         assertEquals(empty(), Personnummer.parse(_HUNDRED_YEARS_AGO + "0115+0459")); // both era and '+' is not valid
 
