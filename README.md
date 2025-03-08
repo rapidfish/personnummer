@@ -10,7 +10,7 @@ This Java library processes Swedish personal identity numbers (personnummer), in
 - **Immutability**, ensuring parsed objects remain unchanged.
 - **Optional forgiving mode**, allowing minor corrections for testing purposes.
 
-## New in v2.3:
+## New in v2.3.1:
 - Rewritten for Java 21.
 - Improved handling of coordination numbers.
 - Added support for Swedish organization numbers (work in progress).
