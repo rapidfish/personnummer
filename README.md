@@ -77,13 +77,23 @@ args:
 
 ```json
 {
-  "personnummer10": "1212121212",
-  "birthDate": "2012-12-12",
-  "age": 11,
-  "gender": "MALE",
-  "zodiacSign": "Sagittarius",
-  "chineseZodiacAnimal": "The Year of the Dragon",
-  "idType": "PERSONNUMMER"
+  "personnummer10" : "1212121212",
+  "personnummer11" : "121212+1212",
+  "personnummer12" : "191212121212",
+  "personnummer13" : "19121212-1212",
+  "lastFourDigits" : "1212",
+  "isForgiving" : false,
+  "correctChecksum" : 2,
+  "birthDate" : "1912-12-12",
+  "age" : 112,
+  "daysSinceBirth" : 41014,
+  "gender" : "MALE",
+  "zodiacSign" : "Sagittarius",
+  "zodiacSignSwe" : "Skytten",
+  "chineseZodiacAnimal" : "Year of the Rat",
+  "chineseZodiacAnimalSwe" : "Råttans år",
+  "idType" : "PERSONNUMMER",
+  "toString" : "121212+1212"
 }
 ```
 
