@@ -3,9 +3,9 @@
 ## Overview
 This Java library processes Swedish Personnummer / Samordningsnummer / Organisationsnummer.
 
-Personnummer ( personal identity numbers )
-Samordningsnummer ( coordination numbers )
-Organisationsnummer ( organization numbers )
+- Personnummer ( personal identity numbers )
+- Samordningsnummer ( coordination numbers )
+- Organisationsnummer ( organization numbers )
 
 This project can be used as a Java library (dependency) in your own projects - or as a standalone CLI command when compiled (using Maven).
 
