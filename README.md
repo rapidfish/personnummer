@@ -7,22 +7,6 @@ This Java library processes Swedish Personnummer / Samordningsnummer / Organisat
 - Samordningsnummer ( coordination numbers )
 - Organisationsnummer ( organization numbers )
 
-This project can be used as a Java library (dependency) in your own projects - or as a standalone CLI command when compiled (using Maven).
-
-
-### Features:
-- **Checksum validation** using the Luhn-10 algorithm.
-- **Data extraction**, including birthdate, age, gender, and zodiac signs (both Western and Chinese).
-- **Flexible parsing**, supporting various input formats.
-- **Immutability**, ensuring parsed objects remain unchanged.
-- **Optional forgiving mode**, allowing minor corrections for testing purposes.
-
-## New in v2.3.1:
-- Rewritten for Java 21.
-- Improved handling of coordination numbers.
-- Added support for Swedish organization numbers (work in progress).
-- Chinese zodiac calculation.
-
 ## How to
 
 ### Maven
@@ -116,6 +100,20 @@ if (pnrOpt.isPresent()) {
     System.out.println(pnrOpt.get().toString13()); // 20121212-1212
 }
 ```
+
+
+### Features:
+- **Checksum validation** using the Luhn-10 algorithm.
+- **Data extraction**, including birthdate, age, gender, and zodiac signs (both Western and Chinese).
+- **Flexible parsing**, supporting various input formats.
+- **Immutability**, ensuring parsed objects remain unchanged.
+- **Optional forgiving mode**, allowing minor corrections for testing purposes.
+
+## New in v2.3.1:
+- Rewritten for Java 21.
+- Improved handling of coordination numbers.
+- Added support for Swedish organization numbers (work in progress).
+- Chinese zodiac calculation.
 
 ## About the Project
 Originally created due to the lack of reliable personnummer libraries, this project has evolved into a mature tool. Built using Java 21, it is based on publicly available information from the Swedish Tax Agency.
