@@ -45,7 +45,8 @@ Step 2: Add the dependency to pom.xml
 	</dependency>
 ```
 
-For other tools see:
+Using other build tools ?
+To include Personnummer as a dependency using other tools see:
 https://jitpack.io/#rapidfish/personnummer/v2.3.1
 (gradle, gradle.kts, maven, sbt, leiningen)
 
