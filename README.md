@@ -1,7 +1,7 @@
 # Swedish Personnummer Java Library
 
 ## Overview
-This Java library processes Swedish personal identity numbers (personnummer), including coordination numbers (samordningsnummer) and organization numbers (organisationsnummer). It can be used as a dependency in your Java project or as a standalone CLI tool.
+This Java library processes Swedish personnummer (personal identity numbers), including coordination numbers (samordningsnummer) and organization numbers (organisationsnummer). It can be used as a dependency in your Java project or as a standalone CLI tool.
 
 ### Features:
 - **Checksum validation** using the Luhn-10 algorithm.
