@@ -109,13 +109,13 @@ if (pnrOpt.isPresent()) {
 - **Immutability**, ensuring parsed objects remain unchanged.
 - **Optional forgiving mode**, allowing minor corrections for testing purposes.
 
-## New in v2.3.1:
+### New in v2.3.1:
 - Rewritten for Java 21.
 - Improved handling of coordination numbers.
 - Added support for Swedish organization numbers (work in progress).
 - Chinese zodiac calculation.
 
-## About the Project
+### About the Project
 Originally created due to the lack of reliable personnummer libraries, this project has evolved into a mature tool. Built using Java 21, it is based on publicly available information from the Swedish Tax Agency.
 
 ### License
