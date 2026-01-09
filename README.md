@@ -29,9 +29,8 @@ Step 2: Add the dependency to pom.xml
 	</dependency>
 ```
 
-### What about other build tools?
-(gradle, gradle.kts, maven, sbt, leiningen) see:
-https://jitpack.io/#rapidfish/personnummer/v2.3.1
+### What about other build tools? (gradle, gradle.kts, maven, sbt, leiningen)
+See: https://jitpack.io/#rapidfish/personnummer/v2.3.1
 
 
 
