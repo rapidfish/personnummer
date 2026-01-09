@@ -36,7 +36,8 @@ To include Personnummer as a dependency using other tools see:
 https://jitpack.io/#rapidfish/personnummer/v2.3.1
 
 
-### Clone & build locally with Maven
+
+## Clone & build using Maven
 
 ```sh
 git clone https://github.com/rapidfish/personnummer.git
@@ -44,7 +45,7 @@ cd personnummer/
 mvn clean install
 ```
 
-### Run as a CLI command:
+## Run as a CLI command:
 
 bash (Mac/Linux/Unix):
 ```sh
@@ -68,7 +69,7 @@ args:
 	 -x,--extended    View extended info about a Personnummer
 ```
 
-### Example Output
+## Example Output
 
 ```json
 {
@@ -92,7 +93,7 @@ args:
 }
 ```
 
-### Java Example:
+## Java Example:
 ```java
 Optional<Personnummer> pnrOpt = Personnummer.parse("121212-1212");
 if (pnrOpt.isPresent()) {
@@ -101,20 +102,20 @@ if (pnrOpt.isPresent()) {
 ```
 
 
-### Features:
+## Features:
 - **Checksum validation** using the Luhn-10 algorithm.
 - **Data extraction**, including birthdate, age, gender, and zodiac signs (both Western and Chinese).
 - **Flexible parsing**, supporting various input formats.
 - **Immutability**, ensuring parsed objects remain unchanged.
 - **Optional forgiving mode**, allowing minor corrections for testing purposes.
 
-### New in v2.3.1:
+## New in v2.3.1:
 - Rewritten for Java 21.
 - Improved handling of coordination numbers.
 - Added support for Swedish organization numbers (work in progress).
 - Chinese zodiac calculation.
 
-### About the Project
+### About
 Originally created due to the lack of reliable personnummer libraries, this project has evolved into a mature tool. Built using Java 21, it is based on publicly available information from the Swedish Tax Agency.
 
 ### License
